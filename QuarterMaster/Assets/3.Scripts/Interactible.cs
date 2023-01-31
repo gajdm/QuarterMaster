@@ -7,26 +7,28 @@ public class Interactible : MonoBehaviour
     GameManager gameManager;
     public enum InteractibleType
     {
-        Tab,
-        Item,
+        Tab,Item,Rack,Crate,Bag,Map
     }
     public InteractibleType type;
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag =="Player")
         {
-            gameManager = FindObjectOfType<GameManager>();
-            gameManager.Test();
-            if(Input.GetKey(KeyCode.E))
-            {
-
-            }
+            if (Input.GetKey(KeyCode.E)) 
+                Act();
         }
     }
     public void Act()
     {
-        if(type == InteractibleType.Tab)
+        gameManager = FindObjectOfType<GameManager>();
+        switch (type)
         {
+            case InteractibleType.Tab:
+                break;
+            case InteractibleType.Rack:
+                break;
+            default:
+                break;
 
         }
     }
