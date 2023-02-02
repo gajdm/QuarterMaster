@@ -16,45 +16,39 @@ public class BuyerManager : MonoBehaviour
     //Bags variables
 
     //Address variables
-    [SerializeField] private int rackAdress;
-    [SerializeField] private int bagAdress;
-    [SerializeField] private int address;
-
-    //Code variables
-    [SerializeField] private int code;
+    [SerializeField] private int rackInt;
+    [SerializeField] private string rackStr;
+    [SerializeField] private int bagInt;
+    [SerializeField] private string bagStr;
+    [SerializeField] private string address;
 
     //Order variables
     [SerializeField] private int orderNumber;
 
+    //Code variables
+    [SerializeField] private int code;
+
     //Dictionary class
-    [SerializeField] private List<int> numberList = new List<int>();
-    [SerializeField] private List<bool> valueList = new List<bool>();
-    [SerializeField] private Dictionary<int,bool> valueDictionary = new Dictionary<int,bool>();
+    [SerializeField] private Dictionary<string,bool> addDic = new Dictionary<string,bool>();
 
 
     //FUNCTIONS
 
     public void Start()
     {
-        foreach(int number in numberList)
-        {
-            if(!valueDictionary.ContainsKey(number))
-                valueDictionary[number] = true;
-        }
-        Debug.Log(valueDictionary.Count);
     }
     public void Update()
     {
-        
     }
     public void FixedUpdate()
     {
-        timer += Time.deltaTime;
-        if (timer >= timeLimit)
-        {
-            OrderCheck();
-            timer = 0;
-        }
+        
+        //timer += Time.deltaTime;
+        //if (timer >= timeLimit)
+        //{
+        //    OrderCheck();
+        //    timer = 0;
+        //}
     }
     public void OrderCheck()
     {
@@ -62,15 +56,27 @@ public class BuyerManager : MonoBehaviour
     }
     public void RackPlaced()
     {
-    }
-    public void CreateAddress()
-    {
-        rackAdress += rackAdress;
-        code += code;
-        for(int i = 0; i < 4; i++)
-        {
-
-        }
         
+    }
+    public void CreateNewAddress()
+    {
+        rackStr = rackInt.ToString("00");
+        bagStr = bagInt.ToString("00");
+        address = rackStr + bagStr;
+        Debug.Log("New adress created: " + address);
+    }
+    public void CheckAddressList(int add)
+    {
+        for (int i = 0; i < 4;)
+        {
+            if(addDic.ContainsValue(false))
+            {
+            }
+            i--;
+        }
+    }
+    public void AssignExistingAddress()
+    {
+
     }
 }
