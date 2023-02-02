@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     }
     public void Test()
     {
-        Debug.Log("GM");
+        Debug.Log("GameManager");
     }
     public void TooltipToggle(bool value)
     {

@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class ManufacturerManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Manufacturer[] manufacturers;
+    public void Start()
     {
-        
+
+    }
+    public void GetLevels()
+    {
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

@@ -32,4 +32,8 @@ public class Manufacturer : ScriptableObject
 
     public int manuLevel = 1;
     public bool available;
+    //private void Reset()
+    //{
+    //    manuName = "Tom";
+    //}
 }
