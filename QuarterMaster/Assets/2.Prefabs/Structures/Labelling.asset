@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65d2d645654a6df41b437ed3f8e35368, type: 3}
-  m_Name: New Buildable Grid Object Type SO
+  m_Name: Labelling
   m_EditorClassIdentifier: 
-  objectName: Rack
+  objectName: LabellingStation
   buildableCategorySO: {fileID: 11400000, guid: 791b30634c6407f41926881912e066bb, type: 2}
   objectDescription: Whatever
   objectToolTipDescription: 
   objectIcon: {fileID: 21300000, guid: a551d2d16b10a2748b3226750fde67ad, type: 3}
   objectPrefab:
-  - {fileID: 704706778724121172, guid: 23a4c968be976e844973cedb3793c5ce, type: 3}
-  ghostPrefab: {fileID: 704706778724121172, guid: 23a4c968be976e844973cedb3793c5ce, type: 3}
+  - {fileID: 704706778724121172, guid: bc8062cdb7d67134387e62095c431931, type: 3}
+  ghostPrefab: {fileID: 704706778724121172, guid: bc8062cdb7d67134387e62095c431931, type: 3}
   placeableGhostMaterial: {fileID: 0}
   notPlaceableGhostMaterial: {fileID: 0}
   setBuiltObjectLayer: 0

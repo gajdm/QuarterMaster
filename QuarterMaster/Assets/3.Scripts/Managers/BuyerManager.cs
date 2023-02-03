@@ -17,6 +17,7 @@ public class BuyerManager : MonoBehaviour
     //Bags and Racks variables
     [SerializeField] private List<string> rackList = new List<string>();
     [SerializeField] private List<Rack> racks = new List<Rack>();
+    [SerializeField] private string[] currentAddresses = new string[4];
 
     //Address variables
     [SerializeField] private int rackInt;
@@ -39,53 +40,34 @@ public class BuyerManager : MonoBehaviour
 
 
     //FUNCTIONS
-
-    public void Start()
-    {
-    }
-    public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.L))
-            RackPlaced(); 
-    }
     public void FixedUpdate()
     {
-        
-        //timer += Time.deltaTime;
-        //if (timer >= timeLimit)
-        //{
-        //    OrderCheck();
-        //    timer = 0;
-        //}
+        timer += Time.deltaTime;
+        debugText.text = "Next Order in " + timer.ToString("00") + "/" + timeLimit;
+        if (timer >= timeLimit)
+        {
+            OrderCheck();
+            timer = 0;
+        }
     }
+    //ORDER FUNCTIONS
     public void OrderCheck()
     {
-        
-    }
-    public void RackPlaced() //Logic that happens once the rack is placed
-    {
-        if(rackList.Count > 0) //Takes an unused rack address
+        for(int i = 0; i < addressBoolList.Count; i++)
         {
-            rackStr = rackList[0];
-        }
-        else //Creates 4 new adresses for the bags inside the rack
-        {
-            rackInt++;
-            bagInt = 1;
-            for(int i = 0; i < 4; i++)
+            if (addressBoolList[i] == false)
             {
-                CreateNewAddress();
-                bagInt++;
+                CreateNewOrder();
+                address = addressList[i];
+                addressBoolList[i] = true;
+
             }
         }
     }
-    public void CreateNewAddress() // Creates new addresses and adds them to the Address List
+    public void CreateNewOrder()
     {
-        rackStr = rackInt.ToString("00");
-        bagStr = bagInt.ToString("00");
-        address = rackStr + bagStr;
-        addressList.Add(address);
-        addressBoolList.Add(true);
+        CreateCode();
+        Debug.Log("New Order: " + orderNumber);
     }
     public void CreateCode()
     {
@@ -97,9 +79,51 @@ public class BuyerManager : MonoBehaviour
     {
         orderList.Remove(code);
     }
-    public void CheckAddressList(int add,bool rack)
+
+    //RACK FUNCTIONS
+
+    public void RackPlaced(Rack rack) //Logic that happens once the rack is placed
     {
-        if(rack)
+        if(rackList.Count > 0) //Takes an unused rack address
+        {
+            rackStr = rackList[0];
+        }
+        else //Creates 4 new adresses for the bags inside the rack
+        {
+            currentAddresses = new string[4];
+            rackInt++;
+            bagInt = 1;
+            for(int i = 0; i < 4; i++)
+            {
+                CreateNewAddress();
+                bagInt++;
+                currentAddresses[i] = address;
+            }
+            rack.GetBagNames(currentAddresses);
+        }
+    }
+    public void RackRemoved(Rack rack)
+    {
+
+    }
+    public void UpdateRackList(Rack rack)
+    {
+        racks.Add(rack);
+    }
+
+    //ADDRESS FUNCTIONS
+
+    public void CreateNewAddress() // Creates new addresses and adds them to the Address List
+    {
+        rackStr = rackInt.ToString("00");
+        bagStr = bagInt.ToString("00");
+        address = rackStr + bagStr;
+        addressList.Add(address);
+        addressBoolList.Add(false);
+    }
+    public void CheckAddressList(int add, bool rack)
+    {
+        if (rack)
         {
             for (int i = 0; i < 4;)
             {
@@ -113,19 +137,13 @@ public class BuyerManager : MonoBehaviour
         {
 
         }
-        
+
     }
     public void AssignExistingAddress(string word)
     {
         address = word;
     }
-    public void CreateNewOrder()
-    {
+   
 
-    }
-    public void UpdateRackList(Rack rack)
-    {
-        racks.Add(rack);
-    }
 
 }

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9bc1193bb5230094a83bdfca2af02e94, type: 3}
-  m_Name: New Buildable Object Type Category SO
+  m_Name: Category SO
   m_EditorClassIdentifier: 
-  categoryName: Buildings
+  categoryName: Structures
   categoryIcon: {fileID: 21300000, guid: b515c964c9b46fa438b41c449edcaf9d, type: 3}

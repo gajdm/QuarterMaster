@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private Sprite itemIcon;
+    [SerializeField] private string itemName;
+    [SerializeField] private string itemCode;
+    [SerializeField] private string itemAddress;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

@@ -6,6 +6,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Manager { get; private set; }
 
+    [SerializeField]private BuyerManager buyerManager;
+    [SerializeField]private ManufacturerManager manuManager;
+    [SerializeField]private UIManager uiManager;
 
     //FUNCTIONS
     public void Awake()
@@ -20,5 +23,6 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
 
 }

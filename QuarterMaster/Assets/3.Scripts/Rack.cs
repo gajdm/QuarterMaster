@@ -13,7 +13,16 @@ public class Rack : MonoBehaviour
     [SerializeField] private UIManager uiManager;
 
     //FUNCTIONS
-    
+    public void OnEnable()
+    {
+        if(buyerManager == null) buyerManager=FindObjectOfType<BuyerManager>();
+        buyerManager.RackPlaced(this);
+    }
+    public void OnDisable()
+    {
+        if (buyerManager != null) buyerManager = FindObjectOfType<BuyerManager>();
+
+    }
     public void AssignBags()
     {
         if(uiManager != null)uiManager = FindObjectOfType<UIManager>();
@@ -27,8 +36,8 @@ public class Rack : MonoBehaviour
     {
         return bagNames;
     }
-    public void GetBagNames()
+    public void GetBagNames(string[] names)
     {
-
+        bagNames = names;
     }
 }
