@@ -10,7 +10,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private CanvasGroup rackUi;
 
     [SerializeField] private CanvasGroup tooltipE;
-    [SerializeField] private CanvasGroup toolTipQ;
+    [SerializeField] private CanvasGroup tooltipQ;
+
+    [SerializeField] private Button[] bagButtons;
 
     public void SwitchUI(string name, bool value)
     {
@@ -20,6 +22,9 @@ public class UIManager : MonoBehaviour
             case "ManuUI":
                 canvasGroup = manuUi;
                 break;
+            case "RackUI":
+                canvasGroup= rackUi;
+                break;
             default:
                 Debug.Log("Wrong UI name");
                 return;
@@ -27,13 +32,33 @@ public class UIManager : MonoBehaviour
         if(value) canvasGroup.alpha = 1;
         else canvasGroup.alpha = 0;
         canvasGroup.interactable = value;
+        canvasGroup.blocksRaycasts = value;
     }
-    public void OpenTooltips(int number)
+    public void OpenTooltips(bool bool1, string string1, bool bool2, string string2)
     {
-        if(number ==1)
+        if(bool1)
+        {
             tooltipE.alpha = 1;
-        if(number ==2)
-            toolTipQ.alpha = 1;
+            tooltipE.GetComponentInChildren<Text>().text = string1;   
+        }
+        if(bool2)
+        {
+            tooltipQ.alpha = 1;
+            tooltipQ.GetComponentInChildren<Text>().text = string2;
+        }
+    }
+    public void CloseTooltips()
+    {
+        tooltipE.alpha = 0;
+        tooltipQ.alpha = 0;
+    }
+    public void UpdateRackUI(Rack rack)
+    {
+        string[] bagNames = rack.SendBagNames(); 
+        for (int i = 0; i < bagNames.Length; i++)
+        {
+            bagButtons[i].gameObject.GetComponentInChildren<Text>().text = bagNames[i];
+        }
     }
 
 }

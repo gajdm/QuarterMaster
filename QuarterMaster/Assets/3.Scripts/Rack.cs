@@ -1,18 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using SoulGames.EasyGridBuilderPro;
 
 public class Rack : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private string[] bagNames;
 
-    // Update is called once per frame
-    void Update()
+    //Managers
+    [SerializeField] private BuyerManager buyerManager;
+    [SerializeField] private UIManager uiManager;
+
+    //FUNCTIONS
+    
+    public void AssignBags()
     {
-        
+        if(uiManager != null)uiManager = FindObjectOfType<UIManager>();
+        uiManager.UpdateRackUI(this);
+    }
+    public void ArchiveRack()
+    {
+        buyerManager.UpdateRackList(this);
+    }
+    public string[] SendBagNames()
+    {
+        return bagNames;
+    }
+    public void GetBagNames()
+    {
+
     }
 }

@@ -8,9 +8,6 @@ public class ItemInteraction : MonoBehaviour
     [SerializeField] private Transform pickUpArea;
     [SerializeField] private Transform putDownArea;
 
-    [SerializeField] private CanvasGroup tooltipE;
-    [SerializeField] private CanvasGroup toolTipQ;
-
     [SerializeField] private bool isHolding;
     [SerializeField] private GameObject currentItem;
     public void Update()
@@ -23,13 +20,6 @@ public class ItemInteraction : MonoBehaviour
             }
         }
     }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Item")
-        {
-            tooltipE.alpha = 1;
-        }
-    }
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Item")
@@ -40,11 +30,6 @@ public class ItemInteraction : MonoBehaviour
             } 
         }
     }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Item")
-            tooltipE.alpha = 0;
-    }
     public void PickUp(GameObject item)
     {
         if (isHolding)
@@ -53,7 +38,6 @@ public class ItemInteraction : MonoBehaviour
             currentItem.transform.parent = null;
             currentItem = null;
             isHolding = false;
-            toolTipQ.alpha = 0;
         }
         else
         {
@@ -61,7 +45,6 @@ public class ItemInteraction : MonoBehaviour
             item.transform.position = pickUpArea.transform.position;
             currentItem = item;
             isHolding = true;
-            toolTipQ.alpha = 1;
         }
 
     }

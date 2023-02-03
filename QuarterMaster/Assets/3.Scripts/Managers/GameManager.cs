@@ -20,20 +20,5 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    public void Test()
-    {
-        Debug.Log("GameManager");
-    }
-    public void TooltipToggle(bool value)
-    {
-        if(value)
-        {
-
-        }
-        else
-        {
-
-        }
-    }
 
 }

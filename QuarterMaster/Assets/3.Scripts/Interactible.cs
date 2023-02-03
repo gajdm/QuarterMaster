@@ -8,17 +8,32 @@ public class Interactible : MonoBehaviour
     UIManager uiManager;
     [SerializeField] private enum InteractibleType
     {
-        Tab,Item,Rack,Crate,Bag,Map
+        Tab, Item, Rack, Crate, Bag, Map
     }
     [SerializeField] private InteractibleType type;
-    [SerializeField] private string uiName; 
+    [SerializeField] private string uiName;
+
+    //Tooltip variables
+    [Header("Tooltips")]
+
+    [SerializeField] private bool tooltipE;
+    [SerializeField] private string eString;
+
+    [SerializeField] private bool tooltipQ;
+    [SerializeField] private string qString;
+    //Rack variables
+    [SerializeField] private Rack rack;
+    
 
     //FUNCTIONS
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag =="Player")
-        { 
-                Debug.Log("Player near "+type.ToString());
+        if(uiManager == null) uiManager = FindObjectOfType<UIManager>();
+        
+        if (collision.gameObject.tag == "Player")
+        {
+            if(tooltipE || tooltipQ) uiManager.OpenTooltips(tooltipE,eString,tooltipQ,qString);   
+            
         }
     }
     private void OnTriggerStay2D(Collider2D collision)
@@ -32,11 +47,15 @@ public class Interactible : MonoBehaviour
             }
         }
     }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        uiManager.CloseTooltips();
+    }
     public void Act()
     {
-        if(gameManager == null)
+        if (gameManager == null)
             gameManager = FindObjectOfType<GameManager>();
-        if(uiManager == null)
+        if (uiManager == null)
             uiManager = FindObjectOfType<UIManager>();
 
         switch (type)
@@ -45,6 +64,8 @@ public class Interactible : MonoBehaviour
                 OpenTab(uiName);
                 break;
             case InteractibleType.Rack:
+                rack = GetComponent<Rack>();
+                OpenTab(uiName);
                 break;
             default:
                 break;
@@ -53,5 +74,6 @@ public class Interactible : MonoBehaviour
     public void OpenTab(string name)
     {
         uiManager.SwitchUI(name, true);
+        if(type == InteractibleType.Rack)uiManager.UpdateRackUI(rack);
     }
 }
