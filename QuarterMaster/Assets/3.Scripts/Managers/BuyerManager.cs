@@ -30,6 +30,8 @@ public class BuyerManager : MonoBehaviour
 
     //Dictionary class
     [SerializeField] private Dictionary<string,bool> addDic = new Dictionary<string,bool>();
+    [SerializeField] private List<string> stringList = new List<string>();
+    [SerializeField] private List<bool> boolList = new List<bool>();
 
 
     //FUNCTIONS
@@ -65,17 +67,29 @@ public class BuyerManager : MonoBehaviour
         address = rackStr + bagStr;
         Debug.Log("New adress created: " + address);
     }
-    public void CheckAddressList(int add)
+    public void CheckAddressList(int add,bool rack)
     {
-        for (int i = 0; i < 4;)
+        if(rack)
         {
-            if(addDic.ContainsValue(false))
+            for (int i = 0; i < 4;)
             {
+                if (!boolList[i])
+                {
+                    AssignExistingAddress(stringList[i]);
+                }
             }
-            i--;
         }
+        else
+        {
+
+        }
+        
     }
-    public void AssignExistingAddress()
+    public void AssignExistingAddress(string word)
+    {
+        address = word;
+    }
+    public void AssignNewAddress()
     {
 
     }
