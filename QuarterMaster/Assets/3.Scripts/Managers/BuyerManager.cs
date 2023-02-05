@@ -8,7 +8,7 @@ public class BuyerManager : MonoBehaviour
     // The brain of the order and sorting system
 
     //VARIABLES
-
+    GameManager gameManager;
     //Timer variables
     [SerializeField] private Text debugText;
     [SerializeField] private float timer;
@@ -18,6 +18,8 @@ public class BuyerManager : MonoBehaviour
     [SerializeField] private List<string> rackList = new List<string>();
     [SerializeField] private List<Rack> racks = new List<Rack>();
     [SerializeField] private string[] currentAddresses = new string[4];
+
+    [SerializeField] private GameObject bag;
 
     //Address variables
     [SerializeField] private int rackInt;
@@ -46,8 +48,8 @@ public class BuyerManager : MonoBehaviour
         debugText.text = "Next Order in " + timer.ToString("00") + "/" + timeLimit;
         if (timer >= timeLimit)
         {
-            OrderCheck();
             timer = 0;
+            OrderCheck();
         }
     }
     //ORDER FUNCTIONS
@@ -67,7 +69,8 @@ public class BuyerManager : MonoBehaviour
     public void CreateNewOrder()
     {
         CreateCode();
-        Debug.Log("New Order: " + orderNumber);
+        if (gameManager == null) gameManager = FindObjectOfType<GameManager>();
+        gameManager.NewOrder(orderNumber);
     }
     public void CreateCode()
     {

@@ -294,7 +294,7 @@ namespace SoulGames.EasyGridBuilderPro
                 DestroyImmediate(collider, true);
             }
 
-            UnityEditor.EditorUtility.SetDirty(gameObject);
+            //UnityEditor.EditorUtility.SetDirty(gameObject);
         }
 
         private void OnDrawGizmos()

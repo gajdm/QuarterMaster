@@ -7,6 +7,8 @@ public class ItemInteraction : MonoBehaviour
 {
     [SerializeField] private Transform pickUpArea;
     [SerializeField] private Transform putDownArea;
+    [SerializeField] private Text debug;
+    [SerializeField] private Text debug2;
 
     [SerializeField] private bool isHolding;
     [SerializeField] private GameObject currentItem;
@@ -14,15 +16,17 @@ public class ItemInteraction : MonoBehaviour
     {
         if (isHolding)
         {
+            
             if (Input.GetKey(KeyCode.Q))
             {
                 PickUp(currentItem);
             }
+
         }
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Item")
+        if (collision.gameObject.tag == "Item" || collision.gameObject.tag == "Crate")
         {
             if (Input.GetKey(KeyCode.E))
             {
@@ -41,11 +45,15 @@ public class ItemInteraction : MonoBehaviour
         }
         else
         {
-            item.transform.parent = pickUpArea.transform;
+            item.transform.parent = this.transform;
             item.transform.position = pickUpArea.transform.position;
             currentItem = item;
             isHolding = true;
         }
 
+    }
+    public void SetIsHolding(bool value)
+    {
+           isHolding=value;
     }
 }

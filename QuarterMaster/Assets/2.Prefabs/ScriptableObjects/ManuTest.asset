@@ -19,4 +19,4 @@ MonoBehaviour:
   itemWorth: 0
   itemIcons: []
   manuLevel: 1
-  available: 0
+  available: 1

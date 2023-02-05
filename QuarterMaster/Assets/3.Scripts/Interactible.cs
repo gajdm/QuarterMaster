@@ -8,7 +8,7 @@ public class Interactible : MonoBehaviour
     UIManager uiManager;
     [SerializeField] private enum InteractibleType
     {
-        Tab, Item, Rack, Crate, Bag, Map
+        Tab, Item, Rack, Crate, Bag, Map, Label
     }
     [SerializeField] private InteractibleType type;
     [SerializeField] private string uiName;
@@ -42,8 +42,7 @@ public class Interactible : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.E))
             {
-                Debug.Log("Player pressed E near " + type.ToString());
-                Act();
+                Act(collision.gameObject);
             }
         }
     }
@@ -51,7 +50,7 @@ public class Interactible : MonoBehaviour
     {
         uiManager.CloseTooltips();
     }
-    public void Act()
+    public void Act(GameObject player)
     {
         if (gameManager == null)
             gameManager = FindObjectOfType<GameManager>();
@@ -67,6 +66,9 @@ public class Interactible : MonoBehaviour
                 rack = GetComponent<Rack>();
                 OpenTab(uiName);
                 break;
+            case InteractibleType.Label:
+                CheckForItem("Crate", player);
+                break;
             default:
                 break;
         }
@@ -75,5 +77,20 @@ public class Interactible : MonoBehaviour
     {
         uiManager.SwitchUI(name, true);
         if(type == InteractibleType.Rack)uiManager.UpdateRackUI(rack);
+    }
+    public void CheckForItem(string tag, GameObject player)
+    {
+       for(int i = 0; i < player.transform.childCount; i++)
+        {
+            if (player.transform.GetChild(i).tag == tag)
+            {
+                this.GetComponent<LabelStation>().AddCrate(player.transform.GetChild(i).GetComponent<Crate>());
+                GameObject newGO = player.transform.GetChild(i).gameObject;
+                newGO.GetComponentInParent<ItemInteraction>().SetIsHolding(false);
+                newGO.transform.parent = this.transform;
+                newGO.GetComponent<BoxCollider2D>().enabled = false;
+                newGO.transform.position = this.transform.position;
+            }
+        }
     }
 }

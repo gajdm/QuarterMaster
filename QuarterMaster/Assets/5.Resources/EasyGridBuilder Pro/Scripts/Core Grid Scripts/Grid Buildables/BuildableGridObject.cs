@@ -2,6 +2,7 @@
 using SoulGames.Utilities;
 using UnityEngine;
 using UnityEngine.UI;
+using SoulGames.Utilities;
 
 namespace SoulGames.EasyGridBuilderPro
 {
@@ -619,7 +620,7 @@ namespace SoulGames.EasyGridBuilderPro
                 DestroyImmediate(collider, true);
             }
 
-            UnityEditor.EditorUtility.SetDirty(gameObject);
+            //UnityEditor.EditorUtility.SetDirty(gameObject);
         }
 
         private void OnDrawGizmos()

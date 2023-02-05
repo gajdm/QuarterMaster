@@ -13,6 +13,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private CanvasGroup tooltipQ;
 
     [SerializeField] private Button[] bagButtons;
+    [SerializeField] private Bag[] bags;
+    [SerializeField] private GameObject player;
 
     public void SwitchUI(string name, bool value)
     {
@@ -59,6 +61,16 @@ public class UIManager : MonoBehaviour
         {
             bagButtons[i].gameObject.GetComponentInChildren<Text>().text = bagNames[i];
         }
+    }
+    public void BagCheck(Button button)
+    {
+        string address = player.GetComponentInChildren<Item>().GetAddress();
+        if (button.GetComponentInChildren<Text>().text == address )
+        {
+            button.GetComponent<Image>().color = Color.green;
+        }
+        else button.GetComponent<Image>().color = Color.red;
+
     }
 
 }
