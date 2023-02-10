@@ -32,7 +32,7 @@ public class Interactible : MonoBehaviour
         
         if (collision.gameObject.tag == "Player")
         {
-            if(tooltipE || tooltipQ) uiManager.OpenTooltips(tooltipE,eString,tooltipQ,qString);   
+            if(tooltipE || tooltipQ) uiManager.OpenTooltips(tooltipE,eString,tooltipQ,qString);
             
         }
     }

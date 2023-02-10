@@ -13,9 +13,10 @@ public class GameManager : MonoBehaviour
     [SerializeField]private UIManager uiManager;
 
     //Items
-    [SerializeField] private Item itemData;
-    [SerializeField] private GameObject itemPrefab;
-    [SerializeField] private List<Item> items = new List<Item>();
+    [SerializeField] private int itemNumber;
+    [SerializeField] private string itemAddress;
+    [SerializeField] private string itemCode;
+    [SerializeField] private Sprite itemIcon;
     [SerializeField] private GameObject cratePrefab;
     [SerializeField] private ImportPortal importPortal;
 
@@ -42,40 +43,22 @@ public class GameManager : MonoBehaviour
     }
     public void NewOrder(string order)
     {
-        if(valie)
-        {
-            items.Clear();
-            if (manuManager == null) manuManager = FindObjectOfType<ManufacturerManager>();
-            numberOfItems = manuManager.GetNumberOfItems();
-            Debug.Log(numberOfItems);
-
-
-            for (int i = 0; i < numberOfItems; i++)
-            {
-                CreateItem(order);
-            }
-
-            
-            CreateCrate();
-            valie = false;
-
-        }
-        
-        
+        if (manuManager == null) manuManager = FindObjectOfType<ManufacturerManager>();
+        numberOfItems = manuManager.GetNumberOfItems();
+        Debug.Log(numberOfItems);
+        CreateItem(order);
+        CreateCrate();
     }
     public void CreateItem(string order)
     {
-        itemData.SetAddress(order);
-        itemData.SetCode(order);
-        Debug.Log("Item added to the item list: " +itemData.GetAddress());
-
-
-        items.Add(itemData);
-
+        itemAddress = order;
+        itemCode = order;
+        Debug.Log("Item added to the item list: ");
     }
     public void CreateCrate()
     {
-        cratePrefab.GetComponent<Crate>().SetItems(items);
+        Debug.Log("Created a crate: The number of items "+itemNumber+" The code of the items are "+itemCode+" The address of the items are "+itemAddress);
+        cratePrefab.GetComponent<Crate>().SetItems(itemNumber,itemAddress,itemCode);
         importPortal.StoreCrate(cratePrefab);
     }
 

@@ -33,5 +33,18 @@ public class Manufacturer : ScriptableObject
     public int manuLevel = 1;       //Level
     public bool available;          //Availability
 
+    //VARIABLES
+    //
+    //FUNCTIONS
+
+    public void GetIconPool()
+    {
+
+    }
+    public void SetItemValue()
+    {
+
+    }
+
 
 }

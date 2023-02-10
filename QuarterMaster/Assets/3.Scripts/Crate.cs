@@ -4,14 +4,21 @@ using UnityEngine;
 
 public class Crate : MonoBehaviour
 {
-    [SerializeField] private List<Item> items = new List<Item>();
-    public void SetItems(List<Item> list)
+
+    //VARIABLES
+
+    [SerializeField] private string itemCode;
+    [SerializeField] private string itemAddress;
+    [SerializeField] private Sprite[] itemIcons;
+    [SerializeField] private int numberOfItems;
+
+    //VARIABLES
+    //
+    //FUNCTIONS
+    public void SetItems(int number, string code, string address)
     {
-        items = list;
+
     }
-    public List<Item> GetItems()
-    {
-        return items;
-    }
+
    
 }
