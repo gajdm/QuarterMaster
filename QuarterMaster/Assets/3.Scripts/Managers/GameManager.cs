@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]private BuyerManager buyerManager;
     [SerializeField]private ManufacturerManager manuManager;
     [SerializeField]private UIManager uiManager;
+    [SerializeField]private LogsSystem logsSystem;
 
     //Items
     [SerializeField] private int itemNumber;
@@ -60,6 +61,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Created a crate: The number of items "+itemNumber+" The code of the items are "+itemCode+" The address of the items are "+itemAddress);
         cratePrefab.GetComponent<Crate>().SetItems(itemNumber,itemAddress,itemCode);
         importPortal.StoreCrate(cratePrefab);
+        logsSystem.AddLog("Created a crate with "+itemNumber+" items");
     }
 
 

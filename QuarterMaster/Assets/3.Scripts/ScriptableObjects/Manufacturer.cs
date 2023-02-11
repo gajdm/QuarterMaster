@@ -26,25 +26,72 @@ public class Manufacturer : ScriptableObject
     public int itemWorth;           //Item worth
 
     [Tooltip("A list of lists. Use scriptable objects to create a list of icons first. Then, add them here by level.")]
-    public ListOfIcons[] itemIcons; //Item Icons
+    public List<ListOfIcons> listOfListsOfIcons; //The lists of sprites for the icons
 
         [Header("Non-editable variables")]
 
     public int manuLevel = 1;       //Level
     public bool available;          //Availability
+    private List<ListOfIcons> helperList;
 
     //VARIABLES
     //
     //FUNCTIONS
 
-    public void GetIconPool()
+    public void PickList()
     {
-
+        helperList.Clear();
+        switch(manuLevel) // Decides which lists of icons should be used when picking the sprite. Depending on level.
+        {
+            case 1:
+                helperList.Add(listOfListsOfIcons[0]);
+                break;
+            case 2:
+                helperList.Add(listOfListsOfIcons[0]);
+                helperList.Add(listOfListsOfIcons[1]);
+                break;
+            case 3:
+                helperList.Add(listOfListsOfIcons[0]);
+                helperList.Add(listOfListsOfIcons[1]);
+                helperList.Add(listOfListsOfIcons[2]);
+                break;
+            case 4:
+                helperList.Add(listOfListsOfIcons[1]);
+                helperList.Add(listOfListsOfIcons[2]);
+                helperList.Add(listOfListsOfIcons[3]);
+                break;
+            case 5:
+                helperList.Add(listOfListsOfIcons[2]);
+                helperList.Add(listOfListsOfIcons[3]);
+                helperList.Add(listOfListsOfIcons[4]);
+                break;
+            case 6:
+                helperList.Add(listOfListsOfIcons[3]);
+                helperList.Add(listOfListsOfIcons[4]);
+                helperList.Add(listOfListsOfIcons[5]);
+                break;
+            case 7:
+                helperList.Add(listOfListsOfIcons[4]);
+                helperList.Add(listOfListsOfIcons[5]);
+                helperList.Add(listOfListsOfIcons[6]);
+                break;
+            case 8:
+                helperList.Add(listOfListsOfIcons[5]);
+                helperList.Add(listOfListsOfIcons[6]);
+                helperList.Add(listOfListsOfIcons[7]);
+                break;
+            case 9:
+                helperList.Add(listOfListsOfIcons[6]);
+                helperList.Add(listOfListsOfIcons[7]);
+                helperList.Add(listOfListsOfIcons[8]);
+                break;
+            case 10:
+                helperList.Add(listOfListsOfIcons[8]);
+                helperList.Add(listOfListsOfIcons[9]);
+                break;
+            default:
+                break;
+        }
     }
-    public void SetItemValue()
-    {
-
-    }
-
 
 }

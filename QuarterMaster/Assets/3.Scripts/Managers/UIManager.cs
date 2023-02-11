@@ -16,6 +16,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Bag[] bags;
     [SerializeField] private GameObject player;
 
+    [SerializeField] private Animator upperBarAnimator;
+
     public void SwitchUI(string name, bool value)
     {
         CanvasGroup canvasGroup;
@@ -71,6 +73,15 @@ public class UIManager : MonoBehaviour
         }
         else button.GetComponent<Image>().color = Color.red;
 
+    }
+    public void OpenManuUI()
+    {
+        SwitchUI("ManuUI", true);
+        CloseUpperBar();
+    }
+    public void CloseUpperBar()
+    {
+        upperBarAnimator.SetTrigger("Action");
     }
 
 }

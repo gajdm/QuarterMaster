@@ -84,7 +84,7 @@ public class Interactible : MonoBehaviour
         {
             if (player.transform.GetChild(i).tag == tag)
             {
-                this.GetComponent<LabelStation>().AddCrate(player.transform.GetChild(i).GetComponent<Crate>());
+                //this.GetComponent<LabelStation>().AddCrate(player.transform.GetChild(i).GetComponent<Crate>());
                 GameObject newGO = player.transform.GetChild(i).gameObject;
                 newGO.GetComponentInParent<ItemInteraction>().SetIsHolding(false);
                 newGO.transform.parent = this.transform;
