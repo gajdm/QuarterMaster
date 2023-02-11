@@ -11,6 +11,8 @@ public class ManuUI : MonoBehaviour
     [SerializeField] private ManuButton button4;
 
     [SerializeField] private Manufacturer[] manufacturers;
+    [SerializeField] private ManuCard card;
+
 
     //VARIABLES
     //
@@ -28,6 +30,36 @@ public class ManuUI : MonoBehaviour
     }
     public void OpenManuCard(int number)
     {
-
+        Manufacturer manufacturer;
+        switch (number)
+        {
+            case 1:
+                manufacturer = manufacturers[0];
+                break;
+            case 2:
+                manufacturer = manufacturers[1];
+                break;
+            case 3:
+                manufacturer = manufacturers[2];
+                break;
+            case 4:
+                manufacturer = manufacturers[3];
+                break;
+            case 5:
+                manufacturer = manufacturers[4];
+                break;
+            case 6:
+                manufacturer = manufacturers[5];
+                break;
+            case 7:
+                manufacturer = manufacturers[6];
+                break;
+            case 8:
+                manufacturer = manufacturers[7];
+                break;
+            default:
+                return;
+        }
+        card.Open(manufacturer);
     }
 }

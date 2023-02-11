@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
     {
         if (manuManager == null) manuManager = FindObjectOfType<ManufacturerManager>();
         numberOfItems = manuManager.GetNumberOfItems();
-        Debug.Log(numberOfItems);
+        //Debug.Log(numberOfItems);
         CreateItem(order);
         CreateCrate();
     }
@@ -54,11 +54,11 @@ public class GameManager : MonoBehaviour
     {
         itemAddress = order;
         itemCode = order;
-        Debug.Log("Item added to the item list: ");
+        //Debug.Log("Item added to the item list: ");
     }
     public void CreateCrate()
     {
-        Debug.Log("Created a crate: The number of items "+itemNumber+" The code of the items are "+itemCode+" The address of the items are "+itemAddress);
+        //Debug.Log("Created a crate: The number of items "+itemNumber+" The code of the items are "+itemCode+" The address of the items are "+itemAddress);
         cratePrefab.GetComponent<Crate>().SetItems(itemNumber,itemAddress,itemCode);
         importPortal.StoreCrate(cratePrefab);
         logsSystem.AddLog("Created a crate with "+itemNumber+" items");

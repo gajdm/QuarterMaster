@@ -27,5 +27,9 @@ public class ListOfIcons : ScriptableObject
     {
         return level;
     }
+    public Sprite[] GetSprites()
+    {
+        return icons;
+    }
     
 }

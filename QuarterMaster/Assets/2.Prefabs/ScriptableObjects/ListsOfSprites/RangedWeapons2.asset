@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcc2dc4b2ccbbec45b4dd600dcf38552, type: 3}
+  m_Name: RangedWeapons2
+  m_EditorClassIdentifier: 
+  icons:
+  - {fileID: 21300000, guid: ca2a49f991b3c16499c9dfd0bdfd18a9, type: 3}
+  - {fileID: 21300000, guid: 62b00a06dd6872943bc3150b75300520, type: 3}
+  - {fileID: 21300000, guid: 37d8954346d740647ab29371dc82db93, type: 3}
+  - {fileID: 21300000, guid: aeceb98579b39294191088e220c522be, type: 3}
+  - {fileID: 21300000, guid: 0136bc8e0bc52024889e712c030cfe47, type: 3}
+  - {fileID: 21300000, guid: cce73521600ac904ab8f15528ee14daa, type: 3}
+  - {fileID: 21300000, guid: e1f28564ceefb7f4c9912e68065eae71, type: 3}
+  - {fileID: 21300000, guid: 89f377bd95280cc4e92b12fba7d9a596, type: 3}
+  - {fileID: 21300000, guid: 058f0d3eb5f8a174bada50e6647e3082, type: 3}
+  - {fileID: 21300000, guid: fb18bd0d3af81154f8e9780aaf472478, type: 3}
+  level: 0

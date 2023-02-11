@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc75349b3c0863b48a757abfd9db7f23, type: 3}
-  m_Name: ManuFarherd
+  m_Name: AssassinWeapons
   m_EditorClassIdentifier: 
-  manuName: Farhed
+  manuName: Jill
   description: 
-  manuIcon: {fileID: 21300000, guid: b515c964c9b46fa438b41c449edcaf9d, type: 3}
-  priceToBuy: 750
+  manuIcon: {fileID: 21300000, guid: 6a3ce82f0be8e4340a55df317bd03358, type: 3}
+  priceToBuy: 500
   itemWorth: 10
   listOfListsOfIcons: []
   manuLevel: 1
