@@ -33,8 +33,15 @@ public class ManufacturerManager : MonoBehaviour
     {
         manufacturerList[manuNumber].available = true;
     }
-    
+
     //ORDER FUNCTIONS
+    public void Start()
+    {
+        foreach (var manufacturer in manufacturerList)
+        {
+            manufacturer.manuLevel = 0;
+        }
+    }
     public void GatherData()
     {
         foreach(var manu in manufacturerList)

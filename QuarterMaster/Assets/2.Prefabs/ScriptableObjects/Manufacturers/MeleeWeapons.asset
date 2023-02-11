@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc75349b3c0863b48a757abfd9db7f23, type: 3}
+  m_Name: MeleeWeapons
+  m_EditorClassIdentifier: 
+  manuName: Farhed
+  description: An old friendly neighborhood blacksmith.
+  manuIcon: {fileID: 21300000, guid: 57e5d31635b47af498e7523693dc3874, type: 3}
+  priceToBuy: 750
+  itemWorth: 10
+  listOfListsOfIcons:
+  - {fileID: 11400000, guid: d327d2138610c66449b63875076e935e, type: 2}
+  - {fileID: 11400000, guid: c84159d9ebdc06e429efe407151f1d35, type: 2}
+  - {fileID: 11400000, guid: 604546cc3090611428265712edec59eb, type: 2}
+  - {fileID: 11400000, guid: 8db26d5d2abff914d9a6e540c7e7ed8e, type: 2}
+  - {fileID: 11400000, guid: f4717534888135341a40c21bd6dad1cc, type: 2}
+  manuLevel: 1
+  available: 0

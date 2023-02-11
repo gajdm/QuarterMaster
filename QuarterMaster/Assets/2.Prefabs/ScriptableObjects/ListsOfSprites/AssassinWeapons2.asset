@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcc2dc4b2ccbbec45b4dd600dcf38552, type: 3}
+  m_Name: AssassinWeapons2
+  m_EditorClassIdentifier: 
+  icons:
+  - {fileID: 21300000, guid: 887724e46fc2b6c4c848566b8685a5c3, type: 3}
+  - {fileID: 21300000, guid: 38d78a745cf7c9e47926e09c04d5aab6, type: 3}
+  - {fileID: 21300000, guid: 79b54d55465bda44fa8fba2b93e73833, type: 3}
+  - {fileID: 21300000, guid: b7fffcfc78b3c7b48974003dd70b8e6b, type: 3}
+  - {fileID: 21300000, guid: 888f69d18d9562644882a64f8c09ff94, type: 3}
+  - {fileID: 21300000, guid: 6c88527704dc7344e9b5df0d76f01cbd, type: 3}
+  - {fileID: 21300000, guid: eedfa7e63f0d4a84da495aff4ba3ff98, type: 3}
+  - {fileID: 21300000, guid: d94d665ffcded724282098e008edbb95, type: 3}
+  - {fileID: 21300000, guid: 20ba8010c3554514b931d54bb8b8da2b, type: 3}
+  - {fileID: 21300000, guid: 841d5cdef20eccd4cac660deaf91b099, type: 3}
+  level: 0

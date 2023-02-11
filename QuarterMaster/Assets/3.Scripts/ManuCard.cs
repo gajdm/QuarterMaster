@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ManuCard : MonoBehaviour
 {
+    [SerializeField] private ManuUI manuUI;
     [SerializeField] private CanvasGroup canvasGroup;
 
     [SerializeField] private Image icon;
@@ -25,6 +26,8 @@ public class ManuCard : MonoBehaviour
 
     [SerializeField] private Button upgrade;
     [SerializeField] private bool canUpgrade;
+
+    //Helpers
     [SerializeField] private Manufacturer manuHelper;
     [SerializeField] private Sprite[] spriteHelper;
     public void Start()
@@ -100,6 +103,8 @@ public class ManuCard : MonoBehaviour
         {
             manuHelper.manuLevel++;
             Open(manuHelper);
+            manuUI.UpdateUI();
+            levels[manuHelper.manuLevel].color = canColor;
         }
     }
 

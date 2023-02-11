@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcc2dc4b2ccbbec45b4dd600dcf38552, type: 3}
+  m_Name: Explosives1
+  m_EditorClassIdentifier: 
+  icons:
+  - {fileID: 21300000, guid: 2c95489560701bf4e941edb01dfeb3db, type: 3}
+  - {fileID: 21300000, guid: 3a545e7d58f993045b19cb47a68bbae8, type: 3}
+  - {fileID: 21300000, guid: 08429949849f07c4fa8e88dc71d29ffd, type: 3}
+  - {fileID: 21300000, guid: 5ff8dd6f7f4e4954eb1dbdbc66e35617, type: 3}
+  - {fileID: 21300000, guid: 39f3e7fc99fd08846addc94541e2cd31, type: 3}
+  - {fileID: 21300000, guid: 8955361352139f944801161ebe0aa537, type: 3}
+  - {fileID: 21300000, guid: 608c22d41ce61624f9e377b27b57ba8b, type: 3}
+  - {fileID: 21300000, guid: 2da1b370cd7dce34e913b6b2bfbdd87a, type: 3}
+  - {fileID: 21300000, guid: d32450b22a2615d4a9a4eec921096a1e, type: 3}
+  - {fileID: 21300000, guid: b995b1c339d888647a0fd3e8ad553774, type: 3}
+  level: 0

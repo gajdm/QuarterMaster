@@ -26,7 +26,10 @@ public class ManuUI : MonoBehaviour
     }
     public void UpdateUI()
     {
-
+        button1.UpdateButton(manufacturers[0]);
+        button2.UpdateButton(manufacturers[1]);
+        button3.UpdateButton(manufacturers[2]);
+        button4.UpdateButton(manufacturers[3]);
     }
     public void OpenManuCard(int number)
     {

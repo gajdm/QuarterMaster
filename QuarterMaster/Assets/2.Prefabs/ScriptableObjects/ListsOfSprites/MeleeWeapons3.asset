@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcc2dc4b2ccbbec45b4dd600dcf38552, type: 3}
+  m_Name: MeleeWeapons3
+  m_EditorClassIdentifier: 
+  icons:
+  - {fileID: 21300000, guid: 9873a6bfb48a84947a2179deefd2eb0e, type: 3}
+  - {fileID: 21300000, guid: 8f5dbeed97b7012409500914622d2c53, type: 3}
+  - {fileID: 21300000, guid: 579f506797c7d77469e729c361b0b4e1, type: 3}
+  - {fileID: 21300000, guid: 2668c62eed63e51439db0c258d961b3f, type: 3}
+  - {fileID: 21300000, guid: a7fcc27dc33ab9140a3c19b2cc313a19, type: 3}
+  - {fileID: 21300000, guid: 9f90c5b6f6193bb48a416f4223cd4309, type: 3}
+  - {fileID: 21300000, guid: ea03934abc073944f8327684fdd05b3b, type: 3}
+  - {fileID: 21300000, guid: 0ec2c1fd9851db447aba49fec19b1825, type: 3}
+  - {fileID: 21300000, guid: 012b40ad49614cc4f8f29053664a0140, type: 3}
+  - {fileID: 21300000, guid: 3116643d72eca8b4693d21a90ba1a03d, type: 3}
+  level: 0

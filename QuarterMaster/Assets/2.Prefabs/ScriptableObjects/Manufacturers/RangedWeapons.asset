@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc75349b3c0863b48a757abfd9db7f23, type: 3}
   m_Name: RangedWeapons
   m_EditorClassIdentifier: 
-  manuName: Bill
-  description: 
-  manuIcon: {fileID: 21300000, guid: a551d2d16b10a2748b3226750fde67ad, type: 3}
+  manuName: Wilma
+  description: A half elf warrior that strikes from afar.
+  manuIcon: {fileID: 21300000, guid: 6464681ce5b3b6e409d53b27fdc5d435, type: 3}
   priceToBuy: 0
   itemWorth: 10
   listOfListsOfIcons:

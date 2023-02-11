@@ -12,11 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc75349b3c0863b48a757abfd9db7f23, type: 3}
   m_Name: AssassinWeapons
   m_EditorClassIdentifier: 
-  manuName: Jill
-  description: 
-  manuIcon: {fileID: 21300000, guid: 6a3ce82f0be8e4340a55df317bd03358, type: 3}
+  manuName: Jack
+  description: An expert in the arts of killing silently.
+  manuIcon: {fileID: 21300000, guid: 61d67e6ea546e6b439045229ed54fe95, type: 3}
   priceToBuy: 500
   itemWorth: 10
-  listOfListsOfIcons: []
+  listOfListsOfIcons:
+  - {fileID: 11400000, guid: dc3693d318f64954aa5da17579736f94, type: 2}
+  - {fileID: 11400000, guid: b97cab5abb8ac834198374a2fa652ff0, type: 2}
+  - {fileID: 11400000, guid: 9e2260bbb99f16f489e1a8127c63d124, type: 2}
+  - {fileID: 11400000, guid: 5e6ba41f41990b54cbad5cf81c597ac3, type: 2}
+  - {fileID: 11400000, guid: 1e59c14024cb9af4882e790acf44e9ea, type: 2}
   manuLevel: 1
-  available: 0
+  available: 1
