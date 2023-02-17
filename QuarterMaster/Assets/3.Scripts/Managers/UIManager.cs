@@ -9,6 +9,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private CanvasGroup buyerUi;
     [SerializeField] private CanvasGroup rackUi;
 
+    [SerializeField] private IconUI iconUI;
+
     [SerializeField] private CanvasGroup tooltipLeft;
     [SerializeField] private CanvasGroup tooltipRight;
 
@@ -82,6 +84,10 @@ public class UIManager : MonoBehaviour
     public void CloseUpperBar()
     {
         upperBarAnimator.SetTrigger("Action");
+    }
+    public void UpdateItemBar(GameObject GO)
+    {
+        iconUI.UpdateUI(GO);
     }
 
 }

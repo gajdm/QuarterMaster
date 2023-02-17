@@ -5,36 +5,16 @@ using UnityEngine.UI;
 
 public class ManufacturerManager : MonoBehaviour
 {
-    [SerializeField]    private UIManager uiManager;
-    [SerializeField]    private Manufacturer[] manufacturerList;
+    [SerializeField] private UIManager uiManager;
+    [SerializeField] private Manufacturer[] manufacturerList;
 
     [Header("Item Generation")]
-    [SerializeField]    private int minNumber;
-    [SerializeField]    private int maxNumber;
+    [SerializeField] private int minNum;
+    [SerializeField] private int maxNum;
 
-    [SerializeField] private int items;
-    [SerializeField] private string[] listOfItems;
-    [SerializeField] private Sprite[] spriteList;
+    [SerializeField] private Item itemPrefab;
 
     //UPDATING FUNCTIONS
-    public void UpdateManuLevel(int manuNumber)//Further development
-    {
-
-    }
-    public void UpdateManuPrice(int manuNumber)//Further development
-    {
-
-    }
-    public void UpdateManuIcon(int manuNumber)//Further development
-    {
-
-    }
-    public void UpdateManuAvailability(int manuNumber)
-    {
-        manufacturerList[manuNumber].available = true;
-    }
-
-    //ORDER FUNCTIONS
     public void Start()
     {
         foreach (var manufacturer in manufacturerList)
@@ -42,28 +22,44 @@ public class ManufacturerManager : MonoBehaviour
             manufacturer.manuLevel = 1;
         }
     }
-    public void GatherData()
+    public void UpdateManuAvailability(int manuNumber)
     {
-        foreach(var manu in manufacturerList)
+        manufacturerList[manuNumber].available = true;
+    }
+
+    //ORDER FUNCTIONS
+
+    public List<Item> GetListOfItems()
+    {
+        List <Item> list = new List<Item>();
+        for (int i = 0; i < RandomizeNumberOfItems(minNum,maxNum); i++)
         {
-            if(manu.available)
-            {
-                items = RandomizeNumberOfItems(minNumber, maxNumber);
-            }
-        }  
+            list.Add(GenerateItem());
+        }
+        return list;
+    }
+    public Item GenerateItem()
+    {
+        Item newItem = itemPrefab;
+        Manufacturer manu = GetRandomManufacturer();
+        newItem.SetIcon(manu.GetIcon());
+        newItem.SetLevel(manu.GetLevel());
+        return newItem;
     }
     public Manufacturer[] GetListOfManufacturers()
     {
         return manufacturerList;
     }
+
+    //RANDOMIZATION
     public int RandomizeNumberOfItems(int min,int max)
     {
-        return Random.Range(min,max);
+        return Random.Range(min,max+1);
     }
-    public int GetNumberOfItems()
+    public Manufacturer GetRandomManufacturer()
     {
-        GatherData();
-        return items;
+        Manufacturer manufacturer = manufacturerList[Random.Range(0,4)];
+        return manufacturer;
     }
 
 

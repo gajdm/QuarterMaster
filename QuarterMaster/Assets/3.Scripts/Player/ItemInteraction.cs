@@ -32,7 +32,8 @@ public class ItemInteraction : MonoBehaviour
     public void PickUp(GameObject item)
     {
         if (!isHolding)
-        {
+        {   
+            uiManager.UpdateItemBar(item);
             item.transform.parent = this.transform;
             item.transform.position = pickUpArea.transform.position;
             currentItem = item;

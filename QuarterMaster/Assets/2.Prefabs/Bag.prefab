@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 661584835172284261}
   - component: {fileID: 4573104526732272010}
   m_Layer: 0
-  m_Name: Item
+  m_Name: Bag
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7326889567257269664}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 17.061392, y: 19.713427, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -97,10 +97,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c4d184e00755664e9004dc925214185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 21300000, guid: 608c22d41ce61624f9e377b27b57ba8b, type: 3}
-  itemAddress: 
+  itemIcon: {fileID: 0}
   itemCode: 
-  level: 1
+  itemAddress: 
 --- !u!61 &661584835172284261
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -143,7 +142,6 @@ MonoBehaviour:
   uiName: 
   isInRange: 0
   mouseOver: 0
-  colliding: 0
   player: {fileID: 0}
   playerBrain: {fileID: 0}
   tooltipE: 1
@@ -151,4 +149,3 @@ MonoBehaviour:
   tooltipQ: 1
   qString: To Drop
   rack: {fileID: 0}
-  mouse: {fileID: 2800000, guid: 309b1d5a294fd6c43ae9cf77656c1852, type: 3}

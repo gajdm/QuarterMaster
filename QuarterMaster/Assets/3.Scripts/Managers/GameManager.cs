@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject cratePrefab;
     [SerializeField] private ImportPortal importPortal;
 
-    [SerializeField] private int numberOfItems;
+    [SerializeField] private List<Item> items;
 
 
     //FUNCTIONS
@@ -44,22 +44,29 @@ public class GameManager : MonoBehaviour
     }
     public void NewOrder(string order)
     {
+        items.Clear();
+
         if (manuManager == null) manuManager = FindObjectOfType<ManufacturerManager>();
-        numberOfItems = manuManager.GetNumberOfItems();
-        CreateItem(order);
-        CreateCrate();
+        items = manuManager.GetListOfItems();
+
+        foreach (Item item in items)
+        {
+            item.SetAddress(itemAddress);
+            item.SetCode(itemCode);
+        }
+
+        CreateCrate(items);
     }
-    public void CreateItem(string order)
+    public void CreateCrate(List<Item> list)
     {
-        itemAddress = order;
-        itemCode = order;
-    }
-    public void CreateCrate()
-    {
-       
-        //cratePrefab.GetComponent<Crate>().SetItems();
-        importPortal.StoreCrate(cratePrefab);
-        logsSystem.AddLog("Created a crate with "+itemNumber+" items");
+        GameObject GO = cratePrefab;
+        Crate newCrate = GO.GetComponent<Crate>();
+
+        newCrate.SetAmount(list.Count);
+        newCrate.SetItems(list);
+
+        importPortal.StoreCrate(GO);
+        logsSystem.AddLog("Created a crate with "+list.Count+" items");
     }
 
 

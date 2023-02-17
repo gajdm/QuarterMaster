@@ -12,8 +12,11 @@ public class Interactible : MonoBehaviour
     }
     [SerializeField] private InteractibleType type;
     [SerializeField] private string uiName;
+
     [SerializeField] private bool isInRange;
     [SerializeField] private bool mouseOver;
+    [SerializeField] private bool colliding;
+
     [SerializeField] private GameObject player;
     [SerializeField] private ItemInteraction playerBrain;
 
@@ -28,7 +31,8 @@ public class Interactible : MonoBehaviour
     [SerializeField] private string qString;
     //Rack variables
     [SerializeField] private Rack rack;
-
+    //Mouse variables
+    public Texture2D mouse;
 
     //FUNCTIONS
     //UPDATES
@@ -36,9 +40,9 @@ public class Interactible : MonoBehaviour
     {
         playerBrain = FindObjectOfType<ItemInteraction>();
     }
-    public void Update()
+    public void FixedUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && isInRange && mouseOver)
+        if ((Input.GetKeyDown(KeyCode.Mouse0) && isInRange && mouseOver) || (colliding && Input.GetKeyDown(KeyCode.Space)))
         {
             Act(player);
         }
@@ -49,6 +53,7 @@ public class Interactible : MonoBehaviour
         mouseOver = true;
         if (isInRange)
         {
+            Cursor.SetCursor(mouse,Vector2.zero,CursorMode.Auto);
             if (uiManager == null) uiManager = FindObjectOfType<UIManager>();
             uiManager.OpenTooltips(tooltipE,eString,tooltipQ,qString);
             if (tooltipE || tooltipQ) uiManager.OpenTooltips(tooltipE, eString, tooltipQ, qString);
@@ -79,6 +84,22 @@ public class Interactible : MonoBehaviour
             isInRange = false;
         }
     }
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            player = collision.gameObject;
+            colliding = true;
+        }
+    }
+    public void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            colliding = false;
+        }
+    }
+    //FUNCTIONS
     public void Act(GameObject player)
     {
         if (gameManager == null)
@@ -104,6 +125,9 @@ public class Interactible : MonoBehaviour
             case InteractibleType.Item:
                 playerBrain.PickUp(this.gameObject);
                 break;
+            case InteractibleType.Bag:
+                playerBrain.PickUp(this.gameObject);
+                break;
             default:
                 break;
         }
@@ -120,6 +144,7 @@ public class Interactible : MonoBehaviour
             if (player.transform.GetChild(i).tag == tag)
             {
                 GameObject newGO = player.transform.GetChild(i).gameObject;
+                this.gameObject.GetComponent<LabelStation>().GetNewCrate(newGO.GetComponent<Crate>());
                 newGO.GetComponentInParent<ItemInteraction>().SetIsHolding(false);
                 newGO.transform.parent = this.transform;
                 newGO.GetComponent<BoxCollider2D>().enabled = false;

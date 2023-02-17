@@ -7,6 +7,7 @@ TagManager:
   - Grid
   - Item
   - Crate
+  - Bag
   layers:
   - Default
   - TransparentFX

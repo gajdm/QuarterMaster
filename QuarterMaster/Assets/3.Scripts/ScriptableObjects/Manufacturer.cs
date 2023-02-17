@@ -33,6 +33,7 @@ public class Manufacturer : ScriptableObject
     public int manuLevel = 1;       //Level
     public bool available;          //Availability
     private List<ListOfIcons> helperList;
+    private int helperInt;
 
     //VARIABLES
     //
@@ -92,6 +93,18 @@ public class Manufacturer : ScriptableObject
             default:
                 break;
         }
+    }
+    public Sprite GetIcon()
+    {
+        PickList();
+        helperInt = Random.Range(0, helperList.Count - 1);
+        ListOfIcons listOfIcons = helperList[helperInt];  
+        Sprite icon = listOfIcons.GetRandomIcon();
+        return icon;
+    }
+    public int GetLevel()
+    {
+        return helperInt+1;
     }
 
 }

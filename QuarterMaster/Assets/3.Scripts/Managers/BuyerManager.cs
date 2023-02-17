@@ -73,6 +73,7 @@ public class BuyerManager : MonoBehaviour
     {
         orderNumber = address + code.ToString("000");
         orderList.Add(orderNumber);
+        Debug.Log(orderNumber);
         code++;
     }
     public void FinishOrder(string code)

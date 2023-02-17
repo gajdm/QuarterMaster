@@ -21,8 +21,7 @@ public class ListOfIcons : ScriptableObject
         Sprite icon = null;
         icon = icons[Random.Range(0, icons.Length)];
         return icon;
-    }
-    
+    }    
     public int GetLevel()           // Returns the level of the whole list
     {
         return level;
