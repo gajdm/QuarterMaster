@@ -48,11 +48,16 @@ public class ManuCard : MonoBehaviour
         level.text = manufacturer.manuLevel.ToString();
         title.text = manufacturer.manuName;
         description.text = manufacturer.description;
-        
-        //Setting up sprites
-        for(int i = 0; i < manuHelper.listOfListsOfIcons.Count; i++)
+
+        foreach (Image image in levels)
         {
-            Debug.Log("HERE");
+            image.color = cannotColor;
+        }
+        levels[manuHelper.manuLevel-1].color = canColor;
+
+        //Setting up sprites
+        for (int i = 0; i < manuHelper.listOfListsOfIcons.Count; i++)
+        {
             SetSprites(i);
         }
 
@@ -104,7 +109,7 @@ public class ManuCard : MonoBehaviour
             manuHelper.manuLevel++;
             Open(manuHelper);
             manuUI.UpdateUI();
-            levels[manuHelper.manuLevel].color = canColor;
+            levels[manuHelper.manuLevel-1].color = canColor;
         }
     }
 

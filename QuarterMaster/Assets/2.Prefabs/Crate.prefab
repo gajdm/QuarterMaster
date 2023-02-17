@@ -74,8 +74,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  m_Color: {r: 1, g: 0, b: 0.17174721, a: 1}
+  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
+  m_Color: {r: 0.37789363, g: 0.21493414, b: 0.3962264, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -97,9 +97,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42c7761627947664c8aba48dd4dc095c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  icon: {fileID: 0}
   items:
-  - {fileID: 7166606756277483627, guid: 99110716260593e43a2fe52017609747, type: 3}
-  - {fileID: 7166606756277483627, guid: 99110716260593e43a2fe52017609747, type: 3}
+  - {fileID: 2920260233544603614, guid: 9f7b3ad0c8425954e95e8cda9f5b8ab6, type: 3}
+  - {fileID: 2920260233544603614, guid: 9f7b3ad0c8425954e95e8cda9f5b8ab6, type: 3}
+  amount: 0
 --- !u!114 &-7279441538185171344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,6 +116,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 3
   uiName: 
+  isInRange: 0
+  mouseOver: 0
+  player: {fileID: 0}
+  playerBrain: {fileID: 0}
   tooltipE: 1
   eString: Pickup Crate
   tooltipQ: 0

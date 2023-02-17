@@ -12,6 +12,11 @@ public class Interactible : MonoBehaviour
     }
     [SerializeField] private InteractibleType type;
     [SerializeField] private string uiName;
+    [SerializeField] private bool isInRange;
+    [SerializeField] private bool mouseOver;
+    [SerializeField] private GameObject player;
+    [SerializeField] private ItemInteraction playerBrain;
+
 
     //Tooltip variables
     [Header("Tooltips")]
@@ -23,32 +28,56 @@ public class Interactible : MonoBehaviour
     [SerializeField] private string qString;
     //Rack variables
     [SerializeField] private Rack rack;
-    
+
 
     //FUNCTIONS
-    public void OnTriggerEnter2D(Collider2D collision)
+    //UPDATES
+    public void Start()
     {
-        if(uiManager == null) uiManager = FindObjectOfType<UIManager>();
-        
-        if (collision.gameObject.tag == "Player")
+        playerBrain = FindObjectOfType<ItemInteraction>();
+    }
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse0) && isInRange && mouseOver)
         {
-            if(tooltipE || tooltipQ) uiManager.OpenTooltips(tooltipE,eString,tooltipQ,qString);
-            
+            Act(player);
         }
     }
-    private void OnTriggerStay2D(Collider2D collision)
+    //MOUSE
+    public void OnMouseEnter()
+    {
+        mouseOver = true;
+        if (isInRange)
+        {
+            if (uiManager == null) uiManager = FindObjectOfType<UIManager>();
+            uiManager.OpenTooltips(tooltipE,eString,tooltipQ,qString);
+            if (tooltipE || tooltipQ) uiManager.OpenTooltips(tooltipE, eString, tooltipQ, qString);
+            if (playerBrain == null) playerBrain = FindObjectOfType<ItemInteraction>();
+        }
+    }
+    public void OnMouseExit()
+    {
+        mouseOver = false;
+        if (uiManager == null) uiManager = FindObjectOfType<UIManager>();
+        uiManager.CloseTooltips(true,false);
+    }
+
+    //TRIGGERS
+
+    public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            if (Input.GetKey(KeyCode.E))
-            {
-                Act(collision.gameObject);
-            }
+            player = collision.gameObject;
+            isInRange = true;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        uiManager.CloseTooltips();
+        if (collision.gameObject.tag == "Player")
+        {
+            isInRange = false;
+        }
     }
     public void Act(GameObject player)
     {
@@ -69,6 +98,12 @@ public class Interactible : MonoBehaviour
             case InteractibleType.Label:
                 CheckForItem("Crate", player);
                 break;
+                case InteractibleType.Crate:
+                playerBrain.PickUp(this.gameObject);
+                break;
+            case InteractibleType.Item:
+                playerBrain.PickUp(this.gameObject);
+                break;
             default:
                 break;
         }
@@ -84,7 +119,6 @@ public class Interactible : MonoBehaviour
         {
             if (player.transform.GetChild(i).tag == tag)
             {
-                //this.GetComponent<LabelStation>().AddCrate(player.transform.GetChild(i).GetComponent<Crate>());
                 GameObject newGO = player.transform.GetChild(i).gameObject;
                 newGO.GetComponentInParent<ItemInteraction>().SetIsHolding(false);
                 newGO.transform.parent = this.transform;

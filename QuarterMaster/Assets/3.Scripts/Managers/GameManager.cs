@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ImportPortal importPortal;
 
     [SerializeField] private int numberOfItems;
-    public bool valie = true;
+
 
     //FUNCTIONS
     public void Awake()
@@ -46,7 +46,6 @@ public class GameManager : MonoBehaviour
     {
         if (manuManager == null) manuManager = FindObjectOfType<ManufacturerManager>();
         numberOfItems = manuManager.GetNumberOfItems();
-        //Debug.Log(numberOfItems);
         CreateItem(order);
         CreateCrate();
     }
@@ -54,12 +53,11 @@ public class GameManager : MonoBehaviour
     {
         itemAddress = order;
         itemCode = order;
-        //Debug.Log("Item added to the item list: ");
     }
     public void CreateCrate()
     {
-        //Debug.Log("Created a crate: The number of items "+itemNumber+" The code of the items are "+itemCode+" The address of the items are "+itemAddress);
-        cratePrefab.GetComponent<Crate>().SetItems(itemNumber,itemAddress,itemCode);
+       
+        //cratePrefab.GetComponent<Crate>().SetItems();
         importPortal.StoreCrate(cratePrefab);
         logsSystem.AddLog("Created a crate with "+itemNumber+" items");
     }

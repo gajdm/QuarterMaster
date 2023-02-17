@@ -39,7 +39,7 @@ public class ManufacturerManager : MonoBehaviour
     {
         foreach (var manufacturer in manufacturerList)
         {
-            manufacturer.manuLevel = 0;
+            manufacturer.manuLevel = 1;
         }
     }
     public void GatherData()

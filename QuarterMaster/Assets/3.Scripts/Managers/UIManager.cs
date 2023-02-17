@@ -9,8 +9,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private CanvasGroup buyerUi;
     [SerializeField] private CanvasGroup rackUi;
 
-    [SerializeField] private CanvasGroup tooltipE;
-    [SerializeField] private CanvasGroup tooltipQ;
+    [SerializeField] private CanvasGroup tooltipLeft;
+    [SerializeField] private CanvasGroup tooltipRight;
 
     [SerializeField] private Button[] bagButtons;
     [SerializeField] private Bag[] bags;
@@ -38,23 +38,23 @@ public class UIManager : MonoBehaviour
         canvasGroup.interactable = value;
         canvasGroup.blocksRaycasts = value;
     }
-    public void OpenTooltips(bool bool1, string string1, bool bool2, string string2)
+    public void OpenTooltips(bool left, string string1, bool right, string string2)
     {
-        if(bool1)
+        if(left)
         {
-            tooltipE.alpha = 1;
-            tooltipE.GetComponentInChildren<Text>().text = string1;   
+            tooltipLeft.alpha = 1;
+            tooltipLeft.GetComponentInChildren<Text>().text = string1;   
         }
-        if(bool2)
+        if(right)
         {
-            tooltipQ.alpha = 1;
-            tooltipQ.GetComponentInChildren<Text>().text = string2;
+            tooltipRight.alpha = 1;
+            tooltipRight.GetComponentInChildren<Text>().text = string2;
         }
     }
-    public void CloseTooltips()
+    public void CloseTooltips(bool left, bool right)
     {
-        tooltipE.alpha = 0;
-        tooltipQ.alpha = 0;
+        if(left)tooltipLeft.alpha = 0;
+        if(right)tooltipRight.alpha = 0;
     }
     public void UpdateRackUI(Rack rack)
     {

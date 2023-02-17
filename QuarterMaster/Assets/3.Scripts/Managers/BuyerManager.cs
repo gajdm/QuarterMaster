@@ -28,18 +28,16 @@ public class BuyerManager : MonoBehaviour
     [SerializeField] private string bagStr;
     [SerializeField] private string address;
 
+    //"Dictionary" variables
+    [SerializeField] private List<string> addressList = new List<string>();
+    [SerializeField] private List<bool> addressBoolList = new List<bool>();
+
     //Order variables
     [SerializeField] private string orderNumber;
     [SerializeField] private List<string> orderList;
 
     //Code variables
     [SerializeField] private int code;
-
-    //Dictionary variables
-    [SerializeField] private Dictionary<string,bool> addDic = new Dictionary<string,bool>();
-    [SerializeField] private List<string> addressList = new List<string>();
-    [SerializeField] private List<bool> addressBoolList = new List<bool>();
-
 
     //FUNCTIONS
     public void FixedUpdate()
@@ -62,7 +60,6 @@ public class BuyerManager : MonoBehaviour
                 CreateNewOrder();
                 address = addressList[i];
                 addressBoolList[i] = true;
-
             }
         }
     }

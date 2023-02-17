@@ -6,16 +6,20 @@ public class Crate : MonoBehaviour
 {
 
     //VARIABLES
+    // Crate icon
+    [SerializeField] private Sprite icon; 
 
-    [SerializeField] private string itemCode;
-    [SerializeField] private string itemAddress;
-    [SerializeField] private Sprite[] itemIcons;
-    [SerializeField] private int numberOfItems;
+    // The list of items that the crate carries
+    [SerializeField] private List<Item> items = new List<Item>(); 
+    
+    // Amount of items inside the crate
+    [SerializeField] private int amount;  
 
     //VARIABLES
     //
     //FUNCTIONS
-    public void SetItems(int number, string code, string address)
+
+    public void SetItems(List<Item> items)
     {
 
     }
