@@ -60,10 +60,11 @@ public class UIManager : MonoBehaviour
     }
     public void UpdateRackUI(Rack rack)
     {
-        string[] bagNames = rack.SendBagNames(); 
+        string[] bagNames = rack.GetBagNames(); 
         for (int i = 0; i < bagNames.Length; i++)
         {
             bagButtons[i].gameObject.GetComponentInChildren<Text>().text = bagNames[i];
+            bagButtons[i].GetComponent<Image>().color = Color.gray;
         }
     }
     public void BagCheck(Button button)

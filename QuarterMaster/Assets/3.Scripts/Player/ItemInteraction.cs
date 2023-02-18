@@ -27,6 +27,7 @@ public class ItemInteraction : MonoBehaviour
                 PutDown();
             }
         }
+
     }
     //TRIGGER
     public void PickUp(GameObject item)

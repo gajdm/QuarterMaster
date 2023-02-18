@@ -42,7 +42,7 @@ public class Interactible : MonoBehaviour
     }
     public void FixedUpdate()
     {
-        if ((Input.GetKeyDown(KeyCode.Mouse0) && isInRange && mouseOver) || (colliding && Input.GetKeyDown(KeyCode.Space)))
+        if ((Input.GetKeyDown(KeyCode.Mouse0) && mouseOver) || (colliding && Input.GetKeyDown(KeyCode.Space)))
         {
             Act(player);
         }
@@ -51,20 +51,20 @@ public class Interactible : MonoBehaviour
     public void OnMouseEnter()
     {
         mouseOver = true;
-        if (isInRange)
-        {
-            Cursor.SetCursor(mouse,Vector2.zero,CursorMode.Auto);
-            if (uiManager == null) uiManager = FindObjectOfType<UIManager>();
-            uiManager.OpenTooltips(tooltipE,eString,tooltipQ,qString);
-            if (tooltipE || tooltipQ) uiManager.OpenTooltips(tooltipE, eString, tooltipQ, qString);
-            if (playerBrain == null) playerBrain = FindObjectOfType<ItemInteraction>();
-        }
+        //if (isInRange)
+        //{
+
+        //    if (uiManager == null) uiManager = FindObjectOfType<UIManager>();
+        //    uiManager.OpenTooltips(tooltipE,eString,tooltipQ,qString);
+        //    if (tooltipE || tooltipQ) uiManager.OpenTooltips(tooltipE, eString, tooltipQ, qString);
+        //    if (playerBrain == null) playerBrain = FindObjectOfType<ItemInteraction>();
+        //}
     }
     public void OnMouseExit()
     {
         mouseOver = false;
-        if (uiManager == null) uiManager = FindObjectOfType<UIManager>();
-        uiManager.CloseTooltips(true,false);
+        //if (uiManager == null) uiManager = FindObjectOfType<UIManager>();
+        //uiManager.CloseTooltips(true,false);
     }
 
     //TRIGGERS

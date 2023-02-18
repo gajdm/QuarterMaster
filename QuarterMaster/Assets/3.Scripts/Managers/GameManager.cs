@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject cratePrefab;
     [SerializeField] private ImportPortal importPortal;
 
-    [SerializeField] private List<Item> items;
+    [SerializeField] private List<GameObject> items;
 
 
     //FUNCTIONS
@@ -49,15 +49,19 @@ public class GameManager : MonoBehaviour
         if (manuManager == null) manuManager = FindObjectOfType<ManufacturerManager>();
         items = manuManager.GetListOfItems();
 
-        foreach (Item item in items)
+        foreach (GameObject gameObj in items)
         {
-            item.SetAddress(itemAddress);
-            item.SetCode(itemCode);
+            gameObj.GetComponent<Item>().SetAddress(order);
+            gameObj.GetComponent<Item>().SetCode(order);
         }
 
+        buyerManager.AddOrder(items);
+
         CreateCrate(items);
+
+        
     }
-    public void CreateCrate(List<Item> list)
+    public void CreateCrate(List<GameObject> list)
     {
         GameObject GO = cratePrefab;
         Crate newCrate = GO.GetComponent<Crate>();

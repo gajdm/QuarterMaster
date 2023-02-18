@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 using UnityEngine.UI;
 
 public class ManufacturerManager : MonoBehaviour
@@ -29,22 +30,26 @@ public class ManufacturerManager : MonoBehaviour
 
     //ORDER FUNCTIONS
 
-    public List<Item> GetListOfItems()
+    public List<GameObject> GetListOfItems()
     {
-        List <Item> list = new List<Item>();
+        List <GameObject> list = new List<GameObject>();
         for (int i = 0; i < RandomizeNumberOfItems(minNum,maxNum); i++)
         {
             list.Add(GenerateItem());
         }
         return list;
     }
-    public Item GenerateItem()
+    public GameObject GenerateItem()
     {
-        Item newItem = itemPrefab;
+        GameObject gameObj = new GameObject();
+        gameObj.AddComponent<Item>();
+
+        Item newItem = gameObj.GetComponent<Item>();
+
         Manufacturer manu = GetRandomManufacturer();
         newItem.SetIcon(manu.GetIcon());
         newItem.SetLevel(manu.GetLevel());
-        return newItem;
+        return gameObj;
     }
     public Manufacturer[] GetListOfManufacturers()
     {

@@ -9,6 +9,7 @@ public class BuyerManager : MonoBehaviour
 
     //VARIABLES
     GameManager gameManager;
+    public GameObject player;
     //Timer variables
     [SerializeField] private Text debugText;
     [SerializeField] private float timer;
@@ -34,7 +35,8 @@ public class BuyerManager : MonoBehaviour
 
     //Order variables
     [SerializeField] private string orderNumber;
-    [SerializeField] private List<string> orderList;
+    [SerializeField] private GameObject orderPrefab;
+    [SerializeField] private List<Order> orderList;
 
     //Code variables
     [SerializeField] private int code;
@@ -53,7 +55,7 @@ public class BuyerManager : MonoBehaviour
     //ORDER FUNCTIONS
     public void OrderCheck()
     {
-        for(int i = 0; i < addressBoolList.Count; i++)
+        for (int i = 0; i < addressBoolList.Count; i++)
         {
             if (addressBoolList[i] == false)
             {
@@ -72,13 +74,23 @@ public class BuyerManager : MonoBehaviour
     public void CreateCode()
     {
         orderNumber = address + code.ToString("000");
-        orderList.Add(orderNumber);
-        Debug.Log(orderNumber);
         code++;
+    }
+    public void AddOrder(List<GameObject> listGO)
+    {
+        GameObject orderGO = Instantiate(orderPrefab,this.transform);
+        Order order = orderGO.GetComponent<Order>();
+
+        order.SetOrderList(listGO);
+        Debug.Log("hhh");
+        order.SetFullInt(listGO.Count);
+        order.SetOrderCode(orderNumber);
+
+        orderList.Add(order);
     }
     public void FinishOrder(string code)
     {
-        orderList.Remove(code);
+
     }
 
     //RACK FUNCTIONS

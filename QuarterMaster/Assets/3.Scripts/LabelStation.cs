@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class LabelStation : MonoBehaviour
 {
-    [SerializeField] private List<Item> listOfItems;
-    [SerializeField] private GameObject itemObject;
+    [SerializeField] private List<GameObject> listOfItems;
+    [SerializeField] private GameObject itemPrefab;
+    [SerializeField] private List<Crate> crateList;
     [SerializeField] private Crate currentCrate;
     //UNPACKING VARIABLES
     [SerializeField] private int secondsToWait;
@@ -21,25 +23,38 @@ public class LabelStation : MonoBehaviour
             StartCoroutine(Unpacking());
         }
         else
-            Debug.Log("I'm full");
-    }
-    public IEnumerator Unpacking()
-    {
-        if (listOfItems != null )
         {
-            Item item = itemObject.GetComponent<Item>();
-            Instantiate(itemObject, spawnTransfrom);
-            item = listOfItems[0];
-            listOfItems.Remove(item);
+            crateList.Add(crate);
+        }
+    }
+    public void Check()
+    {
+        if (listOfItems.Count != 0)
+        {
+            StartCoroutine(Unpacking());
         }
         else
         {
-            Debug.Log("Stopping Coro");
-            StopCoroutine(Unpacking());
-        } 
+            currentCrate = null;
+            Debug.Log("Empty Crate");
+        }
+    }
+    public IEnumerator Unpacking()
+    {
+        GameObject newGameObj = Instantiate(itemPrefab, spawnTransfrom);
+
+        Item newItem = newGameObj.GetComponent<Item>();
+        Item listItem = listOfItems[0].GetComponent<Item>();
+
+        newItem.name = listItem.name;
+        newItem.SetIcon(listItem.GetIcon());
+        newItem.SetAddress(listItem.GetAddress());
+        newItem.SetCode(listItem.GetCode());
+
+        listOfItems.Remove(listOfItems[0]);
 
         yield return new WaitForSeconds(secondsToWait);
-        StartCoroutine(Unpacking());
+        Check();
     }
     //Checking if the spawnLocation is free
     public void OnTriggerEnter2D(Collider2D collision)

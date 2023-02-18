@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 7326889567257269664}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 17.061392, y: 19.713427, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -74,8 +74,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 1, g: 0.977661, b: 0, a: 1}
+  m_Sprite: {fileID: -8389128202556157111, guid: 60579bc18d20d644795642e34e9bde63, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -98,8 +98,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 0}
-  itemCode: 
   itemAddress: 
+  itemCode: 
+  level: 0
 --- !u!61 &661584835172284261
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -142,6 +143,7 @@ MonoBehaviour:
   uiName: 
   isInRange: 0
   mouseOver: 0
+  colliding: 0
   player: {fileID: 0}
   playerBrain: {fileID: 0}
   tooltipE: 1
@@ -149,3 +151,4 @@ MonoBehaviour:
   tooltipQ: 1
   qString: To Drop
   rack: {fileID: 0}
+  mouse: {fileID: 0}

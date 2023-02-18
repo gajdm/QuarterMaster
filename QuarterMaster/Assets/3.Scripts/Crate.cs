@@ -10,7 +10,7 @@ public class Crate : MonoBehaviour
     [SerializeField] private Sprite icon; 
 
     // The list of items that the crate carries
-    [SerializeField] private List<Item> listOfItems = new List<Item>(); 
+    [SerializeField] private List<GameObject> listOfItems = new List<GameObject>(); 
     
     // Amount of items inside the crate
     [SerializeField] private int amount;  
@@ -19,7 +19,7 @@ public class Crate : MonoBehaviour
     //
     //FUNCTIONS
 
-    public void SetItems(List<Item> items)
+    public void SetItems(List<GameObject> items)
     {
         listOfItems = items;
     }
@@ -31,7 +31,7 @@ public class Crate : MonoBehaviour
     //GETTING
     public Sprite GetIcon()
         { return icon; }
-    public List<Item> GetListOfItems()
+    public List<GameObject> GetListOfItems()
         { return listOfItems; }
     public int GetAmount()
         { return amount; }

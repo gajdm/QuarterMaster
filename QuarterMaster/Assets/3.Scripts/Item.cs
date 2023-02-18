@@ -21,7 +21,7 @@ public class Item : MonoBehaviour
     }
     public void SetAddress(string address)
     {
-        itemAddress = address;
+        itemAddress = address.Substring(0,4);
     }
     public void SetLevel(int number)
     {

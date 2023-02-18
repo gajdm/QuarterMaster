@@ -124,8 +124,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
+  m_Offset: {x: 0, y: -0.5}
+  m_Size: {x: 1, y: 1}
   m_Direction: 0
 --- !u!58 &2999376300119420935
 CircleCollider2D:
@@ -168,11 +168,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8189b3700f57f1647b8ee88c948e495f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiManager: {fileID: 0}
   pickUpArea: {fileID: 2999376300543067759}
   putDownArea: {fileID: 2999376300173463521}
   debug: {fileID: 0}
   debug2: {fileID: 0}
   isHolding: 0
+  isInRange: 0
   currentItem: {fileID: 0}
 --- !u!1 &2999376300173463526
 GameObject:

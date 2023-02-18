@@ -32,7 +32,7 @@ public class Rack : MonoBehaviour
     {
         buyerManager.UpdateRackList(this);
     }
-    public string[] SendBagNames()
+    public string[] GetBagNames()
     {
         return bagNames;
     }
@@ -40,4 +40,6 @@ public class Rack : MonoBehaviour
     {
         bagNames = names;
     }
+    //ORDER
+
 }
