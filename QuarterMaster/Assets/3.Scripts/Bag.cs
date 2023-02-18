@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class Bag : MonoBehaviour
 {
-    public string address;
-    public string GetAddress()
+    public string order;
+    public Sprite icon;
+    public string GetOrder()
     {
-        return address;
+        return order;
     }
+    public void SetOrder(string name)
+    { order = name; }
+    public Sprite GetIcon()
+        { return icon; }
 }

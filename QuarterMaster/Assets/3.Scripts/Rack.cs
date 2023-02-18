@@ -7,6 +7,9 @@ using SoulGames.EasyGridBuilderPro;
 public class Rack : MonoBehaviour
 {
     [SerializeField] private string[] bagNames;
+    [SerializeField] private GameObject player;
+    [SerializeField] private ItemInteraction playerBrain;
+    [SerializeField] private Transform spawn;
 
     //Managers
     [SerializeField] private BuyerManager buyerManager;
@@ -41,5 +44,19 @@ public class Rack : MonoBehaviour
         bagNames = names;
     }
     //ORDER
-
+    public void CheckItem(int bagNumber)
+    {
+        if(player.GetComponentInChildren<Item>() != null)
+        {
+            Item item = player.GetComponentInChildren<Item>();
+            if(item.GetAddress() == bagNames[bagNumber])
+            {
+                buyerManager.ItemAdded(item,spawn);
+                Destroy(item.gameObject);
+                playerBrain.SetIsHolding(false);
+            }
+        }
+        else
+        { return; }
+    }
 }

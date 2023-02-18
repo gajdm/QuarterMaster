@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65d2d645654a6df41b437ed3f8e35368, type: 3}
-  m_Name: Grid_Object_Labelling
+  m_Name: Grid_Object_Labelling Right
   m_EditorClassIdentifier: 
-  objectName: Labelling Station
-  buildableCategorySO: {fileID: 11400000, guid: 989c7cac0c4b10740876b4c62381c543, type: 2}
+  objectName: Labelling Station Right
+  buildableCategorySO: {fileID: 11400000, guid: 388604fbfe8a02f4cb29b39e33d55560, type: 2}
   objectDescription: 
   objectToolTipDescription: 
   objectIcon: {fileID: 21300000, guid: 6a3ce82f0be8e4340a55df317bd03358, type: 3}
   objectPrefab:
-  - {fileID: 142882011068768318, guid: 7e481ca8f98036e42bc0fb158dbde992, type: 3}
-  ghostPrefab: {fileID: 142882011068768318, guid: 7e481ca8f98036e42bc0fb158dbde992, type: 3}
+  - {fileID: 142882011068768318, guid: b8508bd6b195c00418a2c7bfff675578, type: 3}
+  ghostPrefab: {fileID: 142882011068768318, guid: b8508bd6b195c00418a2c7bfff675578, type: 3}
   placeableGhostMaterial: {fileID: 2100000, guid: 281380b3d50e1eb46b869b8c8aa1307c, type: 2}
   notPlaceableGhostMaterial: {fileID: 2100000, guid: 1fb75a46b45af6e49a32883c3bcb026a, type: 2}
   setBuiltObjectLayer: 0

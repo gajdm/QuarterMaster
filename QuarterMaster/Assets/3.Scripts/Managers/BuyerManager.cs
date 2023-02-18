@@ -8,6 +8,7 @@ public class BuyerManager : MonoBehaviour
     // The brain of the order and sorting system
 
     //VARIABLES
+    
     GameManager gameManager;
     public GameObject player;
     //Timer variables
@@ -40,6 +41,9 @@ public class BuyerManager : MonoBehaviour
 
     //Code variables
     [SerializeField] private int code;
+    [SerializeField] private LogsSystem log;
+    //
+    [SerializeField] private AudioSource audioSource;
 
     //FUNCTIONS
     public void FixedUpdate()
@@ -90,8 +94,40 @@ public class BuyerManager : MonoBehaviour
     }
     public void FinishOrder(string code)
     {
-
+        foreach (Order order in orderList)
+        {
+            if (order.GetCode() == code)
+            {
+                log.AddLog("Order number "+code+" finished. You received ??? gold");
+                audioSource.Play();
+                orderList.Remove(order);
+            }
+        }
     }
+    public void ItemAdded(Item item, Transform spawn)
+    {
+        foreach(Order order in orderList)
+        {
+            if(order.GetCode()==item.GetCode())
+            {
+                order.AddItem();
+                log.AddLog("Item " + item.GetAddress() + " has been added to the rack!");
+                audioSource.Play();
+                if (order.GetDone())
+                {
+                    SpawnBag(spawn, order.GetCode());
+                }
+            }
+        }
+        
+    }
+    public void SpawnBag(Transform location, string orderName)
+    {
+        GameObject newBag = Instantiate(bag,location);
+        Bag comBag = newBag.AddComponent<Bag>();
+        comBag.SetOrder(orderName);
+    }
+
 
     //RACK FUNCTIONS
 

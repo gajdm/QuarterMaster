@@ -8,6 +8,7 @@ public class Order : MonoBehaviour
     public int full;
     public int count;
     public string orderCode;
+    public bool done = false;
 
     public void SetOrderList(List<GameObject> GameObjects)
     {
@@ -17,6 +18,20 @@ public class Order : MonoBehaviour
     { full = number; }
     public void SetCount(int number)
     { count = number; }
+    public void AddItem()
+    {
+        count++;
+        if(count == full)
+        {
+            done = true;
+        }
+    }
     public void SetOrderCode(string code)
     { orderCode = code; }
+    public string GetCode()
+    { return orderCode; }
+    public bool GetDone()
+    {
+        return done;
+    }
 }

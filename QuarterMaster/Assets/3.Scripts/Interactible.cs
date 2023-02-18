@@ -8,7 +8,7 @@ public class Interactible : MonoBehaviour
     UIManager uiManager;
     [SerializeField] private enum InteractibleType
     {
-        Tab, Item, Rack, Crate, Bag, Map, Label
+        Tab, Item, Rack, Crate, Bag, Map, Label, Export
     }
     [SerializeField] private InteractibleType type;
     [SerializeField] private string uiName;
@@ -42,7 +42,7 @@ public class Interactible : MonoBehaviour
     }
     public void FixedUpdate()
     {
-        if ((Input.GetKeyDown(KeyCode.Mouse0) && mouseOver) || (colliding && Input.GetKeyDown(KeyCode.Space)))
+        if ((Input.GetKey(KeyCode.Mouse0) && mouseOver) || (colliding && Input.GetKey(KeyCode.Space)))
         {
             Act(player);
         }
@@ -128,6 +128,9 @@ public class Interactible : MonoBehaviour
             case InteractibleType.Bag:
                 playerBrain.PickUp(this.gameObject);
                 break;
+            case InteractibleType.Export:
+                CheckForItem("Bag", player);
+                break;
             default:
                 break;
         }
@@ -143,12 +146,24 @@ public class Interactible : MonoBehaviour
         {
             if (player.transform.GetChild(i).tag == tag)
             {
-                GameObject newGO = player.transform.GetChild(i).gameObject;
-                this.gameObject.GetComponent<LabelStation>().GetNewCrate(newGO.GetComponent<Crate>());
-                newGO.GetComponentInParent<ItemInteraction>().SetIsHolding(false);
-                newGO.transform.parent = this.transform;
-                newGO.GetComponent<BoxCollider2D>().enabled = false;
-                newGO.transform.position = this.transform.position;
+                if(tag == "Crate")
+                {
+                    GameObject newGO = player.transform.GetChild(i).gameObject;
+                    this.gameObject.GetComponent<LabelStation>().GetNewCrate(newGO.GetComponent<Crate>());
+                    newGO.GetComponentInParent<ItemInteraction>().SetIsHolding(false);
+                    newGO.transform.parent = this.transform;
+                    newGO.GetComponent<BoxCollider2D>().enabled = false;
+                    newGO.transform.position = this.transform.position;
+                }
+                else if(tag == "Bag")
+                {
+                    Bag holdBag = player.GetComponentInChildren<Bag>();
+                    BuyerManager buyerManager = FindObjectOfType<BuyerManager>();
+                    buyerManager.FinishOrder(holdBag.GetOrder());
+                    Destroy(holdBag.gameObject);
+                    ItemInteraction playerMind = FindObjectOfType<ItemInteraction>();
+                    playerMind.SetIsHolding(false);
+                }
             }
         }
     }

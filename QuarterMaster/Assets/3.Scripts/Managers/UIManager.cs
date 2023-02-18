@@ -19,7 +19,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject player;
 
     [SerializeField] private Animator upperBarAnimator;
-
     public void SwitchUI(string name, bool value)
     {
         CanvasGroup canvasGroup;
@@ -87,8 +86,8 @@ public class UIManager : MonoBehaviour
         upperBarAnimator.SetTrigger("Action");
     }
     public void UpdateItemBar(GameObject GO)
-    {
-        iconUI.UpdateUI(GO);
-    }
+    { iconUI.UpdateUI(GO);}
+    public void ClearItemBar()
+    { iconUI.ClearUI();}
 
 }

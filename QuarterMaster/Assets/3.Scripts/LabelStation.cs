@@ -35,6 +35,7 @@ public class LabelStation : MonoBehaviour
         }
         else
         {
+            Destroy(currentCrate.gameObject);
             currentCrate = null;
             Debug.Log("Empty Crate");
         }
