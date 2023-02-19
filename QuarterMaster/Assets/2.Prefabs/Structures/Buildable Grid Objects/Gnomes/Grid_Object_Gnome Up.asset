@@ -10,16 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65d2d645654a6df41b437ed3f8e35368, type: 3}
-  m_Name: Grid_Object_Gnome
+  m_Name: Grid_Object_Gnome Up
   m_EditorClassIdentifier: 
-  objectName: Gnome
-  buildableCategorySO: {fileID: 11400000, guid: 989c7cac0c4b10740876b4c62381c543, type: 2}
-  objectDescription: 
-  objectToolTipDescription: 
-  objectIcon: {fileID: 21300000, guid: 53bc4786b40d06140a5c7f6182ea53b6, type: 3}
+  objectName: Gnome Up
+  buildableCategorySO: {fileID: 11400000, guid: 7e4c89fa49af94044a33510ff7d96527, type: 2}
+  objectDescription: Picks up an item from the red square and places it on the green
+    arrow.
+  objectToolTipDescription: Picks up an item from the red square and places it on
+    the green arrow.
+  objectIcon: {fileID: 9173609158190624681, guid: 60579bc18d20d644795642e34e9bde63, type: 3}
   objectPrefab:
-  - {fileID: 6940107126719575741, guid: b9e4e3a03f631ba459f33d232bdc4145, type: 3}
-  ghostPrefab: {fileID: 6940107126719575741, guid: b9e4e3a03f631ba459f33d232bdc4145, type: 3}
+  - {fileID: 6940107126719575741, guid: be1a5b0f3c09f9b4080a3b7404bb038b, type: 3}
+  ghostPrefab: {fileID: 6940107126719575741, guid: be1a5b0f3c09f9b4080a3b7404bb038b, type: 3}
   placeableGhostMaterial: {fileID: 2100000, guid: 281380b3d50e1eb46b869b8c8aa1307c, type: 2}
   notPlaceableGhostMaterial: {fileID: 2100000, guid: 1fb75a46b45af6e49a32883c3bcb026a, type: 2}
   setBuiltObjectLayer: 0

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9bc1193bb5230094a83bdfca2af02e94, type: 3}
-  m_Name: Cat_Category
+  m_Name: Cat_Rack
   m_EditorClassIdentifier: 
-  categoryName: Structures
+  categoryName: Rack
   categoryIcon: {fileID: 21300000, guid: b519da308e0784c408c680d31738e4aa, type: 3}

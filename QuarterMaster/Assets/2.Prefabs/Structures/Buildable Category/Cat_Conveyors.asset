@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bc1193bb5230094a83bdfca2af02e94, type: 3}
   m_Name: Cat_Conveyors
   m_EditorClassIdentifier: 
-  categoryName: 
+  categoryName: Conveyors
   categoryIcon: {fileID: -3015109298173802867, guid: 60579bc18d20d644795642e34e9bde63, type: 3}
