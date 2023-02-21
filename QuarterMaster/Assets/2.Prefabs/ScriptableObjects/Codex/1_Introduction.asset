@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cc06b4b56b663a4a82b2e8e8a173f1c, type: 3}
+  m_Name: 1_Introduction
+  m_EditorClassIdentifier: 
+  header: Introduction
+  mainText: Hello and welcome to the Vertical Slice of the game QuarterMaster. What
+    you are looking at at the moment is a prototype of codex menu. This will explain
+    to the player all of the systems and mechanics and how they work together. You
+    can always close and open this menu with the green button on the left. To progress
+    through the codex menu use the buttons at the buttom of this menu. I hope you
+    enjoy your time trying this vertical slice :) .

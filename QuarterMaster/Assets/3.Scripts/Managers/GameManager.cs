@@ -72,6 +72,9 @@ public class GameManager : MonoBehaviour
         importPortal.StoreCrate(GO);
         logsSystem.AddLog("Created a crate with "+list.Count+" items");
     }
-
+    public void ExitGame()
+    {
+        Application.Quit(); 
+    }
 
 }

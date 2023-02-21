@@ -32,7 +32,7 @@ public class Manufacturer : ScriptableObject
 
     public int manuLevel = 1;       //Level
     public bool available;          //Availability
-    private List<ListOfIcons> helperList;
+    private List<ListOfIcons> helperList = new List<ListOfIcons>();
     private int helperInt;
 
     //VARIABLES

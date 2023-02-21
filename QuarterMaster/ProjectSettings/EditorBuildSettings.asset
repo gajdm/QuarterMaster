@@ -15,6 +15,6 @@ EditorBuildSettings:
     path: Assets/1.Scenes/Caravan.unity
     guid: 3c0cad86a7a4b2b48b2ccb140e6bfa57
   - enabled: 1
-    path: Assets/1.Scenes/Experimental.unity
-    guid: 1d242a43319030f4bb2d6789d6d59663
+    path: Assets/1.Scenes/_VerticalSlice.unity
+    guid: 5d28ef01962027e4fa34d47163bc348b
   m_configObjects: {}

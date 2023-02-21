@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cc06b4b56b663a4a82b2e8e8a173f1c, type: 3}
+  m_Name: 14_Manufacturers
+  m_EditorClassIdentifier: 
+  header: Manufacturers
+  mainText: You can open the manufacturer menu in the upper bar. It is the first
+    button on the left. Manufacturers have different levels. You can aquire more
+    manufacturers later. Depending on the manufacturers level they may send you better
+    gear. Try clicking on an icon of any manufacturer. In this Manufacturer Card
+    you can see details of that manufacturer. Higher level items cost more and therefore
+    you will be rewarded more if you complete orders with these items inside. Upgrading
+    and aquiring manufacturers will cost money later.
