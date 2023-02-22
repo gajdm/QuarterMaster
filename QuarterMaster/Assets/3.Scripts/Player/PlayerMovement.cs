@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 playerDirection;
     private bool canMove;
-    //public Animator animator;
+    public Animator animator;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -21,11 +21,11 @@ public class PlayerMovement : MonoBehaviour
             float directionX = Input.GetAxisRaw("Horizontal");
             float directionY = Input.GetAxisRaw("Vertical");
 
-            //animator.SetFloat("Horizontal", directionX);
-            //animator.SetFloat("Vertical", directionY);
+            animator.SetFloat("Horizontal", directionX);
+            animator.SetFloat("Vertical", directionY);
 
             playerDirection = new Vector2(directionX, directionY).normalized;
-            //animator.SetFloat("Speed", playerDirection.SqrMagnitude());
+            animator.SetFloat("Speed", playerDirection.SqrMagnitude());
         }
     }
     private void FixedUpdate()

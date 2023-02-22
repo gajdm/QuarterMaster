@@ -9,6 +9,10 @@ public class IconUI : MonoBehaviour
     [SerializeField] private Text code;
     [SerializeField] private Image icon;
 
+    [SerializeField] private string emptyAddress;
+    [SerializeField] private string emptyCode;
+    [SerializeField] private Sprite emptyIcon;
+
     public void UpdateUI(GameObject GO)
     {
         if (GO.GetComponent<Crate>() != null)
@@ -35,8 +39,8 @@ public class IconUI : MonoBehaviour
     }
     public void ClearUI()
     {
-        address.text = string.Empty;
-        code.text = string.Empty;
-        icon.sprite = null;
+        address.text = emptyAddress;
+        code.text = emptyCode;
+        icon.sprite = emptyIcon;
     }
 }

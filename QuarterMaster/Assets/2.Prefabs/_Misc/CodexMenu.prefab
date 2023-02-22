@@ -743,6 +743,7 @@ GameObject:
   - component: {fileID: 2078525003193492438}
   - component: {fileID: 2078525003193492437}
   - component: {fileID: 2078525003193492436}
+  - component: {fileID: 764249899}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -864,6 +865,22 @@ MonoBehaviour:
           m_StringArgument: Action
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &764249899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2078525003193492434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 104266b705e4bab4fbd497d45882406a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  header: Codex Menu
+  content: 
+  objectNameAsHeader: 0
+  objectBuildSOToolTipAsContent: 0
 --- !u!1 &2078525003333066394
 GameObject:
   m_ObjectHideFlags: 0
@@ -1064,10 +1081,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 30
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 3
+    m_MinSize: 0
     m_MaxSize: 74
     m_Alignment: 0
     m_AlignByGeometry: 0

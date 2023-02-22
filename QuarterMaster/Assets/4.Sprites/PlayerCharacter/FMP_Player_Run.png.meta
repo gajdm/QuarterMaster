@@ -1,7 +1,55 @@
 fileFormatVersion: 2
 guid: 82ed240176c3edc489f3a2e3b29fb49a
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 5824013859972721312
+    second: FMP_Player_Run_0
+  - first:
+      213: -3102499493227419508
+    second: FMP_Player_Run_1
+  - first:
+      213: -2980342688267624302
+    second: FMP_Player_Run_2
+  - first:
+      213: -7699721003224923554
+    second: FMP_Player_Run_3
+  - first:
+      213: 6015702109491433068
+    second: FMP_Player_Run_4
+  - first:
+      213: 4653284584106665401
+    second: FMP_Player_Run_5
+  - first:
+      213: 8638360508849226672
+    second: FMP_Player_Run_6
+  - first:
+      213: 6030191035651150490
+    second: FMP_Player_Run_7
+  - first:
+      213: 600726587064347696
+    second: FMP_Player_Run_8
+  - first:
+      213: 6122972544694215400
+    second: FMP_Player_Run_9
+  - first:
+      213: 6898769166397958908
+    second: FMP_Player_Run_10
+  - first:
+      213: 3537107723960083469
+    second: FMP_Player_Run_11
+  - first:
+      213: -8936170245414445248
+    second: FMP_Player_Run_12
+  - first:
+      213: -5039955123778927376
+    second: FMP_Player_Run_13
+  - first:
+      213: 5098328391252585385
+    second: FMP_Player_Run_14
+  - first:
+      213: -7899938145531219276
+    second: FMP_Player_Run_15
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -32,7 +80,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -67,7 +115,7 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -79,7 +127,7 @@ TextureImporter:
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -91,7 +139,7 @@ TextureImporter:
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -101,7 +149,343 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: FMP_Player_Run_0
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 97
+        width: 14
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0aa20aaafbd03d050800000000000000
+      internalID: 5824013859972721312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FMP_Player_Run_1
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 96
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c88a95e0625b1f4d0800000000000000
+      internalID: -3102499493227419508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FMP_Player_Run_2
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 96
+        width: 14
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29020e49d12b3a6d0800000000000000
+      internalID: -2980342688267624302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FMP_Player_Run_3
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 96
+        width: 14
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e520a2dda88152590800000000000000
+      internalID: -7699721003224923554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FMP_Player_Run_4
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 66
+        width: 12
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6e0ece22311c7350800000000000000
+      internalID: 6015702109491433068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FMP_Player_Run_5
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 64
+        width: 12
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b5aa72dca9c39040800000000000000
+      internalID: 4653284584106665401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FMP_Player_Run_6
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 66
+        width: 12
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b388b36d1f91e770800000000000000
+      internalID: 8638360508849226672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FMP_Player_Run_7
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 64
+        width: 12
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a925bbf2cca8fa350800000000000000
+      internalID: 6030191035651150490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FMP_Player_Run_8
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 33
+        width: 10
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03c6a1de5a5365800800000000000000
+      internalID: 600726587064347696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FMP_Player_Run_9
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 33
+        width: 14
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e2e7f7a61b29f450800000000000000
+      internalID: 6122972544694215400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FMP_Player_Run_10
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 33
+        width: 10
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfa619e610a5dbf50800000000000000
+      internalID: 6898769166397958908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FMP_Player_Run_11
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 34
+        width: 14
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d046eea0cb4561130800000000000000
+      internalID: 3537107723960083469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FMP_Player_Run_12
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 1
+        width: 10
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04f18a5f1885cf380800000000000000
+      internalID: -8936170245414445248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FMP_Player_Run_13
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 1
+        width: 14
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f44f3b848b7e0ab0800000000000000
+      internalID: -5039955123778927376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FMP_Player_Run_14
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 1
+        width: 10
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ab26e4e8a6e0c640800000000000000
+      internalID: 5098328391252585385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FMP_Player_Run_15
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 2
+        width: 14
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b2bd00cc18cd5290800000000000000
+      internalID: -7899938145531219276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
