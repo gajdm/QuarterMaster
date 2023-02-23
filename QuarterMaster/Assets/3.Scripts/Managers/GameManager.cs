@@ -8,10 +8,10 @@ public class GameManager : MonoBehaviour
 
     //Managers
 
-    [SerializeField]private BuyerManager buyerManager;
-    [SerializeField]private ManufacturerManager manuManager;
-    [SerializeField]private UIManager uiManager;
-    [SerializeField]private LogsSystem logsSystem;
+    [SerializeField] private BuyerManager buyerManager;
+    [SerializeField] private ManufacturerManager manuManager;
+    [SerializeField] private UIManager uiManager;
+    [SerializeField] private LogsSystem logsSystem;
 
     //Items
     [SerializeField] private int itemNumber;
@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
     }
     public void Update()
     {
-        if(Input.GetKeyUp(KeyCode.Escape))
+        if (Input.GetKeyUp(KeyCode.Escape))
             Application.Quit();
     }
     public void NewOrder(string order)
@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
 
         CreateCrate(items);
 
-        
+
     }
     public void CreateCrate(List<GameObject> list)
     {
@@ -70,7 +70,15 @@ public class GameManager : MonoBehaviour
         newCrate.SetItems(list);
 
         importPortal.StoreCrate(GO);
-        logsSystem.AddLog("Created a crate with "+list.Count+" items");
+        logsSystem.AddLog("Created a crate with " + list.Count + " items");
+    }
+    public void StopGame()
+    {
+        Time.timeScale = 0;
+    }
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
     }
     public void ExitGame()
     {

@@ -52,8 +52,8 @@ public class Rack : MonoBehaviour
             if(item.GetAddress() == bagNames[bagNumber])
             {
                 buyerManager.ItemAdded(item,spawn);
+                player.GetComponent<ItemInteraction>().SetIsHolding(false);
                 Destroy(item.gameObject);
-                playerBrain.SetIsHolding(false);
             }
         }
         else

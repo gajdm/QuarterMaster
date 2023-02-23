@@ -17,6 +17,8 @@ public class ItemInteraction : MonoBehaviour
 
     [SerializeField] private GameObject currentItem;
     [SerializeField] private AudioSource audioSource;
+    //ANIMATION
+    [SerializeField] private Animator animator;
     //UPDATE
 
     public void Update()
@@ -34,7 +36,9 @@ public class ItemInteraction : MonoBehaviour
     public void PickUp(GameObject item)
     {
         if (!isHolding)
-        {   
+        {
+            animator.SetTrigger("PickUp");
+            animator.SetBool("Carry", true);
             audioSource.Play();
             uiManager.UpdateItemBar(item);
             item.transform.parent = this.transform;
@@ -49,6 +53,7 @@ public class ItemInteraction : MonoBehaviour
     public void PutDown()
     {
         audioSource.Play();
+        animator.SetBool("Carry", false);
         uiManager.ClearItemBar();
         currentItem.transform.position = putDownArea.transform.position;
         currentItem.transform.parent = null;
@@ -59,6 +64,10 @@ public class ItemInteraction : MonoBehaviour
     public void SetIsHolding(bool value)
     {
            isHolding=value;
-        if(!isHolding)uiManager.ClearItemBar();
+        if (!isHolding)
+        { 
+            uiManager.ClearItemBar();
+            animator.SetBool("Carry", false);
+        } 
     }
 }

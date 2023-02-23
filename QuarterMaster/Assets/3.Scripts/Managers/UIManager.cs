@@ -16,6 +16,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private Button[] bagButtons;
     [SerializeField] private Bag[] bags;
+    [SerializeField] private Color bagColor;
     [SerializeField] private GameObject player;
 
     [SerializeField] private Animator upperBarAnimator;
@@ -63,7 +64,7 @@ public class UIManager : MonoBehaviour
         for (int i = 0; i < bagNames.Length; i++)
         {
             bagButtons[i].gameObject.GetComponentInChildren<Text>().text = bagNames[i];
-            bagButtons[i].GetComponent<Image>().color = Color.gray;
+            bagButtons[i].GetComponent<Image>().color = bagColor; 
         }
     }
     public void BagCheck(Button button)

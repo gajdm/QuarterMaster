@@ -12,6 +12,7 @@ public class IconUI : MonoBehaviour
     [SerializeField] private string emptyAddress;
     [SerializeField] private string emptyCode;
     [SerializeField] private Sprite emptyIcon;
+    [SerializeField] private Sprite bagIcon;
 
     public void UpdateUI(GameObject GO)
     {
@@ -34,7 +35,7 @@ public class IconUI : MonoBehaviour
             Bag bag = (Bag)GO.GetComponent<Bag>();
             address.text = "Bag";
             code.text = "Code: " +bag.GetOrder();
-            icon.sprite = bag.GetIcon();
+            icon.sprite = bagIcon;
         }
     }
     public void ClearUI()
