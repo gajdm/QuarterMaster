@@ -42,21 +42,21 @@ public class UIManager : MonoBehaviour
     }
     public void OpenTooltips(bool left, string string1, bool right, string string2)
     {
-        if(left)
-        {
-            tooltipLeft.alpha = 1;
-            tooltipLeft.GetComponentInChildren<Text>().text = string1;   
-        }
-        if(right)
-        {
-            tooltipRight.alpha = 1;
-            tooltipRight.GetComponentInChildren<Text>().text = string2;
-        }
+        //if(left)
+        //{
+        //    tooltipLeft.alpha = 1;
+        //    tooltipLeft.GetComponentInChildren<Text>().text = string1;   
+        //}
+        //if(right)
+        //{
+        //    tooltipRight.alpha = 1;
+        //    tooltipRight.GetComponentInChildren<Text>().text = string2;
+        //}
     }
     public void CloseTooltips(bool left, bool right)
     {
-        if(left)tooltipLeft.alpha = 0;
-        if(right)tooltipRight.alpha = 0;
+        //if(left)tooltipLeft.alpha = 0;
+        //if(right)tooltipRight.alpha = 0;
     }
     public void UpdateRackUI(Rack rack)
     {

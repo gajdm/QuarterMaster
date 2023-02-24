@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Cat_Gnomes
   m_EditorClassIdentifier: 
   categoryName: Gnomes
-  categoryIcon: {fileID: 9173609158190624681, guid: 60579bc18d20d644795642e34e9bde63, type: 3}
+  categoryIcon: {fileID: 3378398883495639780, guid: 89c33ce179673fe46a6e6218bcae48f7, type: 3}

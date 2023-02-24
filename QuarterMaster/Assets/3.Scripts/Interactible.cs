@@ -11,7 +11,9 @@ public class Interactible : MonoBehaviour
         Tab, Item, Rack, Crate, Bag, Map, Label, Export
     }
     [SerializeField] private InteractibleType type;
+    [SerializeField] private bool hasHighligth;
     [SerializeField] private string uiName;
+    [SerializeField] private Animator animator;
 
     [SerializeField] private bool isInRange;
     [SerializeField] private bool mouseOver;
@@ -76,6 +78,8 @@ public class Interactible : MonoBehaviour
         {
             player = collision.gameObject;
             isInRange = true;
+            if(hasHighligth)
+            { animator.SetBool("On", true); }
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -83,6 +87,8 @@ public class Interactible : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             isInRange = false;
+            if (hasHighligth)
+            { animator.SetBool("On", false); }
         }
     }
     public void OnCollisionEnter2D(Collision2D collision)
@@ -108,14 +114,11 @@ public class Interactible : MonoBehaviour
         playerBrain = FindObjectOfType<ItemInteraction>();
         gameManager = FindObjectOfType<GameManager>();
         uiManager = FindObjectOfType<UIManager>();
+        if(hasHighligth)
+        { animator = GetComponentInChildren<Animator>(); }
     }
     public void Act(GameObject player)
     {
-        if (gameManager == null)
-            gameManager = FindObjectOfType<GameManager>();
-        if (uiManager == null)
-            uiManager = FindObjectOfType<UIManager>();
-
         switch (type)
         {
             case InteractibleType.Tab:
