@@ -6,6 +6,7 @@ using UnityEngine;
 public class Codex : ScriptableObject
 {
     [SerializeField] private string header;
+    [SerializeField] private Sprite visual;
     [TextArea(5,10)]
     [SerializeField] private string mainText;
 
@@ -13,5 +14,7 @@ public class Codex : ScriptableObject
     { return header; }
     public string GetMainText()
     { return mainText; }
+    public Sprite GetImage()
+    { return visual; }
 
 }

@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: 2_Movement
   m_EditorClassIdentifier: 
   header: Movement
+  visual: {fileID: 21300000, guid: fab99d433a35a114aa8c3fe5d3083d82, type: 3}
   mainText: To move aroud the game use WASD. Try getting to the ladders in the living
     room. This will take you to the Bellow level where most of the game is explained.

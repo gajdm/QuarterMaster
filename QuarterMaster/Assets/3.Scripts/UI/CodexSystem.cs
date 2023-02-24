@@ -10,6 +10,7 @@ public class CodexSystem : MonoBehaviour
     public Codex nextCodex;
     public Codex previousCodex;
 
+    public Image visualImage;
     public int codexLoc;
 
     public Text header;
@@ -22,6 +23,7 @@ public class CodexSystem : MonoBehaviour
     }
     public void UpdateUI()
     {
+        visualImage.sprite = currentCodex.GetImage();
         header.text = currentCodex.GetHeader();
         body.text = currentCodex.GetMainText();
         nextCodexText.text = "Next to: "+nextCodex.GetHeader();
@@ -63,6 +65,27 @@ public class CodexSystem : MonoBehaviour
         }
 
         currentCodex = codexList[codexLoc];
+        UpdateUI();
+    }
+    public void JumpButton(int number)
+    {
+        codexLoc = number;
+        if (codexLoc == 0)
+        {
+            nextCodex = codexList[codexLoc + 1];
+            previousCodex = codexList[codexList.Count - 1];
+        }
+        else if (codexLoc == codexList.Count - 1)
+        {
+            nextCodex = codexList[0];
+            previousCodex = codexList[codexLoc - 1];
+        }
+        else
+        {
+            nextCodex = codexList[codexLoc + 1];
+            previousCodex = codexList[codexLoc - 1];
+        }
+        currentCodex =codexList[codexLoc];
         UpdateUI();
     }
 }

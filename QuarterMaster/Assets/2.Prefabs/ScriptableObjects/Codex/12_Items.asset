@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 12_Items
   m_EditorClassIdentifier: 
   header: Items
+  visual: {fileID: 21300000, guid: fab99d433a35a114aa8c3fe5d3083d82, type: 3}
   mainText: 'Items can be picked up and carried over by either player, gnome, conveyor
     or splitter. For now lets pick it ourselves and place it in the rack. You can
     see that the Item bar shows you the icon, address and the code of the icon. This

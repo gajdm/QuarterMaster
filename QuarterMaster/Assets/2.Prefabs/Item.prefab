@@ -146,6 +146,7 @@ MonoBehaviour:
   colliding: 0
   player: {fileID: 0}
   playerBrain: {fileID: 0}
+  itemPlacement: {fileID: 0}
   tooltipE: 1
   eString: To Pickup
   tooltipQ: 1

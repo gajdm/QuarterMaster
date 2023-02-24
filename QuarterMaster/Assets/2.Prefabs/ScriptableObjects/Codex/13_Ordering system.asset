@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 13_Ordering system
   m_EditorClassIdentifier: 
   header: Ordering System
+  visual: {fileID: 21300000, guid: fab99d433a35a114aa8c3fe5d3083d82, type: 3}
   mainText: New buyers come and go. If there is an empty address in your facility,
     buyers will order items from the manufacturers. This creates new items, order
     and a crate. It also reserves the bag for the specific order, meaning that the

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 0_VerticalSlice
   m_EditorClassIdentifier: 
   header: Vertical Slice
+  visual: {fileID: 21300000, guid: fab99d433a35a114aa8c3fe5d3083d82, type: 3}
   mainText: Players can now complete the very first order that has been set up in
     the Bellow level. Players can build structures but they have almost no use for
     now. Labelling station and the rack works but the rest is work in progress. I

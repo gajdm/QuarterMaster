@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 8_Sorting
   m_EditorClassIdentifier: 
   header: Sorting
+  visual: {fileID: 21300000, guid: fab99d433a35a114aa8c3fe5d3083d82, type: 3}
   mainText: 'You have a very simple setup ready.This setup has the Import Portal
     (bright green), Labelling Station (dark green), Rack (bright red) and an export
     portal (dark red). The game automatically attached the required addresses to

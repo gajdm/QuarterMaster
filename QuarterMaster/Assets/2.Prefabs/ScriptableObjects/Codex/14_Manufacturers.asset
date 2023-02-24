@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 14_Manufacturers
   m_EditorClassIdentifier: 
   header: Manufacturers
+  visual: {fileID: 21300000, guid: fab99d433a35a114aa8c3fe5d3083d82, type: 3}
   mainText: You can open the manufacturer menu in the upper bar. It is the first
     button on the left. Manufacturers have different levels. You can aquire more
     manufacturers later. Depending on the manufacturers level they may send you better

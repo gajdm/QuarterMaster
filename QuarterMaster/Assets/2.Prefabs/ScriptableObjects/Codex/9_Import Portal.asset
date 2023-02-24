@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 9_Import Portal
   m_EditorClassIdentifier: 
   header: Import Portal
+  visual: {fileID: 21300000, guid: fab99d433a35a114aa8c3fe5d3083d82, type: 3}
   mainText: Import Portal spawns in crates filled with unlabelled items. You can
     pick up those crates and move them around the facility. You cannot build more
     than 1 Import Portal. Import Portal cannot be deleted but can be connected to

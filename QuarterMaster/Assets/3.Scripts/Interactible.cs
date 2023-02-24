@@ -19,6 +19,7 @@ public class Interactible : MonoBehaviour
 
     [SerializeField] private GameObject player;
     [SerializeField] private ItemInteraction playerBrain;
+    [SerializeField] private Transform itemPlacement;
 
 
     //Tooltip variables
@@ -100,6 +101,14 @@ public class Interactible : MonoBehaviour
         }
     }
     //FUNCTIONS
+
+    private void OnEnable()
+    {
+        player = FindObjectOfType<ItemInteraction>().gameObject;
+        playerBrain = FindObjectOfType<ItemInteraction>();
+        gameManager = FindObjectOfType<GameManager>();
+        uiManager = FindObjectOfType<UIManager>();
+    }
     public void Act(GameObject player)
     {
         if (gameManager == null)
@@ -151,7 +160,7 @@ public class Interactible : MonoBehaviour
                     GameObject newGO = player.transform.GetChild(i).gameObject;
                     this.gameObject.GetComponent<LabelStation>().GetNewCrate(newGO.GetComponent<Crate>());
                     newGO.GetComponentInParent<ItemInteraction>().SetIsHolding(false);
-                    newGO.transform.parent = this.transform;
+                    newGO.transform.parent = itemPlacement;
                     newGO.GetComponent<BoxCollider2D>().enabled = false;
                     newGO.transform.position = this.transform.position;
                 }

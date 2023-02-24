@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 1_Introduction
   m_EditorClassIdentifier: 
   header: Introduction
+  visual: {fileID: 21300000, guid: fab99d433a35a114aa8c3fe5d3083d82, type: 3}
   mainText: Hello and welcome to the Vertical Slice of the game QuarterMaster. What
     you are looking at at the moment is a prototype of codex menu. This will explain
     to the player all of the systems and mechanics and how they work together. You

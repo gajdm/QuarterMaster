@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: 10_Crate
   m_EditorClassIdentifier: 
   header: Crate
+  visual: {fileID: 21300000, guid: fab99d433a35a114aa8c3fe5d3083d82, type: 3}
   mainText: Crate holds a set amount of items for a specific order. You can pick
     it up and move iit to the labelling station.

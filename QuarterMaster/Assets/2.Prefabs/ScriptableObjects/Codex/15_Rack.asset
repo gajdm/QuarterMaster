@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 15_Rack
   m_EditorClassIdentifier: 
   header: Rack
+  visual: {fileID: 21300000, guid: fab99d433a35a114aa8c3fe5d3083d82, type: 3}
   mainText: Racks hold up to 4 bags. Each of this bag has a unique address. If the
     player or a gnome is holding an item with said address, they can place it in
     the bag. Players need to open the Rack menu (by interacting with rack) and click

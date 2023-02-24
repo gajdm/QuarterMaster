@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 16_Building
   m_EditorClassIdentifier: 
   header: Buidling
+  visual: {fileID: 21300000, guid: fab99d433a35a114aa8c3fe5d3083d82, type: 3}
   mainText: This feature is still work in progress. But you can open the menu by
     pressing R or opening it from the upper bar. At the bottom you can see the categories
     of the buildings. Right now there are Conveyors, Labellign Stations, Racks, Splitters

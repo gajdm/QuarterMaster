@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 6_Item Bar
   m_EditorClassIdentifier: 
   header: Item Bar
+  visual: {fileID: 21300000, guid: fab99d433a35a114aa8c3fe5d3083d82, type: 3}
   mainText: This menu located and the left bottom of the screen shows you what the
     player is currently holding. If you hold an item it will tell you the address,
     icon and the code of the order. If you hold a crate, it will show you the amount

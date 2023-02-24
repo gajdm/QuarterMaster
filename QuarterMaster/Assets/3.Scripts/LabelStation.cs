@@ -14,6 +14,8 @@ public class LabelStation : MonoBehaviour
     [SerializeField] private bool emptySpawnLocation;
     [SerializeField] private Transform spawnTransfrom;
 
+    
+
     public void GetNewCrate(Crate crate)
     {
         if (currentCrate == null)

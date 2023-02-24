@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Cat_LabelingStation
   m_EditorClassIdentifier: 
   categoryName: Labeling Station
-  categoryIcon: {fileID: 21300000, guid: 6a3ce82f0be8e4340a55df317bd03358, type: 3}
+  categoryIcon: {fileID: -7351670569970653872, guid: ac33ba7221b21a946b632f6449a0b882, type: 3}

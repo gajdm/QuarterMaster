@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: 11_Labelling Station
   m_EditorClassIdentifier: 
   header: Labelling Station
+  visual: {fileID: 21300000, guid: fab99d433a35a114aa8c3fe5d3083d82, type: 3}
   mainText: Labelling station takes in the crate and spawns labelled items. You can
     build more labelling stations later.
