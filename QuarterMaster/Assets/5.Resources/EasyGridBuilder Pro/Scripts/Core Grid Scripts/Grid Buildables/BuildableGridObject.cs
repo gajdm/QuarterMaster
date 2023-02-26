@@ -2,7 +2,6 @@
 using SoulGames.Utilities;
 using UnityEngine;
 using UnityEngine.UI;
-using SoulGames.Utilities;
 
 namespace SoulGames.EasyGridBuilderPro
 {

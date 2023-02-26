@@ -125,7 +125,7 @@ public class Interactible : MonoBehaviour
                 OpenTab(uiName);
                 break;
             case InteractibleType.Rack:
-                rack = GetComponent<Rack>();
+                rack = GetComponentInParent<Rack>();
                 OpenTab(uiName);
                 break;
             case InteractibleType.Label:

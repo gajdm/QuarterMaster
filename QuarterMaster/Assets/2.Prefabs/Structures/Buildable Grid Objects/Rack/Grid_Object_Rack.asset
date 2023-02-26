@@ -34,4 +34,4 @@ MonoBehaviour:
   holdToPlace: 0
   placeAndDeselect: 0
   enableBuildCondition: 0
-  buildConditionSO: {fileID: 0}
+  buildConditionSO: {fileID: 11400000, guid: 43b60eb690ef2224c803f70662ad15a5, type: 2}

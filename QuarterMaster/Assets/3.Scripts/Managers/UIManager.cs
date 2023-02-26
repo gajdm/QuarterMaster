@@ -15,6 +15,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private CanvasGroup tooltipRight;
 
     [SerializeField] private Button[] bagButtons;
+    [SerializeField] private Rack currentRack;
     [SerializeField] private Bag[] bags;
     [SerializeField] private Color bagColor;
     [SerializeField] private GameObject player;
@@ -60,12 +61,17 @@ public class UIManager : MonoBehaviour
     }
     public void UpdateRackUI(Rack rack)
     {
+        currentRack = rack;
         string[] bagNames = rack.GetBagNames(); 
         for (int i = 0; i < bagNames.Length; i++)
         {
             bagButtons[i].gameObject.GetComponentInChildren<Text>().text = bagNames[i];
             bagButtons[i].GetComponent<Image>().color = bagColor; 
         }
+    }
+    public void ContactRack(int bagNumber)
+    {
+        currentRack.CheckItem(bagNumber);
     }
     public void BagCheck(Button button)
     {

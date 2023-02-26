@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,8 +21,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Sprite itemIcon;
     [SerializeField] private GameObject cratePrefab;
     [SerializeField] private ImportPortal importPortal;
-
     [SerializeField] private List<GameObject> items;
+
+    //Economy
+    [SerializeField] private int goldCurrent;
+    [SerializeField] private int goldStarting;
+    [SerializeField] private Text goldText;
 
 
     //FUNCTIONS
@@ -36,6 +41,10 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+    public void Start()
+    {
+        UpdateGoldText();
     }
     public void Update()
     {
@@ -84,5 +93,16 @@ public class GameManager : MonoBehaviour
     {
         Application.Quit(); 
     }
+    //ECONOMY FUNCTIONS
+    public int GetGoldCurrent()
+    { return goldCurrent; }
+    public void PayGold(int price)
+    {goldCurrent -= price; 
+        UpdateGoldText(); }
+    public void ReceiveGold(int amount)
+    {goldCurrent += amount;
+        UpdateGoldText();}
+    public void UpdateGoldText()
+    { goldText.text = goldCurrent.ToString(); } 
 
 }
