@@ -9,11 +9,8 @@ public class ItemInteraction : MonoBehaviour
 
     [SerializeField] private Transform pickUpArea;
     [SerializeField] private Transform putDownArea;
-    [SerializeField] private Text debug;
-    [SerializeField] private Text debug2;
 
     [SerializeField] private bool isHolding;
-    [SerializeField] private bool isInRange;
 
     [SerializeField] private GameObject currentItem;
     [SerializeField] private AudioSource audioSource;

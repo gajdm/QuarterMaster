@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4321065894720770947}
   - component: {fileID: 1843091107238719894}
   - component: {fileID: 5767448804950049072}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Rack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 648313178918615117}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -100}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5931778453721014073}
@@ -226,7 +226,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4847609382658823050}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 306021227091113685}
@@ -246,8 +246,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   hasHighligth: 0
-  uiName: RackUI
   animator: {fileID: 0}
+  uiName: RackUI
   isInRange: 0
   mouseOver: 0
   colliding: 0
@@ -259,7 +259,6 @@ MonoBehaviour:
   tooltipQ: 0
   qString: 
   rack: {fileID: 0}
-  mouse: {fileID: 0}
 --- !u!61 &684671177517080979
 BoxCollider2D:
   m_ObjectHideFlags: 0

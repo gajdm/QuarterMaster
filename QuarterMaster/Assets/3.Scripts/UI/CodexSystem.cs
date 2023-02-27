@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class CodexSystem : MonoBehaviour
 {
+    public List<Button> buttonList;
     public List<Codex> codexList;
     public Codex currentCodex;
     public Codex nextCodex;
@@ -19,6 +20,11 @@ public class CodexSystem : MonoBehaviour
     public Text previousCodexText;
     private void Start()
     {
+        for (int i = 0; i < buttonList.Count; i++)
+        {
+            Text textOfButton = buttonList[i].GetComponentInChildren<Text>();
+            textOfButton.text = codexList[i].GetHeader();
+        }
         ButtonPress(true);
     }
     public void UpdateUI()

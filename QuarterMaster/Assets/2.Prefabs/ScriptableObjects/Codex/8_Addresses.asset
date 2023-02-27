@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cc06b4b56b663a4a82b2e8e8a173f1c, type: 3}
+  m_Name: 8_Addresses
+  m_EditorClassIdentifier: 
+  header: Addresses
+  visual: {fileID: 0}
+  mainText: "Each item, bag and rack has a number that is unique. These numbers are
+    used to create a code. \nCode is a number of an order. Each order has a unique
+    number.\nThe first two symbols are the number of the rack.\nThe other two symbols
+    are the number of the rack.\nThe last three numbers are the numbers of the order.\nAn
+    example of a code: 4103112 . 41 is an address of the rack. 03 is the address
+    of the bag. 112 is the number of the order. Meaning that this item is supposed
+    to be sorted inside rack 41, in the third bag."

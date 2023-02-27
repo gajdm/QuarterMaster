@@ -11,10 +11,13 @@ public class Interactible : MonoBehaviour
         Tab, Item, Rack, Crate, Bag, Map, Label, Export
     }
     [SerializeField] private InteractibleType type;
+    [Header("Highlight Options")]
     [SerializeField] private bool hasHighligth;
-    [SerializeField] private string uiName;
     [SerializeField] private Animator animator;
 
+    [SerializeField] private string uiName;
+
+    [Header("System debug")]
     [SerializeField] private bool isInRange;
     [SerializeField] private bool mouseOver;
     [SerializeField] private bool colliding;
@@ -22,8 +25,6 @@ public class Interactible : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private ItemInteraction playerBrain;
     [SerializeField] private Transform itemPlacement;
-
-
     //Tooltip variables
     [Header("Tooltips")]
 
@@ -34,8 +35,6 @@ public class Interactible : MonoBehaviour
     [SerializeField] private string qString;
     //Rack variables
     [SerializeField] private Rack rack;
-    //Mouse variables
-    public Texture2D mouse;
 
     //FUNCTIONS
     //UPDATES
@@ -45,29 +44,26 @@ public class Interactible : MonoBehaviour
     }
     public void FixedUpdate()
     {
-        if ((Input.GetKey(KeyCode.Mouse0) && mouseOver) || (colliding && Input.GetKey(KeyCode.Space)))
+        if ((isInRange||colliding) && mouseOver)
         {
-            Act(player);
+            if(Input.GetKey(KeyCode.Mouse0))
+            {
+                Act(player);
+            }
         }
     }
     //MOUSE
     public void OnMouseEnter()
     {
         mouseOver = true;
-        //if (isInRange)
-        //{
-
-        //    if (uiManager == null) uiManager = FindObjectOfType<UIManager>();
-        //    uiManager.OpenTooltips(tooltipE,eString,tooltipQ,qString);
-        //    if (tooltipE || tooltipQ) uiManager.OpenTooltips(tooltipE, eString, tooltipQ, qString);
-        //    if (playerBrain == null) playerBrain = FindObjectOfType<ItemInteraction>();
-        //}
     }
     public void OnMouseExit()
     {
         mouseOver = false;
-        //if (uiManager == null) uiManager = FindObjectOfType<UIManager>();
-        //uiManager.CloseTooltips(true,false);
+    }
+    public void OnMouseOver()
+    {
+        mouseOver = true ;
     }
 
     //TRIGGERS
