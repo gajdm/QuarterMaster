@@ -33,5 +33,5 @@ MonoBehaviour:
   gridImageNotPlaceableColor: {r: 1, g: 0, b: 0, a: 1}
   holdToPlace: 0
   placeAndDeselect: 0
-  enableBuildCondition: 0
+  enableBuildCondition: 1
   buildConditionSO: {fileID: 11400000, guid: 43b60eb690ef2224c803f70662ad15a5, type: 2}

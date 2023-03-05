@@ -31,6 +31,8 @@ public class UIManager : MonoBehaviour
                 break;
             case "RackUI":
                 canvasGroup= rackUi;
+                Debug.Log("Called an action");
+                rackUi.gameObject.GetComponent<Animator>().SetTrigger("Action");
                 break;
             default:
                 Debug.Log("Wrong UI name");

@@ -14,8 +14,11 @@ public class IconUI : MonoBehaviour
     [SerializeField] private Sprite emptyIcon;
     [SerializeField] private Sprite bagIcon;
 
+    [SerializeField] private Animator animator;
+
     public void UpdateUI(GameObject GO)
     {
+        animator.SetBool("IsUp",true);
         if (GO.GetComponent<Crate>() != null)
         {
             Crate crate = (Crate)GO.GetComponent<Crate>();
@@ -40,6 +43,7 @@ public class IconUI : MonoBehaviour
     }
     public void ClearUI()
     {
+        animator.SetBool("IsUp", false);
         address.text = emptyAddress;
         code.text = emptyCode;
         icon.sprite = emptyIcon;

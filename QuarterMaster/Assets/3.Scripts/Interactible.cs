@@ -42,15 +42,19 @@ public class Interactible : MonoBehaviour
     {
         playerBrain = FindObjectOfType<ItemInteraction>();
     }
-    public void FixedUpdate()
+    public void Update()
     {
-        if ((isInRange||colliding) && mouseOver)
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            if(Input.GetKey(KeyCode.Mouse0))
+            if ((isInRange || colliding) && mouseOver)
             {
                 Act(player);
             }
         }
+    }
+    public void FixedUpdate()
+    {
+        
     }
     //MOUSE
     public void OnMouseEnter()

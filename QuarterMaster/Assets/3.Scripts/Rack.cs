@@ -14,7 +14,7 @@ public class Rack : MonoBehaviour
     [SerializeField] private Transform spawn;
 
     [SerializeField] private bool canBuy;
-    [SerializeField] private bool canBuild;
+    [SerializeField] private bool isBuilt;
 
     //Managers
     [SerializeField] private BuyerManager buyerManager;
@@ -23,73 +23,71 @@ public class Rack : MonoBehaviour
     //FUNCTIONS
     public void OnEnable()
     {
-        Debug.Log("OnEnable");
-        //MultiGridBuildConditionManager.OnBuildConditionCheckBuildableGridObject += CheckBuildConditionBuildableGridObject;
-        //MultiGridBuildConditionManager.OnBuildConditionCompleteBuildableGridObject += CompleteBuildConditionBuildableGridObject;
+        MultiGridBuildConditionManager.OnBuildConditionCheckBuildableGridObject += CheckBuildConditionBuildableGridObject;
+        MultiGridBuildConditionManager.OnBuildConditionCompleteBuildableGridObject += CompleteBuildConditionBuildableGridObject;
+        
 
-        buyerManager =FindObjectOfType<BuyerManager>();
+        buyerManager = FindObjectOfType<BuyerManager>();
         playerBrain = FindObjectOfType<ItemInteraction>();
-        player=playerBrain.gameObject;
-        uiManager=FindObjectOfType<UIManager>();
-
+        player = playerBrain.gameObject;
+        uiManager = FindObjectOfType<UIManager>();
         gameManager = FindObjectOfType<GameManager>();
-        gameManager.PayGold(50);
-        canBuild = false;
-        StartCoroutine(ResetCanBuild());
-        Debug.Log("Added Rack to buyer manager");
-        buyerManager.RackPlaced(this);
     }
     public void OnDisable()
     {
-        Debug.Log("OnDisable");
-        //MultiGridBuildConditionManager.OnBuildConditionCheckBuildableGridObject -= CheckBuildConditionBuildableGridObject;
-        //MultiGridBuildConditionManager.OnBuildConditionCompleteBuildableGridObject -= CompleteBuildConditionBuildableGridObject;
+        MultiGridBuildConditionManager.OnBuildConditionCheckBuildableGridObject -= CheckBuildConditionBuildableGridObject;
+        MultiGridBuildConditionManager.OnBuildConditionCompleteBuildableGridObject -= CompleteBuildConditionBuildableGridObject;
     }
 
     //Conditions
-    //private void CheckBuildConditionBuildableGridObject(BuildableGridObjectTypeSO buildableGridObjectTypeSO)
-    //{
-    //    gameManager = FindObjectOfType<GameManager>();
-    //    foreach (BuildableGridObjectTypeSO item in MultiGridBuildConditionManager.BuildableGridObjectTypeSOList)
-    //    {
-    //        if (item == buildableGridObjectTypeSO && item.enableBuildCondition)
-    //        {
-    //            //You can simply replace this if statement with your own conditions
-    //            if (buildableGridObjectTypeSO.buildConditionSO.goldAmount <= gameManager.GetGoldCurrent())
-    //            //And you can leave rest of the code from here as it is
-    //            {
-    //                MultiGridBuildConditionManager.BuidConditionResponseBuildableGridObject = true;
-    //                return;
-    //            }
-    //            else
-    //            {
-    //                MultiGridBuildConditionManager.BuidConditionResponseBuildableGridObject = false;
-    //                return;
-    //            }
-    //        }
-    //    }
-    //    MultiGridBuildConditionManager.BuidConditionResponseBuildableGridObject = false;
-    //    return;
-    //}
-    //private void CompleteBuildConditionBuildableGridObject(BuildableGridObjectTypeSO buildableGridObjectTypeSO)
-    //{
-    //    foreach (BuildableGridObjectTypeSO item in MultiGridBuildConditionManager.BuildableGridObjectTypeSOList)
-    //    {
-    //        if (item == buildableGridObjectTypeSO && item.enableBuildCondition)
-    //        {
-    //            //You can simply replace this if statement with your own conditions
-    //            if (buildableGridObjectTypeSO.buildConditionSO.payGoldOnBuild)
-    //            {
-    //                gameManager.PayGold(buildableGridObjectTypeSO.buildConditionSO.goldAmount);
-    //                canBuild = false;
-    //                StartCoroutine(ResetCanBuild());
-    //                Debug.Log("Added Rack to buyer manager");
-    //                buyerManager.RackPlaced(this);
-    //            }
-    //            //And you can leave rest of the code from here as it is
-    //        }
-    //    }
-    //}
+    private void CheckBuildConditionBuildableGridObject(BuildableGridObjectTypeSO buildableGridObjectTypeSO)
+    {
+        gameManager = FindObjectOfType<GameManager>();
+        foreach (BuildableGridObjectTypeSO item in MultiGridBuildConditionManager.BuildableGridObjectTypeSOList)
+        {
+            if (item == buildableGridObjectTypeSO && item.enableBuildCondition)
+            {
+                //You can simply replace this if statement with your own conditions
+                if (buildableGridObjectTypeSO.buildConditionSO.goldAmount <= gameManager.GetGoldCurrent())
+                //And you can leave rest of the code from here as it is
+                {
+                    MultiGridBuildConditionManager.BuidConditionResponseBuildableGridObject = true;
+                    return;
+                }
+                else
+                {
+                    MultiGridBuildConditionManager.BuidConditionResponseBuildableGridObject = false;
+                    return;
+                }
+            }
+        }
+        MultiGridBuildConditionManager.BuidConditionResponseBuildableGridObject = false;
+        return;
+    }
+    private void CompleteBuildConditionBuildableGridObject(BuildableGridObjectTypeSO buildableGridObjectTypeSO)
+    {
+        foreach (BuildableGridObjectTypeSO item in MultiGridBuildConditionManager.BuildableGridObjectTypeSOList)
+        {
+            if (item == buildableGridObjectTypeSO && item.enableBuildCondition)
+            {
+                //You can simply replace this if statement with your own conditions
+                if (buildableGridObjectTypeSO.buildConditionSO.payGoldOnBuild)
+                {
+                    if (this.gameObject.name == "Rack(Clone)")
+                    { isBuilt = true; }
+                    else if (!isBuilt)
+                    {
+                        isBuilt = true;
+                        FindObjectOfType<LogsSystem>().AddLog("Added new rack !!");
+                        gameManager.PayGold(buildableGridObjectTypeSO.buildConditionSO.goldAmount);
+                        Debug.Log("Added Rack to buyer manager");
+                        buyerManager.RackPlaced(this);
+                    }
+                }
+                //And you can leave rest of the code from here as it is
+            }
+        }
+    }
     //Functions
     public void AssignBags()
     {
@@ -123,11 +121,5 @@ public class Rack : MonoBehaviour
         }
         else
         { return; }
-    }
-    //PLACING
-    public IEnumerator ResetCanBuild()
-    {
-        yield return new WaitForSeconds(5);
-        canBuild = true;
     }
 }
