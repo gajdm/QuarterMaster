@@ -14,6 +14,8 @@ public class ItemInteraction : MonoBehaviour
 
     [SerializeField] private GameObject currentItem;
     [SerializeField] private AudioSource audioSource;
+
+    [SerializeField] private GameObject tooltip;
     //ANIMATION
     [SerializeField] private Animator animator;
     //UPDATE
@@ -38,6 +40,9 @@ public class ItemInteraction : MonoBehaviour
             animator.SetBool("Carry", true);
             audioSource.Play();
             uiManager.UpdateItemBar(item);
+            tooltip.SetActive(true);
+
+            item.GetComponent<BoxCollider2D>().enabled = false;
             item.transform.parent = this.transform;
             item.transform.position = pickUpArea.transform.position;
             currentItem = item;
@@ -52,6 +57,9 @@ public class ItemInteraction : MonoBehaviour
         audioSource.Play();
         animator.SetBool("Carry", false);
         uiManager.ClearItemBar();
+        tooltip.SetActive(false);
+
+        currentItem.GetComponent<BoxCollider2D>().enabled = true;
         currentItem.transform.position = putDownArea.transform.position;
         currentItem.transform.parent = null;
         currentItem = null;

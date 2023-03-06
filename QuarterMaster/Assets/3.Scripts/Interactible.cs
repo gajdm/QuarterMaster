@@ -14,6 +14,7 @@ public class Interactible : MonoBehaviour
     [Header("Highlight Options")]
     [SerializeField] private bool hasHighligth;
     [SerializeField] private Animator animator;
+    [SerializeField] private GameObject tooltip;
 
     [SerializeField] private string uiName;
 
@@ -25,14 +26,6 @@ public class Interactible : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private ItemInteraction playerBrain;
     [SerializeField] private Transform itemPlacement;
-    //Tooltip variables
-    [Header("Tooltips")]
-
-    [SerializeField] private bool tooltipE;
-    [SerializeField] private string eString;
-
-    [SerializeField] private bool tooltipQ;
-    [SerializeField] private string qString;
     //Rack variables
     [SerializeField] private Rack rack;
 
@@ -51,10 +44,6 @@ public class Interactible : MonoBehaviour
                 Act(player);
             }
         }
-    }
-    public void FixedUpdate()
-    {
-        
     }
     //MOUSE
     public void OnMouseEnter()
@@ -79,7 +68,9 @@ public class Interactible : MonoBehaviour
             player = collision.gameObject;
             isInRange = true;
             if(hasHighligth)
-            { animator.SetBool("On", true); }
+            { animator.SetBool("On", true);
+                tooltip.SetActive(true);
+            }
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -88,7 +79,9 @@ public class Interactible : MonoBehaviour
         {
             isInRange = false;
             if (hasHighligth)
-            { animator.SetBool("On", false); }
+            { animator.SetBool("On", false);
+                tooltip.SetActive(false);
+            }
         }
     }
     public void OnCollisionEnter2D(Collision2D collision)
@@ -115,7 +108,9 @@ public class Interactible : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
         uiManager = FindObjectOfType<UIManager>();
         if(hasHighligth)
-        { animator = GetComponentInChildren<Animator>(); }
+        {   animator = GetComponentInChildren<Animator>();
+            tooltip.SetActive(false);
+        }
     }
     public void Act(GameObject player)
     {
