@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ItemInteraction : MonoBehaviour
 {
+    [SerializeField] private bool canInteract;
     [SerializeField] private UIManager uiManager;
 
     [SerializeField] private Transform pickUpArea;
@@ -22,7 +23,7 @@ public class ItemInteraction : MonoBehaviour
 
     public void Update()
     {
-        if (isHolding)
+        if (isHolding && canInteract)
         {
             if (Input.GetKeyDown(KeyCode.Mouse1))//Right mouse button
             {
@@ -34,7 +35,7 @@ public class ItemInteraction : MonoBehaviour
     //TRIGGER
     public void PickUp(GameObject item)
     {
-        if (!isHolding)
+        if (!isHolding && canInteract)
         {
             animator.SetTrigger("PickUp");
             animator.SetBool("Carry", true);
@@ -75,4 +76,6 @@ public class ItemInteraction : MonoBehaviour
             animator.SetBool("Carry", false);
         } 
     }
+    public void SetCanInteract(bool value)
+    {canInteract=value;}
 }

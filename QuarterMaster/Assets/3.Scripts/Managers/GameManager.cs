@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
 
     //Build
     [SerializeField] private bool buildBool;
+    [SerializeField] private ItemInteraction playerBrain;
+    [SerializeField] private PlayerMovement playerMovement;
 
 
     //FUNCTIONS
@@ -107,18 +109,25 @@ public class GameManager : MonoBehaviour
         UpdateGoldText();}
     public void UpdateGoldText()
     { goldText.text = goldCurrent.ToString(); } 
+
+    //Build Mode
+
     public void ToggleBuildMode()
     {
         if(buildBool)
         {
             buildBool = false;
 
+            playerBrain.SetCanInteract(true);
+            playerMovement.SetCanMove(true);
 
         }
         else
         {
             buildBool = true;
 
+            playerBrain.SetCanInteract(false);
+            playerMovement.SetCanMove(false);
 
         }
     }
