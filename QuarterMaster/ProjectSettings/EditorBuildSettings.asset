@@ -15,6 +15,6 @@ EditorBuildSettings:
     path: Assets/1.Scenes/LivingQuarters.unity
     guid: 3c0cad86a7a4b2b48b2ccb140e6bfa57
   - enabled: 1
-    path: Assets/1.Scenes/_VerticalSlice.unity
+    path: Assets/1.Scenes/_Bellow.unity
     guid: 5d28ef01962027e4fa34d47163bc348b
   m_configObjects: {}

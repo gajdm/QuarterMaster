@@ -54,15 +54,7 @@ MonoBehaviour:
     m_Id: 29f9c6e2-ab3f-483c-976a-5692a7022c3c
     m_Processors: 
     m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 114b32b9-5c98-4850-8d1c-f714200756e8
-      m_Path: <Keyboard>/r
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Build Mode Activation Key
-      m_Flags: 0
+    m_SingletonActionBindings: []
     m_Flags: 0
   buildablePlacementKey:
     m_Name: Buildable Placement Key

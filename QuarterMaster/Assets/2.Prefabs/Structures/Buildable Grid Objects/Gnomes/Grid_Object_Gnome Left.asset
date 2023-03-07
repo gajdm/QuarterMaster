@@ -18,7 +18,7 @@ MonoBehaviour:
     arrow.
   objectToolTipDescription: Picks up an item from the red square and places it on
     the green arrow.
-  objectIcon: {fileID: 5274640126937246341, guid: 89c33ce179673fe46a6e6218bcae48f7, type: 3}
+  objectIcon: {fileID: 21300000, guid: dcf35b87b44ec8741806fbae9b4812a7, type: 3}
   objectPrefab:
   - {fileID: 6940107126719575741, guid: 5ae90d0f9b47d0941ac32a31f7354cb6, type: 3}
   ghostPrefab: {fileID: 6940107126719575741, guid: 5ae90d0f9b47d0941ac32a31f7354cb6, type: 3}

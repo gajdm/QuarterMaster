@@ -28,6 +28,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int goldStarting;
     [SerializeField] private Text goldText;
 
+    //Build
+    [SerializeField] private bool buildBool;
+
 
     //FUNCTIONS
     public void Awake()
@@ -104,5 +107,20 @@ public class GameManager : MonoBehaviour
         UpdateGoldText();}
     public void UpdateGoldText()
     { goldText.text = goldCurrent.ToString(); } 
+    public void ToggleBuildMode()
+    {
+        if(buildBool)
+        {
+            buildBool = false;
+
+
+        }
+        else
+        {
+            buildBool = true;
+
+
+        }
+    }
 
 }

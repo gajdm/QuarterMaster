@@ -16,7 +16,7 @@ MonoBehaviour:
   buildableCategorySO: {fileID: 11400000, guid: 989c7cac0c4b10740876b4c62381c543, type: 2}
   objectDescription: 
   objectToolTipDescription: 
-  objectIcon: {fileID: 21300000, guid: bd66dc7bb039b754d84ec592c8c8a8dd, type: 3}
+  objectIcon: {fileID: 21300000, guid: d525d130e816c7e4683a2a7682ecd187, type: 3}
   objectPrefab:
   - {fileID: 306021227091113685, guid: 4983a1fb91c9794469edd10000940d72, type: 3}
   ghostPrefab: {fileID: 306021227091113685, guid: 4983a1fb91c9794469edd10000940d72, type: 3}
