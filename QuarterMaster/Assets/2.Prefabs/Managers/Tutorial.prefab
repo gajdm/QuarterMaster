@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3226806039490540495
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3226806039490540489}
+  - component: {fileID: 3226806039490540488}
+  m_Layer: 0
+  m_Name: Tutorial
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3226806039490540489
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3226806039490540495}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 556.0252, y: 649.8615, z: -16.91183}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3226806039490540488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3226806039490540495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6a15ccf0d26d4a449126048da1d0457, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  optionsSO:
+    dismissOnClick: 1
+    canvasSortOrder: 0
+    color: {r: 0, g: 0, b: 0, a: 0.78431374}
+    padding:
+      top: 0
+      right: 0
+      left: 0
+      bottom: 0
+    fadeDuration: 0.25
+    frameSprite: {fileID: 0}
+    frameType: 0
+  bodyText: {fileID: 0}
+  level: 0
+  tutorialMenu: {fileID: 0}
+  tutorialString: '*Yawn* ... Well met ! I am the previous owner of this caravan,
+    John. I used an enchanting spell and I have created a giant secret chamber underneath
+    the caravan. I can show you if you''d like. To progress press anywhere on the
+    screen.
+
+    Press to continue.'
+  pauseButton: {fileID: 0}
+  pauseString: "In the upper right you can see the pause button. In case you get
+    tired you can always exit through that. \nPress to continue."
+  player: {fileID: 0}
+  playerString: "So this is the new quartermaster that will be taking care of the
+    army huh? Well you are something else, I'll tell you that. Alright, in case you
+    forgot how your legs work I'll remind you. \nUse W,A,S,D to move around.\nPress
+    to continue."
+  ladders: {fileID: 0}
+  laddersString: "Alright, you got it. Now let's head downstairs so I can show you
+    around my shop. Head left to the ladders and we may speak then. \nPress to continue."
+  whatever: {fileID: 0}
+  whateverString: 
+  hasSeenLadders: 0

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65d2d645654a6df41b437ed3f8e35368, type: 3}
   m_Name: Grid_Object_Rack
   m_EditorClassIdentifier: 
-  objectName: Rack
+  objectName: Rack / 50g
   buildableCategorySO: {fileID: 11400000, guid: 989c7cac0c4b10740876b4c62381c543, type: 2}
   objectDescription: 
   objectToolTipDescription: 
