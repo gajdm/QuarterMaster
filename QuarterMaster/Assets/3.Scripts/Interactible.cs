@@ -13,6 +13,7 @@ public class Interactible : MonoBehaviour
     [SerializeField] private InteractibleType type;
     [Header("Highlight Options")]
     [SerializeField] private bool hasHighligth;
+    [SerializeField] private bool hasTooltip;
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject tooltip;
 
@@ -53,10 +54,13 @@ public class Interactible : MonoBehaviour
     public void OnMouseEnter()
     {
         mouseOver = true;
+        if(hasTooltip) tooltip.SetActive(true);
+
     }
     public void OnMouseExit()
     {
         mouseOver = false;
+        if (hasTooltip) tooltip.SetActive(false);
     }
     public void OnMouseOver()
     {
@@ -72,9 +76,7 @@ public class Interactible : MonoBehaviour
             player = collision.gameObject;
             isInRange = true;
             if(hasHighligth)
-            { animator.SetBool("On", true);
-                tooltip.SetActive(true);
-            }
+            { animator.SetBool("On", true);}
         }
     }
     private void OnTriggerExit2D(Collider2D collision)

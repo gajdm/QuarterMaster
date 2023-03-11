@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    public AudioManager audioManager;
     [SerializeField] private CanvasGroup manuUi;
     [SerializeField] private CanvasGroup buyerUi;
     [SerializeField] private CanvasGroup rackUi;
@@ -63,6 +64,7 @@ public class UIManager : MonoBehaviour
     }
     public void UpdateRackUI(Rack rack)
     {
+        audioManager.PlaySound("UISlide");
         currentRack = rack;
         string[] bagNames = rack.GetBagNames(); 
         for (int i = 0; i < bagNames.Length; i++)

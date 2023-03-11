@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ManufacturerManager manuManager;
     [SerializeField] private UIManager uiManager;
     [SerializeField] private LogsSystem logsSystem;
+    [SerializeField] private AudioManager audioManager;
 
     //Items
     [SerializeField] private int itemNumber;
@@ -102,13 +103,19 @@ public class GameManager : MonoBehaviour
     public int GetGoldCurrent()
     { return goldCurrent; }
     public void PayGold(int price)
-    {goldCurrent -= price; 
-        UpdateGoldText(); }
+    {
+        goldCurrent -= price; 
+        UpdateGoldText(); 
+    }
     public void ReceiveGold(int amount)
-    {goldCurrent += amount;
-        UpdateGoldText();}
+    {
+        goldCurrent += amount;
+        UpdateGoldText();
+    }
     public void UpdateGoldText()
-    { goldText.text = goldCurrent.ToString(); } 
+    { 
+        goldText.text = goldCurrent.ToString(); 
+    } 
 
     //Build Mode
 

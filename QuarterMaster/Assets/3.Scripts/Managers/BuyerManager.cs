@@ -8,7 +8,8 @@ public class BuyerManager : MonoBehaviour
     // The brain of the order and sorting system
 
     //VARIABLES
-    
+
+    public AudioManager audioManager;
     GameManager gameManager;
     public GameObject player;
     //Timer variables
@@ -42,8 +43,6 @@ public class BuyerManager : MonoBehaviour
     //Code variables
     [SerializeField] private int code;
     [SerializeField] private LogsSystem log;
-    //
-    [SerializeField] private AudioSource audioSource;
 
     //FUNCTIONS
     public void FixedUpdate()
@@ -99,7 +98,7 @@ public class BuyerManager : MonoBehaviour
             if (order.GetCode() == code)
             {
                 log.AddLog("Order number "+code+" finished. You received ??? gold");
-                audioSource.Play();
+                audioManager.PlaySound("OrderCompleted");
                 orderList.Remove(order);
             }
         }
@@ -112,10 +111,11 @@ public class BuyerManager : MonoBehaviour
             {
                 order.AddItem();
                 log.AddLog("Item " + item.GetAddress() + " has been added to the rack!");
-                audioSource.Play();
+                audioManager.PlaySound("BagIn");
                 if (order.GetDone())
                 {
                     SpawnBag(spawn, order.GetCode());
+                    audioManager.PlaySound("BagFull");
                 }
             }
         }

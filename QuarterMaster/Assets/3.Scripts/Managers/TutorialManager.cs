@@ -21,7 +21,8 @@ public class TutorialManager : MonoBehaviour
         Bellow
     }
     public Levels level;
-
+    public AudioManager audioManager;
+    public string soundName;
     //Bool Checks
     [Header("Bool Checks")]
     [SerializeField] private bool hasSeenLadders;
@@ -137,12 +138,14 @@ public class TutorialManager : MonoBehaviour
     //Living Quarters
     private void ShowPauseTutorial()
     {
+        audioManager.PlaySound(soundName);
         HighlightUI.defaultOptions.dismissAction = ShowPlayerTutorial;
         HighlightUI.ShowForUI(pauseButton);
         bodyText.text = pauseString;
     }
     private void ShowPlayerTutorial()
     {
+        audioManager.PlaySound(soundName);
         HighlightUI.defaultOptions.dismissAction = ShowLaddersTutorial;
 
         ChangePadding(75, 75, 100, 100);
@@ -154,6 +157,7 @@ public class TutorialManager : MonoBehaviour
     {
         if (!hasSeenLadders)
         {
+            audioManager.PlaySound(soundName);
             ChangePadding(0,0,0,0);
 
             hasSeenLadders = true;
@@ -162,6 +166,7 @@ public class TutorialManager : MonoBehaviour
         }
         else
         {
+            audioManager.PlaySound(soundName);
             tutorialMenu.gameObject.SetActive(false);
             ladders.gameObject.SetActive(false);
             HighlightUI.Dismiss();
@@ -173,10 +178,12 @@ public class TutorialManager : MonoBehaviour
     {
         if(!hasPickedUpBox)
         {
+            audioManager.PlaySound(soundName);
             HighlightUI.defaultOptions.dismissAction = ShowItemBar;
         }
         else
         {
+            audioManager.PlaySound(soundName);
             ChangePadding(0,200, 600, 0);
 
             HighlightUI.defaultOptions.dismissAction = ShowTooltip;
@@ -186,6 +193,7 @@ public class TutorialManager : MonoBehaviour
     }
     private void ShowTooltip()
     {
+        audioManager.PlaySound(soundName);
         ChangePadding (50, 50, 50, 50);
 
         HighlightUI.defaultOptions.dismissAction= ShowBellowArrow;
@@ -196,6 +204,7 @@ public class TutorialManager : MonoBehaviour
     {
         if(!hasSeenBellowArrow)
         {
+            audioManager.PlaySound(soundName);
             hasSeenBellowArrow = true;
             HighlightUI.ShowForUI(bellowArrow);
             bellowArrow.gameObject.SetActive(true);
@@ -203,6 +212,7 @@ public class TutorialManager : MonoBehaviour
         }
         else
         {
+            audioManager.PlaySound(soundName);
             tutorialMenu.gameObject.SetActive(false);
             bellowArrow.gameObject.SetActive(false);
             HighlightUI.Dismiss();
@@ -212,90 +222,105 @@ public class TutorialManager : MonoBehaviour
     //Bellow
     private void ShowLogsButton()
     {
+        audioManager.PlaySound(soundName);
         HighlightUI.defaultOptions.dismissAction = ShowImportPortal;
         HighlightUI.ShowForUI(logsBar);
         bodyText.text = logsString;
     }
     private void ShowImportPortal()
     {
+        audioManager.PlaySound(soundName);
         HighlightUI.defaultOptions.dismissAction = ShowExportPortal;
         HighlightUI.ShowFor3DObject(importPortal);
         bodyText.text = importString;
     }
     private void ShowExportPortal()
     {
+        audioManager.PlaySound(soundName);
         HighlightUI.defaultOptions.dismissAction = ShowActionBar;
         HighlightUI.ShowFor3DObject(exportPortal);
         bodyText.text = exportString;
     }
     private void ShowActionBar()
     {
+        audioManager.PlaySound(soundName);
         HighlightUI.defaultOptions.dismissAction = ShowManuButton;
         HighlightUI.ShowForUI(actionBar);
         bodyText.text = actionBarString;
     }
     private void ShowManuButton()
     {
+        audioManager.PlaySound(soundName);
         HighlightUI.defaultOptions.dismissAction = ShowOrderButton;
         HighlightUI.ShowForUI(manuButton);
         bodyText.text = manuButtonString;
     }
     private void ShowOrderButton()
     {
+        audioManager.PlaySound(soundName);
         HighlightUI.defaultOptions.dismissAction = ShowBuildButton;
         HighlightUI.ShowForUI(orderButton);
         bodyText.text = orderButtonString;
     }
     private void ShowBuildButton()
     {
+        audioManager.PlaySound(soundName);
         HighlightUI.defaultOptions.dismissAction = ShowEconomyTutorial;
         HighlightUI.ShowForUI(buildButton);
         bodyText.text = buildButtonString;
     }
     private void ShowEconomyTutorial()
-    { 
+    {
+        audioManager.PlaySound(soundName);
         HighlightUI.defaultOptions.dismissAction = ShowBuildButtonSecondTime;
         HighlightUI.ShowForUI(tutorialMenu);
         bodyText.text = economyString;
     }
     private void ShowBuildButtonSecondTime()
     {
+        audioManager.PlaySound(soundName);
         HighlightUI.defaultOptions.dismissAction = ShowSmallBuildButton;
         HighlightUI.ShowForUI(buildButton);
         bodyText.text = buildButtonSecondString;
     }
     private void ShowSmallBuildButton()
     {
+        audioManager.PlaySound(soundName);
         HighlightUI.defaultOptions.dismissAction = ShowCategories;
         HighlightUI.ShowForUI(smallBuildButton);
         bodyText.text = smallBuildButtonString;
     }
     private void ShowCategories()
     {
+        audioManager.PlaySound(soundName);
         HighlightUI.defaultOptions.dismissAction = ShowBuildings;
         HighlightUI.ShowForUI(categories);
         bodyText.text = categoriesString;
     }
     private void ShowBuildings()
     {
+        audioManager.PlaySound(soundName);
         HighlightUI.defaultOptions.dismissAction = ShowBlockedArea;
         HighlightUI.ShowForUI(buildings);
         bodyText.text = buildingsString;
     }
     private void ShowBlockedArea()
     {
+        audioManager.PlaySound(soundName);
         HighlightUI.defaultOptions.dismissAction = ShowBuildTutorial;
         HighlightUI.ShowFor3DObject(blockedArea);
         bodyText.text = blockedAreaString;
     }
     private void ShowBuildTutorial()
     {
+        audioManager.PlaySound(soundName);
         HighlightUI.defaultOptions.dismissAction = ShowSortingTutorial;
         HighlightUI.ShowForUI(tutorialMenu);
         bodyText.text = buildingSystemString;
     }
     private void ShowSortingTutorial()
     {
+        audioManager.PlaySound(soundName);
         HighlightUI.defaultOptions.dismissAction = ShowCodexButton;
         HighlightUI.ShowForUI(tutorialMenu);
         bodyText.text = sortingHowToString;
@@ -304,6 +329,7 @@ public class TutorialManager : MonoBehaviour
     {
         if(!hasSeenCodexButton)
         {
+            audioManager.PlaySound(soundName);
             hasSeenCodexButton = true;
             HighlightUI.defaultOptions.dismissAction = ShowBellowArrow;
             HighlightUI.ShowForUI(codexButton);
@@ -311,6 +337,7 @@ public class TutorialManager : MonoBehaviour
         }
         else
         {
+            audioManager.PlaySound(soundName);
             tutorialMenu.gameObject.SetActive(false);
             HighlightUI.Dismiss();
         }

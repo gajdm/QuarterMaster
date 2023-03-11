@@ -14,11 +14,12 @@ public class ItemInteraction : MonoBehaviour
     [SerializeField] private bool isHolding;
 
     [SerializeField] private GameObject currentItem;
-    [SerializeField] private AudioSource audioSource;
 
     [SerializeField] private GameObject tooltip;
     //ANIMATION
     [SerializeField] private Animator animator;
+    //Audio
+    [SerializeField] private AudioManager audioManager;
     //UPDATE
 
     public void Update()
@@ -39,7 +40,7 @@ public class ItemInteraction : MonoBehaviour
         {
             animator.SetTrigger("PickUp");
             animator.SetBool("Carry", true);
-            audioSource.Play();
+            audioManager.PlaySound("PickUp");
             uiManager.UpdateItemBar(item);
             tooltip.SetActive(true);
 
@@ -54,7 +55,7 @@ public class ItemInteraction : MonoBehaviour
     }
     public void PutDown()
     {
-        audioSource.Play();
+        audioManager.PlaySound("PutDown");
         animator.SetBool("Carry", false);
         uiManager.ClearItemBar();
         tooltip.SetActive(false);
@@ -73,6 +74,7 @@ public class ItemInteraction : MonoBehaviour
         { 
             uiManager.ClearItemBar();
             animator.SetBool("Carry", false);
+            tooltip.SetActive(false);
         } 
     }
     public void SetCanInteract(bool value)

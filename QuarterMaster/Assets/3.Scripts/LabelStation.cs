@@ -5,6 +5,7 @@ using UnityEditor;
 
 public class LabelStation : MonoBehaviour
 {
+    [SerializeField] private AudioManager audioManager;
     [SerializeField] private List<GameObject> listOfItems;
     [SerializeField] private GameObject itemPrefab;
     [SerializeField] private List<Crate> crateList;
@@ -15,7 +16,10 @@ public class LabelStation : MonoBehaviour
     [SerializeField] private Transform spawnTransfrom;
 
     
-
+    private void OnEnable()
+    {
+        audioManager = FindObjectOfType<AudioManager>();
+    }
     public void GetNewCrate(Crate crate)
     {
         if (currentCrate == null)
@@ -45,6 +49,7 @@ public class LabelStation : MonoBehaviour
     public IEnumerator Unpacking()
     {
         GameObject newGameObj = Instantiate(itemPrefab, spawnTransfrom);
+        audioManager.PlaySound("Label");
 
         Item newItem = newGameObj.GetComponent<Item>();
         Item listItem = listOfItems[0].GetComponent<Item>();

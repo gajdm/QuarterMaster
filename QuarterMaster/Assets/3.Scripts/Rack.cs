@@ -7,6 +7,7 @@ using SoulGames.EasyGridBuilderPro;
 public class Rack : MonoBehaviour
 {
     GameManager gameManager;
+    public AudioManager audioManager;
 
     [SerializeField] private string[] bagNames;
     [SerializeField] private GameObject player;
@@ -32,6 +33,7 @@ public class Rack : MonoBehaviour
         player = playerBrain.gameObject;
         uiManager = FindObjectOfType<UIManager>();
         gameManager = FindObjectOfType<GameManager>();
+        audioManager = FindObjectOfType<AudioManager>();
     }
     public void OnDisable()
     {
@@ -77,6 +79,7 @@ public class Rack : MonoBehaviour
                     { isBuilt = true; }
                     else if (!isBuilt)
                     {
+                        audioManager.PlaySound("Placed");
                         isBuilt = true;
                         FindObjectOfType<LogsSystem>().AddLog("Added new rack !!");
                         gameManager.PayGold(buildableGridObjectTypeSO.buildConditionSO.goldAmount);

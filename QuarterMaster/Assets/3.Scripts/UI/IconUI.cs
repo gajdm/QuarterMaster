@@ -13,6 +13,7 @@ public class IconUI : MonoBehaviour
     [SerializeField] private string emptyCode;
     [SerializeField] private Sprite emptyIcon;
     [SerializeField] private Sprite bagIcon;
+    [SerializeField] private Sprite boxIcon;
 
     [SerializeField] private Animator animator;
 
@@ -39,6 +40,12 @@ public class IconUI : MonoBehaviour
             address.text = "Bag";
             code.text = "Code: " +bag.GetOrder();
             icon.sprite = bagIcon;
+        }
+        if (GO.tag == "Box")
+        {
+            address.text = "Debris";
+            code.text = "Just a bunch of rubbish";
+            icon.sprite = boxIcon;
         }
     }
     public void ClearUI()
