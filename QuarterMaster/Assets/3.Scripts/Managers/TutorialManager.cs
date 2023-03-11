@@ -6,9 +6,12 @@ using UnityEngine.UI;
 using NoSuchStudio.UI.Highlight;
 using NoSuchStudio.UI.Highlight.Extentions;
 
+using SoulGames.EasyGridBuilderPro;
+
 public class TutorialManager : MonoBehaviour
 {
     [Header("Initial Set-up")]
+
     public Options optionsSO;
     public Text bodyText;
     public enum Levels
@@ -19,36 +22,82 @@ public class TutorialManager : MonoBehaviour
     }
     public Levels level;
 
+    //Bool Checks
+    [Header("Bool Checks")]
+    [SerializeField] private bool hasSeenLadders;
+    [SerializeField] private bool hasSeenBellowArrow;
+    [SerializeField] private bool hasPickedUpBox;
+    [SerializeField] private bool hasSeenBuildButtonTutorial;
+    [SerializeField] private bool hasSeenCodexButton;
+
     //Elements
     [Header("Living Quarters")]
 
     [SerializeField] private RectTransform tutorialMenu;
-    [TextArea(5,10)]
-    [SerializeField] private string tutorialString;
-
-    [SerializeField] private RectTransform pauseButton;
-    [TextArea(5, 10)]
-    [SerializeField] private string pauseString;
-
-    [SerializeField] private Transform player;
-    [TextArea(5, 10)]
-    [SerializeField] private string playerString;
-
     [SerializeField] private RectTransform ladders;
-    [TextArea(5, 10)]
-    [SerializeField] private string laddersString;
+    [SerializeField] private RectTransform pauseButton;
+    [SerializeField] private Transform player;
+
+    [TextArea(5, 10)][SerializeField] private string tutorialString;
+    [TextArea(5, 10)][SerializeField] private string pauseString;
+    [TextArea(5, 10)][SerializeField] private string playerString;
+    [TextArea(5, 10)][SerializeField] private string laddersString;
 
     [Header("Shop Quarters")]
 
-    [SerializeField] private RectTransform whatever;
-    [TextArea(5, 10)]
-    [SerializeField] private string whateverString;
+    [SerializeField] private Transform box;
+    [SerializeField] private RectTransform itemBar;
+    [SerializeField] private Transform tooltip;
+    [SerializeField] private RectTransform bellowArrow;
+
+    [TextArea(5, 10)][SerializeField] private string boxString;
+    [TextArea(5, 10)][SerializeField] private string itemBarString;
+    [TextArea(5, 10)][SerializeField] private string tooltipString;
+    [TextArea(5, 10)][SerializeField] private string bellowArrowString;
 
     [Header("The Bellow")]
 
-    //Bool Checks
-    [Header("Bool Checks")]
-    [SerializeField] private bool hasSeenLadders;
+    //tutorial for sorting
+    [SerializeField] private RectTransform logsBar;
+    [SerializeField] private Transform importPortal;
+    [SerializeField] private Transform exportPortal;
+    [SerializeField] private RectTransform actionBar;
+    [SerializeField] private RectTransform manuButton;
+    [SerializeField] private RectTransform orderButton;
+    [SerializeField] private RectTransform buildButton;
+    //tutorial for economy
+    //build button again
+    [SerializeField] private RectTransform smallBuildButton;
+    [SerializeField] private RectTransform categories;
+    [SerializeField] private RectTransform buildings;
+    [SerializeField] private Transform blockedArea;
+    //tutorial on how to build 
+    //tutorial on how to sort
+    [SerializeField] private RectTransform codexButton;
+
+    //[SerializeField] private BuildConditionSO conditionRack;
+    //[SerializeField] private BuildConditionSO conditionLabelling;
+    //[SerializeField] private BuildConditionSO conditionGnome;
+    //[SerializeField] private BuildConditionSO conditionConveyor;
+
+    [TextArea(5, 10)][SerializeField] private string sortingSystemString;
+    [TextArea(5, 10)][SerializeField] private string importString;
+    [TextArea(5, 10)][SerializeField] private string exportString;
+    [TextArea(5, 10)][SerializeField] private string actionBarString;
+    [TextArea(5, 10)][SerializeField] private string manuButtonString;
+    [TextArea(5, 10)][SerializeField] private string orderButtonString;
+    [TextArea(5, 10)][SerializeField] private string buildButtonString;
+    [TextArea(5, 10)][SerializeField] private string economyString;
+    [TextArea(5, 10)][SerializeField] private string buildButtonSecondString;
+    [TextArea(5, 10)][SerializeField] private string smallBuildButtonString;
+    [TextArea(5, 10)][SerializeField] private string categoriesString;
+    [TextArea(5, 10)][SerializeField] private string buildingsString;
+    [TextArea(5, 10)][SerializeField] private string blockedAreaString;
+    [TextArea(5, 10)][SerializeField] private string buildingString;
+    [TextArea(5, 10)][SerializeField] private string sortingHowToString;
+    [TextArea(5, 10)][SerializeField] private string codexButtonString;
+
+    
 
     //First Action Happens Here
     private void Start()
@@ -63,14 +112,16 @@ public class TutorialManager : MonoBehaviour
                 break;
 
             case Levels.Shop:
-                HighlightUI.defaultOptions.dismissAction = ShowWhatever;
-                HighlightUI.ShowForUI(whatever);
-                bodyText.text = whateverString;
+                HighlightUI.defaultOptions.dismissAction = ShowItemBar;
+                HighlightUI.ShowFor3DObject(box);
+                bodyText.text = boxString;
                 break;
 
             case Levels.Bellow:
-
-            break;
+                HighlightUI.defaultOptions.dismissAction = ShowLogsButton;
+                HighlightUI.ShowForUI(tutorialMenu);
+                bodyText.text = sortingSystemString;
+                break;
 
             default:
             break;
@@ -81,7 +132,7 @@ public class TutorialManager : MonoBehaviour
         tutorialMenu.SetParent(higlights.transform);
     }
 
-    //Actions 
+    //ACTIONS
 
     //Living Quarters
     private void ShowPauseTutorial()
@@ -113,15 +164,163 @@ public class TutorialManager : MonoBehaviour
         {
             tutorialMenu.gameObject.SetActive(false);
             ladders.gameObject.SetActive(false);
+            HighlightUI.Dismiss();
         }
     }
 
     //Shop Quarters
-    private void ShowWhatever()
+    private void ShowItemBar()
     {
-        HighlightUI.defaultOptions.dismissAction = ShowPlayerTutorial;
-        HighlightUI.ShowForUI(pauseButton);
-        bodyText.text = pauseString;
+        if(!hasPickedUpBox)
+        {
+            HighlightUI.defaultOptions.dismissAction = ShowItemBar;
+        }
+        else
+        {
+            ChangePadding(0,200, 600, 0);
+
+            HighlightUI.defaultOptions.dismissAction = ShowTooltip;
+            HighlightUI.ShowForUI(itemBar);
+            bodyText.text = itemBarString;
+        }
+    }
+    private void ShowTooltip()
+    {
+        ChangePadding (50, 50, 50, 50);
+
+        HighlightUI.defaultOptions.dismissAction= ShowBellowArrow;
+        HighlightUI.ShowFor3DObject(tooltip);
+        bodyText.text = tooltipString;
+    }
+    private void ShowBellowArrow()
+    {
+        if(!hasSeenBellowArrow)
+        {
+            hasSeenBellowArrow = true;
+            HighlightUI.ShowForUI(bellowArrow);
+            bellowArrow.gameObject.SetActive(true);
+            bodyText.text = bellowArrowString;
+        }
+        else
+        {
+            tutorialMenu.gameObject.SetActive(false);
+            bellowArrow.gameObject.SetActive(false);
+            HighlightUI.Dismiss();
+        }
+    }
+
+    //Bellow
+    private void ShowLogsButton()
+    {
+        HighlightUI.defaultOptions.dismissAction = ShowImportPortal;
+        HighlightUI.ShowFor3DObject(tooltip);
+        HighlightUI.ShowForUI(codexButton);
+        bodyText.text = tooltipString;
+    }
+    private void ShowImportPortal()
+    {
+        HighlightUI.defaultOptions.dismissAction = ShowExportPortal;
+        HighlightUI.ShowFor3DObject(tooltip);
+        HighlightUI.ShowForUI(codexButton);
+        bodyText.text = tooltipString;
+    }
+    private void ShowExportPortal()
+    {
+        HighlightUI.defaultOptions.dismissAction = ShowActionBar;
+        HighlightUI.ShowFor3DObject(tooltip);
+        HighlightUI.ShowForUI(codexButton);
+        bodyText.text = tooltipString;
+    }
+    private void ShowActionBar()
+    {
+        HighlightUI.defaultOptions.dismissAction = ShowManuButton;
+        HighlightUI.ShowFor3DObject(tooltip);
+        HighlightUI.ShowForUI(codexButton);
+        bodyText.text = tooltipString;
+    }
+    private void ShowManuButton()
+    {
+        HighlightUI.defaultOptions.dismissAction = ShowOrderButton;
+        HighlightUI.ShowFor3DObject(tooltip);
+        HighlightUI.ShowForUI(codexButton);
+        bodyText.text = tooltipString;
+    }
+    private void ShowOrderButton()
+    {
+        HighlightUI.defaultOptions.dismissAction = ShowBuildButton;
+        HighlightUI.ShowFor3DObject(tooltip);
+        HighlightUI.ShowForUI(codexButton);
+        bodyText.text = tooltipString;
+    }
+    private void ShowBuildButton()
+    {
+        if(!hasSeenBuildButtonTutorial)
+        {
+            hasSeenBuildButtonTutorial = true;
+            HighlightUI.defaultOptions.dismissAction = ShowEconomyTutorial;
+        }
+        else
+        {HighlightUI.defaultOptions.dismissAction = ShowSmallBuildButton; }
+        HighlightUI.ShowFor3DObject(tooltip);
+        HighlightUI.ShowForUI(codexButton);
+        bodyText.text = tooltipString;
+
+    }
+    private void ShowEconomyTutorial()
+    {
+        HighlightUI.defaultOptions.dismissAction = ShowBuildButton;
+        HighlightUI.ShowFor3DObject(tooltip);
+        HighlightUI.ShowForUI(codexButton);
+        bodyText.text = tooltipString;
+    }
+    private void ShowSmallBuildButton()
+    {
+        HighlightUI.defaultOptions.dismissAction = ShowCategories;
+        HighlightUI.ShowFor3DObject(tooltip);
+        HighlightUI.ShowForUI(codexButton);
+        bodyText.text = tooltipString;
+    }
+    private void ShowCategories()
+    {
+        HighlightUI.defaultOptions.dismissAction = ShowBuildings;
+        HighlightUI.ShowFor3DObject(tooltip);
+        HighlightUI.ShowForUI(codexButton);
+        bodyText.text = tooltipString;
+    }
+    private void ShowBuildings()
+    {
+        HighlightUI.defaultOptions.dismissAction = ShowBlockedArea;
+        HighlightUI.ShowFor3DObject(tooltip);
+        HighlightUI.ShowForUI(codexButton);
+        bodyText.text = tooltipString;
+    }
+    private void ShowBlockedArea()
+    {
+        HighlightUI.defaultOptions.dismissAction = ShowBuildTutorial;
+        HighlightUI.ShowFor3DObject(tooltip);
+        HighlightUI.ShowForUI(codexButton);
+        bodyText.text = tooltipString;
+    }
+    private void ShowBuildTutorial()
+    {
+        HighlightUI.defaultOptions.dismissAction = ShowSortingTutorial;
+        HighlightUI.ShowFor3DObject(tooltip);
+        HighlightUI.ShowForUI(codexButton);
+        bodyText.text = tooltipString;
+    }
+    private void ShowSortingTutorial()
+    {
+        HighlightUI.defaultOptions.dismissAction = ShowCodexButton;
+        HighlightUI.ShowFor3DObject(tooltip);
+        HighlightUI.ShowForUI(codexButton);
+        bodyText.text = tooltipString;
+    }
+    private void ShowCodexButton()
+    {
+        HighlightUI.defaultOptions.dismissAction = ShowBellowArrow;
+        HighlightUI.ShowFor3DObject(tooltip);
+        HighlightUI.ShowForUI(codexButton);
+        bodyText.text = tooltipString;
     }
 
     //Utilitty Functions
@@ -133,9 +332,8 @@ public class TutorialManager : MonoBehaviour
         HighlightUI.defaultOptions.padding.top = top;
         HighlightUI.defaultOptions.padding.bottom = bottom;
     }
-
-    
-
-
-
+    public void SetPickedUp(bool value)
+    {
+        hasPickedUpBox = value;
+    }
 }

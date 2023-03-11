@@ -8,7 +8,7 @@ public class Interactible : MonoBehaviour
     UIManager uiManager;
     [SerializeField] private enum InteractibleType
     {
-        Tab, Item, Rack, Crate, Bag, Map, Label, Export
+        Tab, Item, Rack, Crate, Bag, Map, Label, Export, Box
     }
     [SerializeField] private InteractibleType type;
     [Header("Highlight Options")]
@@ -26,8 +26,12 @@ public class Interactible : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private ItemInteraction playerBrain;
     [SerializeField] private Transform itemPlacement;
+
     //Rack variables
     [SerializeField] private Rack rack;
+
+    [Header("Tutorial")]
+    [SerializeField] private bool isTutItem;
 
     //FUNCTIONS
     //UPDATES
@@ -137,6 +141,10 @@ public class Interactible : MonoBehaviour
                 break;
             case InteractibleType.Export:
                 CheckForItem("Bag", player);
+                break;
+            case InteractibleType.Box:
+                playerBrain.PickUp(this.gameObject);
+                if (isTutItem) FindObjectOfType<TutorialManager>().SetPickedUp(true);
                 break;
             default:
                 break;

@@ -48,7 +48,6 @@ public class ItemInteraction : MonoBehaviour
             item.transform.position = pickUpArea.transform.position;
             currentItem = item;
             isHolding = true;
-            uiManager.OpenTooltips(false, "", true, "To drop");
         }
         else
             return;
