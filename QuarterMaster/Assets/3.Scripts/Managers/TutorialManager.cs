@@ -27,7 +27,6 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private bool hasSeenLadders;
     [SerializeField] private bool hasSeenBellowArrow;
     [SerializeField] private bool hasPickedUpBox;
-    [SerializeField] private bool hasSeenBuildButtonTutorial;
     [SerializeField] private bool hasSeenCodexButton;
 
     //Elements
@@ -81,6 +80,7 @@ public class TutorialManager : MonoBehaviour
     //[SerializeField] private BuildConditionSO conditionConveyor;
 
     [TextArea(5, 10)][SerializeField] private string sortingSystemString;
+    [TextArea(5, 10)][SerializeField] private string logsString;
     [TextArea(5, 10)][SerializeField] private string importString;
     [TextArea(5, 10)][SerializeField] private string exportString;
     [TextArea(5, 10)][SerializeField] private string actionBarString;
@@ -93,7 +93,7 @@ public class TutorialManager : MonoBehaviour
     [TextArea(5, 10)][SerializeField] private string categoriesString;
     [TextArea(5, 10)][SerializeField] private string buildingsString;
     [TextArea(5, 10)][SerializeField] private string blockedAreaString;
-    [TextArea(5, 10)][SerializeField] private string buildingString;
+    [TextArea(5, 10)][SerializeField] private string buildingSystemString;
     [TextArea(5, 10)][SerializeField] private string sortingHowToString;
     [TextArea(5, 10)][SerializeField] private string codexButtonString;
 
@@ -213,114 +213,107 @@ public class TutorialManager : MonoBehaviour
     private void ShowLogsButton()
     {
         HighlightUI.defaultOptions.dismissAction = ShowImportPortal;
-        HighlightUI.ShowFor3DObject(tooltip);
-        HighlightUI.ShowForUI(codexButton);
-        bodyText.text = tooltipString;
+        HighlightUI.ShowForUI(logsBar);
+        bodyText.text = logsString;
     }
     private void ShowImportPortal()
     {
         HighlightUI.defaultOptions.dismissAction = ShowExportPortal;
-        HighlightUI.ShowFor3DObject(tooltip);
-        HighlightUI.ShowForUI(codexButton);
-        bodyText.text = tooltipString;
+        HighlightUI.ShowFor3DObject(importPortal);
+        bodyText.text = importString;
     }
     private void ShowExportPortal()
     {
         HighlightUI.defaultOptions.dismissAction = ShowActionBar;
-        HighlightUI.ShowFor3DObject(tooltip);
-        HighlightUI.ShowForUI(codexButton);
-        bodyText.text = tooltipString;
+        HighlightUI.ShowFor3DObject(exportPortal);
+        bodyText.text = exportString;
     }
     private void ShowActionBar()
     {
         HighlightUI.defaultOptions.dismissAction = ShowManuButton;
-        HighlightUI.ShowFor3DObject(tooltip);
-        HighlightUI.ShowForUI(codexButton);
-        bodyText.text = tooltipString;
+        HighlightUI.ShowForUI(actionBar);
+        bodyText.text = actionBarString;
     }
     private void ShowManuButton()
     {
         HighlightUI.defaultOptions.dismissAction = ShowOrderButton;
-        HighlightUI.ShowFor3DObject(tooltip);
-        HighlightUI.ShowForUI(codexButton);
-        bodyText.text = tooltipString;
+        HighlightUI.ShowForUI(manuButton);
+        bodyText.text = manuButtonString;
     }
     private void ShowOrderButton()
     {
         HighlightUI.defaultOptions.dismissAction = ShowBuildButton;
-        HighlightUI.ShowFor3DObject(tooltip);
-        HighlightUI.ShowForUI(codexButton);
-        bodyText.text = tooltipString;
+        HighlightUI.ShowForUI(orderButton);
+        bodyText.text = orderButtonString;
     }
     private void ShowBuildButton()
     {
-        if(!hasSeenBuildButtonTutorial)
-        {
-            hasSeenBuildButtonTutorial = true;
-            HighlightUI.defaultOptions.dismissAction = ShowEconomyTutorial;
-        }
-        else
-        {HighlightUI.defaultOptions.dismissAction = ShowSmallBuildButton; }
-        HighlightUI.ShowFor3DObject(tooltip);
-        HighlightUI.ShowForUI(codexButton);
-        bodyText.text = tooltipString;
-
+        HighlightUI.defaultOptions.dismissAction = ShowEconomyTutorial;
+        HighlightUI.ShowForUI(buildButton);
+        bodyText.text = buildButtonString;
     }
     private void ShowEconomyTutorial()
+    { 
+        HighlightUI.defaultOptions.dismissAction = ShowBuildButtonSecondTime;
+        HighlightUI.ShowForUI(tutorialMenu);
+        bodyText.text = economyString;
+    }
+    private void ShowBuildButtonSecondTime()
     {
-        HighlightUI.defaultOptions.dismissAction = ShowBuildButton;
-        HighlightUI.ShowFor3DObject(tooltip);
-        HighlightUI.ShowForUI(codexButton);
-        bodyText.text = tooltipString;
+        HighlightUI.defaultOptions.dismissAction = ShowSmallBuildButton;
+        HighlightUI.ShowForUI(buildButton);
+        bodyText.text = buildButtonSecondString;
     }
     private void ShowSmallBuildButton()
     {
         HighlightUI.defaultOptions.dismissAction = ShowCategories;
-        HighlightUI.ShowFor3DObject(tooltip);
-        HighlightUI.ShowForUI(codexButton);
-        bodyText.text = tooltipString;
+        HighlightUI.ShowForUI(smallBuildButton);
+        bodyText.text = smallBuildButtonString;
     }
     private void ShowCategories()
     {
         HighlightUI.defaultOptions.dismissAction = ShowBuildings;
-        HighlightUI.ShowFor3DObject(tooltip);
-        HighlightUI.ShowForUI(codexButton);
-        bodyText.text = tooltipString;
+        HighlightUI.ShowForUI(categories);
+        bodyText.text = categoriesString;
     }
     private void ShowBuildings()
     {
         HighlightUI.defaultOptions.dismissAction = ShowBlockedArea;
-        HighlightUI.ShowFor3DObject(tooltip);
-        HighlightUI.ShowForUI(codexButton);
-        bodyText.text = tooltipString;
+        HighlightUI.ShowForUI(buildings);
+        bodyText.text = buildingsString;
     }
     private void ShowBlockedArea()
     {
         HighlightUI.defaultOptions.dismissAction = ShowBuildTutorial;
-        HighlightUI.ShowFor3DObject(tooltip);
-        HighlightUI.ShowForUI(codexButton);
-        bodyText.text = tooltipString;
+        HighlightUI.ShowFor3DObject(blockedArea);
+        bodyText.text = blockedAreaString;
     }
     private void ShowBuildTutorial()
     {
         HighlightUI.defaultOptions.dismissAction = ShowSortingTutorial;
-        HighlightUI.ShowFor3DObject(tooltip);
-        HighlightUI.ShowForUI(codexButton);
-        bodyText.text = tooltipString;
+        HighlightUI.ShowForUI(tutorialMenu);
+        bodyText.text = buildingSystemString;
     }
     private void ShowSortingTutorial()
     {
         HighlightUI.defaultOptions.dismissAction = ShowCodexButton;
-        HighlightUI.ShowFor3DObject(tooltip);
-        HighlightUI.ShowForUI(codexButton);
-        bodyText.text = tooltipString;
+        HighlightUI.ShowForUI(tutorialMenu);
+        bodyText.text = sortingHowToString;
     }
     private void ShowCodexButton()
     {
-        HighlightUI.defaultOptions.dismissAction = ShowBellowArrow;
-        HighlightUI.ShowFor3DObject(tooltip);
-        HighlightUI.ShowForUI(codexButton);
-        bodyText.text = tooltipString;
+        if(!hasSeenCodexButton)
+        {
+            hasSeenCodexButton = true;
+            HighlightUI.defaultOptions.dismissAction = ShowBellowArrow;
+            HighlightUI.ShowForUI(codexButton);
+            bodyText.text = codexButtonString;
+        }
+        else
+        {
+            tutorialMenu.gameObject.SetActive(false);
+            HighlightUI.Dismiss();
+        }
     }
 
     //Utilitty Functions
