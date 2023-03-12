@@ -21,6 +21,8 @@ public class PlayerMovement : MonoBehaviour
             float directionX = Input.GetAxisRaw("Horizontal");
             float directionY = Input.GetAxisRaw("Vertical");
 
+
+
             animator.SetFloat("Horizontal", directionX);
             animator.SetFloat("Vertical", directionY);
 

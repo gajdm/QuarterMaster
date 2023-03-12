@@ -228,9 +228,9 @@ MonoBehaviour:
   putDownArea: {fileID: 2999376300173463521}
   isHolding: 0
   currentItem: {fileID: 0}
-  audioSource: {fileID: 0}
   tooltip: {fileID: 3110591969616455868}
   animator: {fileID: 1313099020189129387}
+  audioManager: {fileID: 0}
 --- !u!1 &2999376300173463526
 GameObject:
   m_ObjectHideFlags: 0
