@@ -5,13 +5,17 @@ using UnityEngine.UI;
 
 public class ManuCard : MonoBehaviour
 {
+    [SerializeField] private GameManager gameManager;
     [SerializeField] private ManuUI manuUI;
     [SerializeField] private CanvasGroup canvasGroup;
+    
 
     [SerializeField] private Image icon;
     [SerializeField] private Text level;
     [SerializeField] private Text description;
     [SerializeField] private Text title;
+    [SerializeField] private Text upgradeText;
+    [SerializeField] private int upgradeCost;
 
     [SerializeField] private Image[] icons1; // Array of images for each row of items
     [SerializeField] private Image[] icons2;
@@ -48,6 +52,8 @@ public class ManuCard : MonoBehaviour
         level.text = manufacturer.manuLevel.ToString();
         title.text = manufacturer.manuName;
         description.text = manufacturer.description;
+
+        upgradeText.text = upgradeCost.ToString();
 
         foreach (Image image in levels)
         {
@@ -104,13 +110,15 @@ public class ManuCard : MonoBehaviour
     }
     public void Upgrade()
     {
-        if(canUpgrade)
+        if (gameManager.GetGoldCurrent() >= upgradeCost)
         {
+            gameManager.PayGold(upgradeCost);
             manuHelper.manuLevel++;
             Open(manuHelper);
             manuUI.UpdateUI();
-            levels[manuHelper.manuLevel-1].color = canColor;
+            levels[manuHelper.manuLevel - 1].color = canColor;
         }
+        
     }
 
 }

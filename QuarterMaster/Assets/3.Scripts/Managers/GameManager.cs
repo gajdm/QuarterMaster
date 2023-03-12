@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Manager { get; private set; }
 
     //Managers
-
+    [Space][Header("MANAGERS")]
     [SerializeField] private BuyerManager buyerManager;
     [SerializeField] private ManufacturerManager manuManager;
     [SerializeField] private UIManager uiManager;
@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private AudioManager audioManager;
 
     //Items
+    [Space][Header("ITEMS")]
     [SerializeField] private int itemNumber;
     [SerializeField] private string itemAddress;
     [SerializeField] private string itemCode;
@@ -25,11 +26,18 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<GameObject> items;
 
     //Economy
+
+    [Space][Header("ECONOMY")]
     [SerializeField] private int goldCurrent;
     [SerializeField] private int goldStarting;
-    [SerializeField] private Text goldText;
+    [SerializeField] private Text itemGoldText;
+    [SerializeField] private Text manuGoldText;
+
+    [SerializeField] private Text spentText;
+    [SerializeField] private Animator animator;
 
     //Build
+    [Space][Header("BUILD")]
     [SerializeField] private bool buildBool;
     [SerializeField] private ItemInteraction playerBrain;
     [SerializeField] private PlayerMovement playerMovement;
@@ -50,7 +58,7 @@ public class GameManager : MonoBehaviour
     }
     public void Start()
     {
-        UpdateGoldText();
+        UpdateGoldTexts();
     }
     public void Update()
     {
@@ -99,22 +107,42 @@ public class GameManager : MonoBehaviour
     {
         Application.Quit(); 
     }
+
     //ECONOMY FUNCTIONS
     public int GetGoldCurrent()
-    { return goldCurrent; }
+    { 
+        return goldCurrent; 
+    }
+    public void CheckManuButton(int price, ManuButton manButton, Manufacturer man)
+    {
+        if(price <= goldCurrent)
+        {
+            PayGold(price);
+            manButton.SetAvailable(true);
+            manButton.UpdateButton(man);
+        }
+    }
     public void PayGold(int price)
     {
+        audioManager.PlaySound("Pay");
+        spentText.text = price.ToString();
+        animator.SetTrigger("Pay");
+
         goldCurrent -= price; 
-        UpdateGoldText(); 
+        UpdateGoldTexts(); 
     }
     public void ReceiveGold(int amount)
     {
+        spentText.text = amount.ToString();
+        animator.SetTrigger("Get");
+
         goldCurrent += amount;
-        UpdateGoldText();
+        UpdateGoldTexts();
     }
-    public void UpdateGoldText()
+    public void UpdateGoldTexts()
     { 
-        goldText.text = goldCurrent.ToString(); 
+        itemGoldText.text = goldCurrent.ToString(); 
+        manuGoldText.text = goldCurrent.ToString();
     } 
 
     //Build Mode

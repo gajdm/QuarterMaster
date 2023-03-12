@@ -6,39 +6,43 @@ using UnityEngine.UI;
 public class ManuButton : MonoBehaviour
 {
     public ManuUI manuUI;
+    public GameManager gameManager;
     [SerializeField] private int buttonNumber;
     [SerializeField] private Text nameText;
     [SerializeField] private Text levelText;
     [SerializeField] private Text priceText;
     [SerializeField] private Image image;
 
+    [SerializeField] private Manufacturer man;
     [SerializeField] private bool available;
-    [SerializeField] private bool canBuy; // will be deleted once we have an economy system.
 
     public void UpdateButton(Manufacturer manufacturer)
     {
-        if (available)
+        if(!available)
         {
+            man = manufacturer;
             nameText.text = manufacturer.manuName;
             levelText.text = manufacturer.manuLevel.ToString();
             priceText.text = manufacturer.priceToBuy.ToString();
             image.sprite = manufacturer.manuIcon;
         }
-    }
-    public void BuyManu()
-    {
-        available = true;
+        else
+        {
+            priceText.text = "";
+        }
     }
     public void Check()
     {
-        if (canBuy && available)
+        if (!available)
         {
-            manuUI.OpenManuCard(buttonNumber);        
+            gameManager.CheckManuButton(int.Parse(priceText.text),this, man);
         }
-        else if(canBuy)
+        else
         {
-
+            manuUI.OpenManuCard(buttonNumber);
         }
-
+    }
+    public void SetAvailable(bool value)
+    { available = value;
     }
 }
