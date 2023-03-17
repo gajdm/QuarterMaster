@@ -13029,6 +13029,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f395f9a68f01b64ab1f312075c13b2d, type: 3}
+--- !u!225 &853609799 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 8714911928548457682, guid: 1f395f9a68f01b64ab1f312075c13b2d,
+    type: 3}
+  m_PrefabInstance: {fileID: 853609798}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1136902167
 GameObject:
   m_ObjectHideFlags: 0
@@ -13150,6 +13156,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PauseButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 9034455448457285630, guid: 9c61b76a68c70b84385b830d77d6baf5,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 853609799}
+    - target: {fileID: 9034455448457285630, guid: 9c61b76a68c70b84385b830d77d6baf5,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 853609799}
+    - target: {fileID: 9034455448457285630, guid: 9c61b76a68c70b84385b830d77d6baf5,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 853609799}
+    - target: {fileID: 9034455448457285630, guid: 9c61b76a68c70b84385b830d77d6baf5,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_alpha
+      objectReference: {fileID: 0}
+    - target: {fileID: 9034455448457285630, guid: 9c61b76a68c70b84385b830d77d6baf5,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: set_blocksRaycasts
+      objectReference: {fileID: 0}
+    - target: {fileID: 9034455448457285630, guid: 9c61b76a68c70b84385b830d77d6baf5,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: set_interactable
       objectReference: {fileID: 0}
     - target: {fileID: 9034455448457285631, guid: 9c61b76a68c70b84385b830d77d6baf5,
         type: 3}
@@ -14600,7 +14636,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   optionsSO:
-    dismissOnClick: 1
+    dismissOnClick: 0
     canvasSortOrder: 0
     color: {r: 0, g: 0, b: 0, a: 0.78431374}
     padding:

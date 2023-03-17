@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47a80fc85515ec24492a9b0077132abb, type: 3}
   m_Name: Conveyor Condition
   m_EditorClassIdentifier: 
-  tooltipContent: 
-  goldAmount: 50
+  tooltipContent: 10 Gold
+  goldAmount: 10
   payGoldOnBuild: 1

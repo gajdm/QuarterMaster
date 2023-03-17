@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47a80fc85515ec24492a9b0077132abb, type: 3}
   m_Name: Rack Condition
   m_EditorClassIdentifier: 
-  tooltipContent: 
+  tooltipContent: 50 Gold
   goldAmount: 50
   payGoldOnBuild: 1

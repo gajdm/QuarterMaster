@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5220180565498655981
+--- !u!1 &921791755919611043
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,23 +8,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2503009255676665094}
-  - component: {fileID: 6114793808896511096}
-  - component: {fileID: 1709272363178591924}
+  - component: {fileID: 5150971981096364095}
+  - component: {fileID: 1677725326044264909}
+  - component: {fileID: 1262515741473498559}
   m_Layer: 0
-  m_Name: GnomeIdleLeft1
+  m_Name: GnomeIdleRight1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2503009255676665094
+--- !u!4 &5150971981096364095
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5220180565498655981}
+  m_GameObject: {fileID: 921791755919611043}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 23, y: 15, z: 1}
@@ -32,13 +32,13 @@ Transform:
   m_Father: {fileID: 6940107126719575741}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &6114793808896511096
+--- !u!212 &1677725326044264909
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5220180565498655981}
+  m_GameObject: {fileID: 921791755919611043}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -72,7 +72,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 5274640126937246341, guid: 89c33ce179673fe46a6e6218bcae48f7, type: 3}
+  m_Sprite: {fileID: -6246976000372647518, guid: 89c33ce179673fe46a6e6218bcae48f7,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -83,17 +84,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &1709272363178591924
+--- !u!95 &1262515741473498559
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5220180565498655981}
+  m_GameObject: {fileID: 921791755919611043}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6be0c3918de1d6644b76a5627cde25f4, type: 2}
+  m_Controller: {fileID: 9100000, guid: 177875dc8d7b2464abd4cb315e87a170, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -374,7 +375,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7460063469744009841}
-  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -382,7 +383,7 @@ Transform:
   - {fileID: 5835125838806724485}
   m_Father: {fileID: 6940107126719575741}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!61 &5920857519497475957
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -502,8 +503,9 @@ GameObject:
   - component: {fileID: 6940107126719575741}
   - component: {fileID: 4236382328525228316}
   - component: {fileID: 8462906353524614607}
+  - component: {fileID: -1928782538351780396}
   m_Layer: 0
-  m_Name: Gnome Left
+  m_Name: Gnome_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -520,7 +522,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2503009255676665094}
+  - {fileID: 5150971981096364095}
   - {fileID: 970473086147419972}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -550,10 +552,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 406ed6c1845107a4c8f383446e80927f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildableGridObjectTypeSO: {fileID: 11400000, guid: 167dd3a87030e3442b874703111ef1f3, type: 2}
+  buildableGridObjectTypeSO: {fileID: 11400000, guid: aac33fbce431ec743a9ce867ac46b011,
+    type: 2}
   rotateObjectForXY: 0
   rotateObjectForXZ: 0
   rotateForXY: 1
   objectScale: {x: 10, y: 10, z: 0.2}
   objectCenter: {x: 0, y: 0, z: 0}
   objectCustomPivot: {x: 0, y: 0, z: 0.1}
+--- !u!114 &-1928782538351780396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8222693447405671034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aaf883063e9e1644b4872ca251429bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

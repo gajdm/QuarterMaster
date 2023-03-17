@@ -166,7 +166,7 @@ public class Interactible : MonoBehaviour
                 if(tag == "Crate")
                 {
                     GameObject newGO = player.transform.GetChild(i).gameObject;
-                    this.gameObject.GetComponent<LabelStation>().GetNewCrate(newGO.GetComponent<Crate>());
+                    this.gameObject.GetComponentInParent<LabelStation>().GetNewCrate(newGO.GetComponent<Crate>());
                     newGO.GetComponentInParent<ItemInteraction>().SetIsHolding(false);
                     newGO.transform.parent = itemPlacement;
                     newGO.GetComponent<BoxCollider2D>().enabled = false;

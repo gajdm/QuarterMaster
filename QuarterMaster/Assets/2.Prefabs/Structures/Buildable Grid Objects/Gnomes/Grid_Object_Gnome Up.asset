@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Grid_Object_Gnome Up
   m_EditorClassIdentifier: 
   objectName: Gnome Up
-  buildableCategorySO: {fileID: 11400000, guid: 7e4c89fa49af94044a33510ff7d96527, type: 2}
+  buildableCategorySO: {fileID: 11400000, guid: 7e4c89fa49af94044a33510ff7d96527,
+    type: 2}
   objectDescription: Picks up an item from the red square and places it on the green
     arrow.
   objectToolTipDescription: Picks up an item from the red square and places it on
@@ -21,19 +22,23 @@ MonoBehaviour:
   objectIcon: {fileID: 21300000, guid: 6f7928bc51eab9c46a747251fd7e2baa, type: 3}
   objectPrefab:
   - {fileID: 6940107126719575741, guid: be1a5b0f3c09f9b4080a3b7404bb038b, type: 3}
-  ghostPrefab: {fileID: 6940107126719575741, guid: be1a5b0f3c09f9b4080a3b7404bb038b, type: 3}
-  placeableGhostMaterial: {fileID: 2100000, guid: 281380b3d50e1eb46b869b8c8aa1307c, type: 2}
-  notPlaceableGhostMaterial: {fileID: 2100000, guid: 1fb75a46b45af6e49a32883c3bcb026a, type: 2}
+  ghostPrefab: {fileID: 6940107126719575741, guid: be1a5b0f3c09f9b4080a3b7404bb038b,
+    type: 3}
+  placeableGhostMaterial: {fileID: 2100000, guid: 281380b3d50e1eb46b869b8c8aa1307c,
+    type: 2}
+  notPlaceableGhostMaterial: {fileID: 2100000, guid: 1fb75a46b45af6e49a32883c3bcb026a,
+    type: 2}
   setBuiltObjectLayer: 0
   builtObjectLayer:
     serializedVersion: 2
     m_Bits: 0
   showGridBelowObject: 1
-  objectGridCanvas: {fileID: 7023326040891081457, guid: b008e2f959515844dac4c16b66bf9c2b, type: 3}
+  objectGridCanvas: {fileID: 7023326040891081457, guid: b008e2f959515844dac4c16b66bf9c2b,
+    type: 3}
   gridImageSprite: {fileID: 0}
   gridImagePlaceableColor: {r: 0, g: 0.14609194, b: 1, a: 1}
   gridImageNotPlaceableColor: {r: 1, g: 0, b: 0, a: 1}
   holdToPlace: 0
   placeAndDeselect: 0
-  enableBuildCondition: 0
-  buildConditionSO: {fileID: 0}
+  enableBuildCondition: 1
+  buildConditionSO: {fileID: 11400000, guid: 3c474b4ff81db3843a1024d5e2e9d368, type: 2}
