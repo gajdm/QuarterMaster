@@ -10071,8 +10071,8 @@ CanvasGroup:
   m_GameObject: {fileID: 587279414}
   m_Enabled: 1
   m_Alpha: 1
-  m_Interactable: 0
-  m_BlocksRaycasts: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
 --- !u!114 &587279417
 MonoBehaviour:
@@ -10087,10 +10087,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.21568629, g: 0.30588236, b: 0.2901961, a: 1}
-  m_RaycastTarget: 0
+  m_Color: {r: 0.18039216, g: 0.10196079, b: 0.0627451, a: 1}
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -14562,7 +14562,8 @@ AudioSource:
   m_GameObject: {fileID: 1059573760}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: ede77f850d4e46b4caa29ca00366f51e,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 9503b07f278dca84393ae517a44f1942, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.5
@@ -14682,7 +14683,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1062416920
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17349,6 +17350,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1243247931}
   - component: {fileID: 1243247930}
+  - component: {fileID: 1243247932}
   m_Layer: 0
   m_Name: Tutorial
   m_TagString: Untagged
@@ -17369,7 +17371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   optionsSO:
-    dismissOnClick: 1
+    dismissOnClick: 0
     canvasSortOrder: 0
     color: {r: 0, g: 0, b: 0, a: 0.78431374}
     padding:
@@ -17544,6 +17546,47 @@ Transform:
   m_Father: {fileID: 6069735393617660097}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1243247932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243247929}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3747a373c016d545883f2d1b8bbf984, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textObject: {fileID: 2123197083}
+  objectToHighlight: {fileID: 0}
+  currentItemNumber: 1
+  isUI: 0
+  items:
+  - {fileID: 11400000, guid: 033580d900ee4f947b0ab8c45845eaa3, type: 2}
+  - {fileID: 11400000, guid: 0d47a37a1b394854cab4c315f72baae8, type: 2}
+  - {fileID: 11400000, guid: 0dc601470c477a242b6e26c7a6fd6715, type: 2}
+  rects:
+  - {fileID: 587279415}
+  - {fileID: 587279415}
+  - {fileID: 587279415}
+  objects:
+  - {fileID: 502961011}
+  - {fileID: 502961011}
+  - {fileID: 502961011}
+  currentItem: {fileID: 0}
+  currentOptions:
+    dismissOnClick: 1
+    canvasSortOrder: 0
+    color: {r: 1, g: 1, b: 1, a: 1}
+    padding:
+      top: 50
+      right: 50
+      left: 50
+      bottom: 50
+    fadeDuration: 0.25
+    frameSprite: {fileID: 0}
+    frameType: 0
 --- !u!1001 &1253714454
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17810,7 +17853,8 @@ AudioSource:
   m_GameObject: {fileID: 1263591802}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: ede77f850d4e46b4caa29ca00366f51e,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -17819,7 +17863,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 163
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -49168,7 +49212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9058824, g: 0.57254905, b: 0.2901961, a: 1}
+  m_Color: {r: 0.7960785, g: 0.7843138, b: 0.6666667, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

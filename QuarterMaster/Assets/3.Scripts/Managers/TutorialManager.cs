@@ -130,11 +130,18 @@ public class TutorialManager : MonoBehaviour
         }
         //Assigning the UI to the highlight Canvas so it fades together
         GameObject higlights = GameObject.Find("NoSuchStudio_HighlightCanvas");
+
         tutorialMenu.SetParent(higlights.transform);
     }
 
     //ACTIONS
-
+    public void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            HighlightUI.Dismiss();
+        }
+    }
     //Living Quarters
     private void ShowPauseTutorial()
     {
@@ -355,5 +362,9 @@ public class TutorialManager : MonoBehaviour
     public void SetPickedUp(bool value)
     {
         hasPickedUpBox = value;
+    }
+    public void Dismiss()
+    {
+        HighlightUI.Dismiss(this);
     }
 }

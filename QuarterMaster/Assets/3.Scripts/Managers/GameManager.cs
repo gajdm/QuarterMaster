@@ -60,11 +60,6 @@ public class GameManager : MonoBehaviour
     {
         UpdateGoldTexts();
     }
-    public void Update()
-    {
-        if (Input.GetKeyUp(KeyCode.Escape))
-            Application.Quit();
-    }
     public void NewOrder(string order)
     {
         items.Clear();
