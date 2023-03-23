@@ -23,20 +23,34 @@ public class TutorialManager : MonoBehaviour
     public Levels level;
     public AudioManager audioManager;
     public string soundName;
+    public float speedOfTyping;
+    public AudioSource audioSource;
     //Bool Checks
     [Header("Bool Checks")]
+
+    //Living and Shop quarters
     [SerializeField] private bool hasSeenLadders;
     [SerializeField] private bool hasSeenBellowArrow;
     [SerializeField] private bool hasPickedUpBox;
     [SerializeField] private bool hasSeenCodexButton;
+
+    //Typewriter
+    [SerializeField] private bool typeWriterComplete;
+    [SerializeField] private bool typeWriterSkip;
+
+    //Bellow button checks
+    [SerializeField] private bool seenLogs;
+    [SerializeField] private bool seenAction;
 
     //Elements
     [Header("Living Quarters")]
 
     [SerializeField] private RectTransform tutorialMenu;
     [SerializeField] private RectTransform ladders;
-    [SerializeField] private RectTransform pauseButton;
+    [SerializeField] private RectTransform pauseRect;
+    [SerializeField] private Button pauseButton;
     [SerializeField] private Transform player;
+    [SerializeField] private GameObject invisibleWall;
 
     [TextArea(5, 10)][SerializeField] private string tutorialString;
     [TextArea(5, 10)][SerializeField] private string pauseString;
@@ -49,6 +63,8 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private RectTransform itemBar;
     [SerializeField] private Transform tooltip;
     [SerializeField] private RectTransform bellowArrow;
+
+    [SerializeField] private PlayerMovement playerMovement;
 
     [TextArea(5, 10)][SerializeField] private string boxString;
     [TextArea(5, 10)][SerializeField] private string itemBarString;
@@ -65,7 +81,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private RectTransform manuButton;
     [SerializeField] private RectTransform orderButton;
     [SerializeField] private RectTransform buildButton;
-    //tutorial for economy
+    [SerializeField] private RectTransform money;
     //build button again
     [SerializeField] private RectTransform smallBuildButton;
     [SerializeField] private RectTransform categories;
@@ -74,6 +90,16 @@ public class TutorialManager : MonoBehaviour
     //tutorial on how to build 
     //tutorial on how to sort
     [SerializeField] private RectTransform codexButton;
+    [Space(5)]
+    [SerializeField] private Animator logsAnimator;
+    [SerializeField] private Animator actionAnimator;
+
+    [SerializeField] private Button manuButtonButton;
+    [SerializeField] private Button orderButtonButton;
+    [SerializeField] private Button buildButtonButton;
+    [SerializeField] private Button logsButton;
+    [SerializeField] private Button actionButton;
+
 
     //[SerializeField] private BuildConditionSO conditionRack;
     //[SerializeField] private BuildConditionSO conditionLabelling;
@@ -98,7 +124,7 @@ public class TutorialManager : MonoBehaviour
     [TextArea(5, 10)][SerializeField] private string sortingHowToString;
     [TextArea(5, 10)][SerializeField] private string codexButtonString;
 
-    
+
 
     //First Action Happens Here
     private void Start()
@@ -113,9 +139,8 @@ public class TutorialManager : MonoBehaviour
                 break;
 
             case Levels.Shop:
-                HighlightUI.defaultOptions.dismissAction = ShowItemBar;
-                HighlightUI.ShowFor3DObject(box);
-                bodyText.text = boxString;
+                playerMovement.SetCanMove(false);
+                ShowTheItem();
                 break;
 
             case Levels.Bellow:
@@ -125,21 +150,34 @@ public class TutorialManager : MonoBehaviour
                 break;
 
             default:
-            break;
+                break;
 
         }
-        //Assigning the UI to the highlight Canvas so it fades together
-        GameObject higlights = GameObject.Find("NoSuchStudio_HighlightCanvas");
-
-        tutorialMenu.SetParent(higlights.transform);
+        AssignTutorialMenu();
     }
 
     //ACTIONS
     public void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            HighlightUI.Dismiss();
+            if (typeWriterComplete)
+            {
+                HighlightUI.Dismiss(true);
+            }
+            else
+            {
+                typeWriterSkip = true;
+            }
+
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            TutorialSkip();
+        }
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            Debug.Log(HighlightUI.defaultOptions.dismissAction.Method);
         }
     }
     //Living Quarters
@@ -147,8 +185,10 @@ public class TutorialManager : MonoBehaviour
     {
         audioManager.PlaySound(soundName);
         HighlightUI.defaultOptions.dismissAction = ShowPlayerTutorial;
-        HighlightUI.ShowForUI(pauseButton);
+        HighlightUI.ShowForUI(pauseRect);
         bodyText.text = pauseString;
+        StopAllCoroutines();
+        StartCoroutine(Typewriter(pauseString));
     }
     private void ShowPlayerTutorial()
     {
@@ -158,18 +198,21 @@ public class TutorialManager : MonoBehaviour
         ChangePadding(75, 75, 100, 100);
 
         HighlightUI.ShowFor3DObject(player);
-        bodyText.text = playerString;
+        StopAllCoroutines();
+        StartCoroutine(Typewriter(playerString));
     }
     private void ShowLaddersTutorial()
     {
         if (!hasSeenLadders)
         {
             audioManager.PlaySound(soundName);
-            ChangePadding(0,0,0,0);
+            ChangePadding(0, 0, 0, 0);
 
             hasSeenLadders = true;
             HighlightUI.ShowForUI(ladders);
             bodyText.text = laddersString;
+            StopAllCoroutines();
+            StartCoroutine(Typewriter(laddersString));
         }
         else
         {
@@ -177,48 +220,68 @@ public class TutorialManager : MonoBehaviour
             tutorialMenu.gameObject.SetActive(false);
             ladders.gameObject.SetActive(false);
             HighlightUI.Dismiss();
+            pauseButton.interactable = true;
+            Destroy(invisibleWall);
         }
     }
 
     //Shop Quarters
+    private void ShowTheItem()
+    {
+        HighlightUI.defaultOptions.dismissAction = ShowItemBar;
+        HighlightUI.ShowFor3DObject(box);
+        StopAllCoroutines();
+        StartCoroutine(Typewriter(boxString));
+    }
     private void ShowItemBar()
     {
-        if(!hasPickedUpBox)
+        if (!hasPickedUpBox)
         {
-            audioManager.PlaySound(soundName);
-            HighlightUI.defaultOptions.dismissAction = ShowItemBar;
+            HighlightUI.ShowFor3DObject(box);
+            HighlightUI.defaultOptions.dismissAction = ShowTheItem;
+
+            StopAllCoroutines();
+            StartCoroutine(Typewriter(boxString));
         }
         else
         {
-            audioManager.PlaySound(soundName);
-            ChangePadding(0,200, 600, 0);
+            ChangePadding(0, 200, 400, 0);
 
             HighlightUI.defaultOptions.dismissAction = ShowTooltip;
             HighlightUI.ShowForUI(itemBar);
             bodyText.text = itemBarString;
+
+            StopAllCoroutines();
+            StartCoroutine(Typewriter(itemBarString));
         }
     }
     private void ShowTooltip()
     {
-        audioManager.PlaySound(soundName);
-        ChangePadding (50, 50, 50, 50);
+        ChangePadding(50, 50, 50, 50);
 
-        HighlightUI.defaultOptions.dismissAction= ShowBellowArrow;
+        HighlightUI.defaultOptions.dismissAction = ShowBellowArrow;
         HighlightUI.ShowFor3DObject(tooltip);
-        bodyText.text = tooltipString;
+
+        StopAllCoroutines();
+        StartCoroutine(Typewriter(tooltipString));
     }
     private void ShowBellowArrow()
     {
-        if(!hasSeenBellowArrow)
+        if (!hasSeenBellowArrow)
         {
-            audioManager.PlaySound(soundName);
             hasSeenBellowArrow = true;
-            HighlightUI.ShowForUI(bellowArrow);
-            bellowArrow.gameObject.SetActive(true);
-            bodyText.text = bellowArrowString;
+            if (bellowArrow != null)
+            {
+                HighlightUI.ShowForUI(bellowArrow);
+
+                bellowArrow.gameObject.SetActive(true);
+            }
+            StopAllCoroutines();
+            StartCoroutine(Typewriter(bellowArrowString));
         }
         else
         {
+            playerMovement.SetCanMove(true);
             audioManager.PlaySound(soundName);
             tutorialMenu.gameObject.SetActive(false);
             bellowArrow.gameObject.SetActive(false);
@@ -229,125 +292,188 @@ public class TutorialManager : MonoBehaviour
     //Bellow
     private void ShowLogsButton()
     {
-        audioManager.PlaySound(soundName);
+        logsAnimator.SetTrigger("Action");
         HighlightUI.defaultOptions.dismissAction = ShowImportPortal;
         HighlightUI.ShowForUI(logsBar);
-        bodyText.text = logsString;
+
+        StopAllCoroutines();
+        StartCoroutine(Typewriter(logsString));
     }
     private void ShowImportPortal()
     {
+        logsAnimator.SetTrigger("Action");
+
+        ChangePadding(100, 100, 100, 100);
         audioManager.PlaySound(soundName);
         HighlightUI.defaultOptions.dismissAction = ShowExportPortal;
         HighlightUI.ShowFor3DObject(importPortal);
-        bodyText.text = importString;
+
+        StopAllCoroutines();
+        StartCoroutine(Typewriter(importString));
     }
     private void ShowExportPortal()
     {
-        audioManager.PlaySound(soundName);
         HighlightUI.defaultOptions.dismissAction = ShowActionBar;
         HighlightUI.ShowFor3DObject(exportPortal);
-        bodyText.text = exportString;
+
+        StopAllCoroutines();
+        StartCoroutine(Typewriter(exportString));
     }
     private void ShowActionBar()
     {
-        audioManager.PlaySound(soundName);
+        actionAnimator.SetTrigger("Action");
+        ChangePadding(0, 0, 0, 0);
         HighlightUI.defaultOptions.dismissAction = ShowManuButton;
         HighlightUI.ShowForUI(actionBar);
-        bodyText.text = actionBarString;
+
+        StopAllCoroutines();
+        StartCoroutine(Typewriter(actionBarString));
     }
     private void ShowManuButton()
     {
-        audioManager.PlaySound(soundName);
         HighlightUI.defaultOptions.dismissAction = ShowOrderButton;
         HighlightUI.ShowForUI(manuButton);
-        bodyText.text = manuButtonString;
+
+        StopAllCoroutines();
+        StartCoroutine(Typewriter(manuButtonString));
     }
     private void ShowOrderButton()
     {
-        audioManager.PlaySound(soundName);
-        HighlightUI.defaultOptions.dismissAction = ShowBuildButton;
+        //HighlightUI.defaultOptions.dismissAction = ShowBuildButton;
+        HighlightUI.defaultOptions.dismissAction = Dismiss;
         HighlightUI.ShowForUI(orderButton);
-        bodyText.text = orderButtonString;
+
+        StopAllCoroutines();
+        StartCoroutine(Typewriter(orderButtonString));
     }
     private void ShowBuildButton()
     {
-        audioManager.PlaySound(soundName);
         HighlightUI.defaultOptions.dismissAction = ShowEconomyTutorial;
         HighlightUI.ShowForUI(buildButton);
-        bodyText.text = buildButtonString;
+        StopAllCoroutines();
+        StartCoroutine(Typewriter(buildButtonString));
     }
     private void ShowEconomyTutorial()
     {
-        audioManager.PlaySound(soundName);
         HighlightUI.defaultOptions.dismissAction = ShowBuildButtonSecondTime;
-        HighlightUI.ShowForUI(tutorialMenu);
-        bodyText.text = economyString;
+        HighlightUI.ShowForUI(money);
+        StopAllCoroutines();
+        StartCoroutine(Typewriter(economyString));
     }
     private void ShowBuildButtonSecondTime()
     {
-        audioManager.PlaySound(soundName);
         HighlightUI.defaultOptions.dismissAction = ShowSmallBuildButton;
         HighlightUI.ShowForUI(buildButton);
         bodyText.text = buildButtonSecondString;
+        StopAllCoroutines();
+        StartCoroutine(Typewriter(buildButtonSecondString));
     }
     private void ShowSmallBuildButton()
     {
-        audioManager.PlaySound(soundName);
         HighlightUI.defaultOptions.dismissAction = ShowCategories;
         HighlightUI.ShowForUI(smallBuildButton);
-        bodyText.text = smallBuildButtonString;
+        StopAllCoroutines();
+        StartCoroutine(Typewriter(smallBuildButtonString));
     }
     private void ShowCategories()
     {
-        audioManager.PlaySound(soundName);
         HighlightUI.defaultOptions.dismissAction = ShowBuildings;
         HighlightUI.ShowForUI(categories);
         bodyText.text = categoriesString;
+        StopAllCoroutines();
+        StartCoroutine(Typewriter(categoriesString));
     }
     private void ShowBuildings()
     {
-        audioManager.PlaySound(soundName);
         HighlightUI.defaultOptions.dismissAction = ShowBlockedArea;
         HighlightUI.ShowForUI(buildings);
         bodyText.text = buildingsString;
+        StopAllCoroutines();
+        StartCoroutine(Typewriter(buildingsString));
     }
     private void ShowBlockedArea()
     {
-        audioManager.PlaySound(soundName);
         HighlightUI.defaultOptions.dismissAction = ShowBuildTutorial;
         HighlightUI.ShowFor3DObject(blockedArea);
         bodyText.text = blockedAreaString;
+        StopAllCoroutines();
+        StartCoroutine(Typewriter(blockedAreaString));
     }
     private void ShowBuildTutorial()
     {
-        audioManager.PlaySound(soundName);
         HighlightUI.defaultOptions.dismissAction = ShowSortingTutorial;
         HighlightUI.ShowForUI(tutorialMenu);
         bodyText.text = buildingSystemString;
+        StopAllCoroutines();
+        StartCoroutine(Typewriter(buildingSystemString));
     }
     private void ShowSortingTutorial()
     {
-        audioManager.PlaySound(soundName);
         HighlightUI.defaultOptions.dismissAction = ShowCodexButton;
         HighlightUI.ShowForUI(tutorialMenu);
         bodyText.text = sortingHowToString;
+        StopAllCoroutines();
+        StartCoroutine(Typewriter(sortingHowToString));
+
+        manuButtonButton.interactable = true;
+        orderButtonButton.interactable = true;
+        buildButtonButton.interactable = true;
+        logsButton.interactable = true;
+        actionButton.interactable = true;
     }
     private void ShowCodexButton()
     {
-        if(!hasSeenCodexButton)
+        if (!hasSeenCodexButton)
         {
-            audioManager.PlaySound(soundName);
             hasSeenCodexButton = true;
             HighlightUI.defaultOptions.dismissAction = ShowBellowArrow;
             HighlightUI.ShowForUI(codexButton);
             bodyText.text = codexButtonString;
+            StopAllCoroutines();
+            StartCoroutine(Typewriter(codexButtonString));
         }
         else
         {
-            audioManager.PlaySound(soundName);
+            manuButtonButton.interactable = true;
+            orderButtonButton.interactable = true;
+            buildButtonButton.interactable = true;
+            logsButton.interactable = true;
+            actionButton.interactable = true;
+
             tutorialMenu.gameObject.SetActive(false);
             HighlightUI.Dismiss();
         }
+    }
+
+    //Button Functions
+    //Activated by pressing a button first time
+    public void LogsButtonPress()
+    {
+        if (!seenLogs)
+        {
+            HighlightUI.defaultOptions.dismissAction = Dismiss;
+            HighlightUI.ShowForUI(logsBar);
+            AssignTutorialMenu();
+            StopAllCoroutines();
+            StartCoroutine(Typewriter(logsString));
+            seenLogs = true;
+        }
+        else return;
+
+    }
+    public void ActionButtonPress()
+    {
+        if (!seenAction)
+        {
+            HighlightUI.defaultOptions.dismissAction = Dismiss;
+            HighlightUI.ShowForUI(actionBar);
+            AssignTutorialMenu();
+            StopAllCoroutines();
+            StartCoroutine(Typewriter(actionBarString));
+            seenAction = true;
+        }
+        else return;
+
     }
 
     //Utilitty Functions
@@ -365,6 +491,78 @@ public class TutorialManager : MonoBehaviour
     }
     public void Dismiss()
     {
+        HighlightUI.defaultOptions.dismissAction = Dismiss;
         HighlightUI.Dismiss(this);
     }
+    public void TutorialSkip()
+    {
+        if (level == Levels.Bellow)
+        {
+            manuButtonButton.interactable = true;
+            orderButtonButton.interactable = true;
+            buildButtonButton.interactable = true;
+            logsButton.interactable = true;
+            actionButton.interactable = true;
+        }
+        if (playerMovement != null) playerMovement.SetCanMove(true);
+
+        GameObject highlights = GameObject.Find("NoSuchStudio_HighlightCanvas");
+        if (invisibleWall != null) invisibleWall.SetActive(false);
+        if (highlights != null)
+        {
+            tutorialMenu.SetParent(GameObject.Find("UI").transform);
+            tutorialMenu.gameObject.SetActive(false);
+            Destroy(highlights);
+        }
+        HighlightUI.defaultOptions = optionsSO;
+        HighlightUI.defaultOptions.dismissAction = Dismiss;
+
+
+        //this.gameObject.SetActive(false);
+
+    }
+    public IEnumerator Typewriter(string text)
+    {
+        if (audioSource != null)
+            if (!audioSource.isPlaying) audioSource.Play();
+        int charCount = 0;
+
+        typeWriterComplete = false;
+        typeWriterSkip = false;
+
+        bodyText.text = "";
+        foreach (char letter in text.ToCharArray())
+        {
+            if (!typeWriterSkip)
+            {
+                bodyText.text += letter;
+                charCount++;
+                yield return new WaitForSeconds(speedOfTyping);
+                if (charCount == text.Length)
+                { typeWriterComplete = true; }
+            }
+            else
+            {
+                bodyText.text = text;
+                typeWriterComplete = true;
+                break;
+            }
+
+        }
+    }
+    public void Hide(GameObject patient)
+    {
+        CanvasGroup canva = patient.GetComponent<CanvasGroup>();
+        canva.alpha = 0;
+        canva.blocksRaycasts = false;
+        canva.interactable = false;
+    }
+    public void AssignTutorialMenu()
+    {
+        //Assigning the UI to the highlight Canvas so it fades together
+        GameObject higlights = GameObject.Find("NoSuchStudio_HighlightCanvas");
+        tutorialMenu.gameObject.SetActive(true);
+        tutorialMenu.SetParent(higlights.transform);
+    }
+
 }

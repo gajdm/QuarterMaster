@@ -7826,10 +7826,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -12907,6 +12907,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8714911928548457682, guid: 1f395f9a68f01b64ab1f312075c13b2d,
+        type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8714911928548457682, guid: 1f395f9a68f01b64ab1f312075c13b2d,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8714911928548457682, guid: 1f395f9a68f01b64ab1f312075c13b2d,
+        type: 3}
+      propertyPath: m_BlocksRaycasts
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8714911928548457693, guid: 1f395f9a68f01b64ab1f312075c13b2d,
         type: 3}
       propertyPath: m_Name
@@ -12999,7 +13014,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1136902168
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13101,6 +13116,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PauseButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 9034455448457285630, guid: 9c61b76a68c70b84385b830d77d6baf5,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9034455448457285630, guid: 9c61b76a68c70b84385b830d77d6baf5,
         type: 3}
@@ -13251,6 +13271,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1147383329}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1759168027 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9034455448457285630, guid: 9c61b76a68c70b84385b830d77d6baf5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1147383329}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1766504234
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13549,6 +13581,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1862055862}
   m_CullTransparentMesh: 1
+--- !u!1 &1932179078
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1932179081}
+  - component: {fileID: 1932179079}
+  m_Layer: 0
+  m_Name: InvisibleWall
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &1932179079
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932179078}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!4 &1932179081
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932179078}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -217.5506, y: 30.5582, z: -275.12485}
+  m_LocalScale: {x: 4.482601, y: 41.477764, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1973365635
 GameObject:
   m_ObjectHideFlags: 0
@@ -14671,21 +14760,25 @@ MonoBehaviour:
   level: 0
   audioManager: {fileID: 1858608679}
   soundName: Tutorial
+  speedOfTyping: 0.05
+  audioSource: {fileID: 1722253635515873150}
   hasSeenLadders: 0
   hasSeenBellowArrow: 0
   hasPickedUpBox: 0
   hasSeenCodexButton: 0
   tutorialMenu: {fileID: 2739289686425997860}
   ladders: {fileID: 351291722}
-  pauseButton: {fileID: 1647096857}
+  pauseRect: {fileID: 1647096857}
+  pauseButton: {fileID: 1759168027}
   player: {fileID: 1476250847}
+  invisibleWall: {fileID: 1932179078}
   tutorialString: '*Yawn* ... Well met !
 
     I will guide you through the basics
     of operating this caravan.'
-  pauseString: 'In the upper right you can see the pause button. In case you get
-    tired you can always exit through that. '
+  pauseString: In the upper right you can see the pause button.
   playerString: 'Ok, let''s strech your legs.
+
 
     Press [W] to move up.
 
@@ -14695,12 +14788,13 @@ MonoBehaviour:
     Press [A] to move left.
 
     Press [D] to move right.'
-  laddersString: "Alright, you got it. Now let's head downstairs so I can show you
-    around my shop. Head left to the ladders and we may speak then. \nPress to continue."
+  laddersString: 'Alright, you got it. Now let''s head downstairs so I can show you
+    around my shop. Head left to the ladders and we may speak then. '
   box: {fileID: 0}
   itemBar: {fileID: 0}
   tooltip: {fileID: 0}
   bellowArrow: {fileID: 0}
+  playerMovement: {fileID: 0}
   boxString: 
   itemBarString: 
   tooltipString: 
@@ -14712,11 +14806,14 @@ MonoBehaviour:
   manuButton: {fileID: 0}
   orderButton: {fileID: 0}
   buildButton: {fileID: 0}
+  money: {fileID: 0}
   smallBuildButton: {fileID: 0}
   categories: {fileID: 0}
   buildings: {fileID: 0}
   blockedArea: {fileID: 0}
   codexButton: {fileID: 0}
+  logsAnimator: {fileID: 0}
+  actionAnimator: {fileID: 0}
   sortingSystemString: 
   logsString: 
   importString: 
@@ -14758,6 +14855,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1722253635515873147}
   - component: {fileID: 1722253635515873146}
+  - component: {fileID: 1722253635515873150}
   m_Layer: 0
   m_Name: Tutorial
   m_TagString: Untagged
@@ -14765,6 +14863,103 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!82 &1722253635515873150
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1722253635515873149}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300002, guid: ede77f850d4e46b4caa29ca00366f51e,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: 6a64d36d7a4373f45bb96781b53c3ea5, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &2739289685984000616
 MonoBehaviour:
   m_ObjectHideFlags: 0
