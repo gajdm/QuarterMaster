@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   header: Rotating structures
   visual: {fileID: 0}
-  mainText: 
+  mainText: Currently the easiest way to rotate the structures is to use the specific
+    structure  rotation from the structure bar.

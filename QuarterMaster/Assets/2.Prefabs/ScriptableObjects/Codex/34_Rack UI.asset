@@ -12,6 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cc06b4b56b663a4a82b2e8e8a173f1c, type: 3}
   m_Name: 34_Rack UI
   m_EditorClassIdentifier: 
-  header: Rack UI
+  header: Rack Menu
   visual: {fileID: 0}
-  mainText: 
+  mainText: 'In the rack menu you can find 4 buttons with addresses.
+
+    If the
+    player is holding an item with the same address, pressing the correct button
+    will sort the item inside the bag.
+
+    To exit the rack menu press the red button
+    in the upper right corner.'

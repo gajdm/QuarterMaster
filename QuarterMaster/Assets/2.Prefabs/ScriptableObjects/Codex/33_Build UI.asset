@@ -12,6 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cc06b4b56b663a4a82b2e8e8a173f1c, type: 3}
   m_Name: 33_Build UI
   m_EditorClassIdentifier: 
-  header: Build UI
+  header: Build Menu
   visual: {fileID: 0}
-  mainText: 
+  mainText: 'Build menu can be opened using the build button in the action bar.
+
+    There
+    are 2 parts to the build menu: Categories and structures/buildings.
+
+    The
+    lower bar is the category bar.
+
+    The upper bar is the structure bar.'

@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cc06b4b56b663a4a82b2e8e8a173f1c, type: 3}
   m_Name: 30_Manufacturers UI
   m_EditorClassIdentifier: 
-  header: Manufacturers UI
+  header: Manufacturers Menu
   visual: {fileID: 0}
-  mainText: 
+  mainText: 'In this menu you can see all of the manufacturers you can aquire.
+
+    If
+    the manufacturer is aquired you can open it''s manufacturer card.'

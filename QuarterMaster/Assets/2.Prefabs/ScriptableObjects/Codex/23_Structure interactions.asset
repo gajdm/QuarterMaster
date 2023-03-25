@@ -14,4 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   header: Structure interactions
   visual: {fileID: 0}
-  mainText: 
+  mainText: 'Racks can be interacted any time.
+
+    Labelling stations can be interacted
+    only when the player is holding a crate and the labelling station is empty.'

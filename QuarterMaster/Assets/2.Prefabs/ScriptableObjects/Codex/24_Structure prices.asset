@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   header: Structure prices
   visual: {fileID: 0}
-  mainText: 
+  mainText: Each of the structure costs you gold. Gold can be aquired by completing
+    orders.

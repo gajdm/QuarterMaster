@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cc06b4b56b663a4a82b2e8e8a173f1c, type: 3}
   m_Name: 32_Order UI
   m_EditorClassIdentifier: 
-  header: Order UI
+  header: Order Menu
   visual: {fileID: 0}
-  mainText: 
+  mainText: 'Order menu can be opened using the order button in the action bar.
+
+    Order
+    menu is not interactive. It only shows the state of the orders currently in your
+    facility.'

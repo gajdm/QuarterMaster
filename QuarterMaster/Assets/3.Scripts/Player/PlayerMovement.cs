@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 playerDirection;
     private bool canMove;
     public Animator animator;
+    public CapsuleCollider2D capsuleCollider;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -46,6 +47,10 @@ public class PlayerMovement : MonoBehaviour
     {
         canMove = value;
         return;
+    }
+    public void ToggleCollider()
+    {
+        capsuleCollider.enabled = !capsuleCollider.enabled;
     }
 
 }

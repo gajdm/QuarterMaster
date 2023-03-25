@@ -14,10 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   header: Codex System
   visual: {fileID: 0}
-  mainText: 'Use the list on the left of this menu to move through the codex.
+  mainText: 'This is the codex menu.
 
-    You
-    can also use the buttons on both sides of the header move through the codex.
+    Use the list on the left of this menu to
+    move through the codex.
 
-    Use
-    the golden double arrow to the left of this menu to close this menu.'
+    You can also use the buttons on both sides of the
+    header move through the codex.
+
+    Use the golden double arrow to the left of
+    this menu to close this menu.'

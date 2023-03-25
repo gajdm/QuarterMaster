@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cc06b4b56b663a4a82b2e8e8a173f1c, type: 3}
   m_Name: 31_Manufacturer Card UI
   m_EditorClassIdentifier: 
-  header: Manufacturer Card UI
-  visual: {fileID: 0}
-  mainText: 
+  header: Manufacturer Card
+  visual: {fileID: 21300000, guid: ddd7068defe858844953ee2e9ab52169, type: 3}
+  mainText: 'In the manufacturer card you can see the sortiment of the manufacturer.
+
+    You
+    can upgrade the manufacturer using the upgrade button.'

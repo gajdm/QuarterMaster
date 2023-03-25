@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   header: Item Bar
   visual: {fileID: 0}
-  mainText: 
+  mainText: This menu shows what is currently being held.

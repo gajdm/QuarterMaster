@@ -25,6 +25,7 @@ public class CodexSystem : MonoBehaviour
             Text textOfButton = buttonList[i].GetComponentInChildren<Text>();
             textOfButton.text = codexList[i].GetHeader();
         }
+        codexLoc = -1;
         ButtonPress(true);
     }
     public void UpdateUI()

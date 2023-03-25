@@ -39,8 +39,13 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private bool typeWriterSkip;
 
     //Bellow button checks
+    [SerializeField] private bool taskComplete;
     [SerializeField] private bool seenLogs;
+    [SerializeField] private bool seenCodex;
     [SerializeField] private bool seenAction;
+    [SerializeField] private bool seenManu;
+    [SerializeField] private bool seenManuCard;
+    [SerializeField] private bool boughtManu;
 
     //Elements
     [Header("Living Quarters")]
@@ -79,6 +84,9 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private Transform exportPortal;
     [SerializeField] private RectTransform actionBar;
     [SerializeField] private RectTransform manuButton;
+    [SerializeField] private RectTransform manuMenu;
+    [SerializeField] private RectTransform manufacturerImage;
+    [SerializeField] private RectTransform manuCard;
     [SerializeField] private RectTransform orderButton;
     [SerializeField] private RectTransform buildButton;
     [SerializeField] private RectTransform money;
@@ -90,6 +98,7 @@ public class TutorialManager : MonoBehaviour
     //tutorial on how to build 
     //tutorial on how to sort
     [SerializeField] private RectTransform codexButton;
+    [SerializeField] private RectTransform codexMenu;
     [Space(5)]
     [SerializeField] private Animator logsAnimator;
     [SerializeField] private Animator actionAnimator;
@@ -99,19 +108,20 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private Button buildButtonButton;
     [SerializeField] private Button logsButton;
     [SerializeField] private Button actionButton;
+    [SerializeField] private Button manuCardButton;
 
-
-    //[SerializeField] private BuildConditionSO conditionRack;
-    //[SerializeField] private BuildConditionSO conditionLabelling;
-    //[SerializeField] private BuildConditionSO conditionGnome;
-    //[SerializeField] private BuildConditionSO conditionConveyor;
-
-    [TextArea(5, 10)][SerializeField] private string sortingSystemString;
+    [TextArea(5, 10)][SerializeField] private string introductionStr;
     [TextArea(5, 10)][SerializeField] private string logsString;
     [TextArea(5, 10)][SerializeField] private string importString;
     [TextArea(5, 10)][SerializeField] private string exportString;
     [TextArea(5, 10)][SerializeField] private string actionBarString;
+    [TextArea(5, 10)][SerializeField] private string actionButtonPressedStr;
     [TextArea(5, 10)][SerializeField] private string manuButtonString;
+    [TextArea(5, 10)][SerializeField] private string manuMenuStr;
+    [TextArea(5, 10)][SerializeField] private string manuBuyStr;
+    [TextArea(5, 10)][SerializeField] private string manuImageStr;
+    [TextArea(5, 10)][SerializeField] private string manuOpenStr;
+    [TextArea(5, 10)][SerializeField] private string manuCardStr;
     [TextArea(5, 10)][SerializeField] private string orderButtonString;
     [TextArea(5, 10)][SerializeField] private string buildButtonString;
     [TextArea(5, 10)][SerializeField] private string economyString;
@@ -124,6 +134,7 @@ public class TutorialManager : MonoBehaviour
     [TextArea(5, 10)][SerializeField] private string sortingHowToString;
     [TextArea(5, 10)][SerializeField] private string codexButtonString;
 
+    
 
 
     //First Action Happens Here
@@ -144,9 +155,10 @@ public class TutorialManager : MonoBehaviour
                 break;
 
             case Levels.Bellow:
-                HighlightUI.defaultOptions.dismissAction = ShowLogsButton;
-                HighlightUI.ShowForUI(tutorialMenu);
-                bodyText.text = sortingSystemString;
+                HighlightUI.defaultOptions.dismissAction = 
+                    ShowActionBar;
+                HighlightUI.ShowForUI(actionBar);
+                bodyText.text = introductionStr;
                 break;
 
             default:
@@ -163,7 +175,11 @@ public class TutorialManager : MonoBehaviour
         {
             if (typeWriterComplete)
             {
-                HighlightUI.Dismiss(true);
+                if (taskComplete)
+                {
+                    taskComplete = false;
+                    HighlightUI.Dismiss();
+                }
             }
             else
             {
@@ -290,54 +306,182 @@ public class TutorialManager : MonoBehaviour
     }
 
     //Bellow
-    private void ShowLogsButton()
-    {
-        logsAnimator.SetTrigger("Action");
-        HighlightUI.defaultOptions.dismissAction = ShowImportPortal;
-        HighlightUI.ShowForUI(logsBar);
 
-        StopAllCoroutines();
-        StartCoroutine(Typewriter(logsString));
-    }
-    private void ShowImportPortal()
-    {
-        logsAnimator.SetTrigger("Action");
-
-        ChangePadding(100, 100, 100, 100);
-        audioManager.PlaySound(soundName);
-        HighlightUI.defaultOptions.dismissAction = ShowExportPortal;
-        HighlightUI.ShowFor3DObject(importPortal);
-
-        StopAllCoroutines();
-        StartCoroutine(Typewriter(importString));
-    }
-    private void ShowExportPortal()
-    {
-        HighlightUI.defaultOptions.dismissAction = ShowActionBar;
-        HighlightUI.ShowFor3DObject(exportPortal);
-
-        StopAllCoroutines();
-        StartCoroutine(Typewriter(exportString));
-    }
+    // -Manufacturer
     private void ShowActionBar()
     {
-        actionAnimator.SetTrigger("Action");
-        ChangePadding(0, 0, 0, 0);
-        HighlightUI.defaultOptions.dismissAction = ShowManuButton;
+        HighlightUI.defaultOptions.dismissAction =
+            null;
+
         HighlightUI.ShowForUI(actionBar);
 
         StopAllCoroutines();
         StartCoroutine(Typewriter(actionBarString));
+        
+        actionButton.interactable = true;
+
+        ChangePadding(0, 0, 0, 0);
     }
-    private void ShowManuButton()
+    public void PressActionBar()
     {
-        HighlightUI.defaultOptions.dismissAction = ShowOrderButton;
+        if (!seenAction)
+        {
+            seenAction = true;
+            HighlightUI.defaultOptions.dismissAction = 
+                ShowManufacturerButton;
+
+            HighlightUI.ShowForUI(actionBar);
+
+            StopAllCoroutines();
+            StartCoroutine(Typewriter(actionButtonPressedStr));
+
+            AssignTutorialMenu();
+
+            taskComplete=true;
+        }
+        else return;
+    }
+    private void ShowManufacturerButton()
+    {
+        HighlightUI.defaultOptions.dismissAction =
+                PressManuButton;
+
         HighlightUI.ShowForUI(manuButton);
 
         StopAllCoroutines();
         StartCoroutine(Typewriter(manuButtonString));
+
+        manuButtonButton.interactable = true;
     }
-    private void ShowOrderButton()
+    public void PressManuButton()
+    {
+        if (!seenManu)
+        {
+            seenManu = true;
+            HighlightUI.defaultOptions.dismissAction =
+                ShowManufacturer;
+
+            HighlightUI.ShowForUI(manuMenu);
+
+            StopAllCoroutines();
+            StartCoroutine(Typewriter(manuMenuStr));
+
+            AssignTutorialMenu();
+
+           taskComplete = true;
+        }
+        else return;
+    }
+    private void ShowManufacturer()
+    {
+        HighlightUI.defaultOptions.dismissAction =
+               BuyManufacturer;
+
+        HighlightUI.ShowForUI(manufacturerImage);
+
+        StopAllCoroutines();
+        StartCoroutine(Typewriter(manuImageStr));
+    }
+    public void BuyManufacturer()
+    {
+        if (!boughtManu)
+        {
+            boughtManu = true;
+            manuCardButton.interactable = false;
+
+            HighlightUI.defaultOptions.dismissAction =
+            OpenManufacturerCard;
+
+            HighlightUI.ShowForUI(manufacturerImage);
+
+            StopAllCoroutines();
+            StartCoroutine(Typewriter(manuBuyStr));
+
+            AssignTutorialMenu();
+
+            taskComplete=true;
+
+        }
+        else return ;
+    }
+    private void OpenManufacturerCard()
+    {
+        Debug.Log("Here");
+        manuCardButton.interactable = true;
+
+        HighlightUI.defaultOptions.dismissAction =
+                Dismiss;
+
+        HighlightUI.ShowForUI(manufacturerImage);
+
+        StopAllCoroutines();
+        StartCoroutine(Typewriter(manuOpenStr));
+
+        taskComplete = false;
+    }
+    public void ShowManufacturerCard()
+    {
+        if (boughtManu && !seenManuCard)
+        {
+            seenManuCard = true;
+            manuCardButton.interactable = false;
+
+            HighlightUI.defaultOptions.dismissAction =
+            Dismiss;
+
+            HighlightUI.ShowForUI(manuCard);
+
+            StopAllCoroutines();
+            StartCoroutine(Typewriter(manuCardStr));
+
+            AssignTutorialMenu();
+
+            taskComplete = true;
+
+        }
+        else return;
+    }
+
+    // -Building
+    private void TutorialBuildButton()
+    {
+        HighlightUI.defaultOptions.dismissAction =  
+            TutorialCategories;
+
+        HighlightUI.ShowForUI(buildButton);
+        StopAllCoroutines();
+        StartCoroutine(Typewriter(buildButtonString));
+    }
+    private void TutorialCategories()
+    {
+        HighlightUI.defaultOptions.dismissAction = TutorialBuildings;
+        HighlightUI.ShowForUI(categories);
+        bodyText.text = categoriesString;
+        StopAllCoroutines();
+        StartCoroutine(Typewriter(categoriesString));
+    }
+    private void TutorialBuildings()
+    {
+        HighlightUI.defaultOptions.dismissAction = 
+            AssessmentPlaceRack;
+
+        HighlightUI.ShowForUI(buildings);
+        bodyText.text = buildingsString;
+        StopAllCoroutines();
+        StartCoroutine(Typewriter(buildingsString));
+    }
+    private void AssessmentPlaceRack()
+    {
+
+    }
+    private void AssessmentPlaceLabel()
+    {
+
+    }
+
+    //  -Orders
+
+    private void TutorialOrderButton()
     {
         //HighlightUI.defaultOptions.dismissAction = ShowBuildButton;
         HighlightUI.defaultOptions.dismissAction = Dismiss;
@@ -346,107 +490,30 @@ public class TutorialManager : MonoBehaviour
         StopAllCoroutines();
         StartCoroutine(Typewriter(orderButtonString));
     }
-    private void ShowBuildButton()
+    private void TutorialOrderMenu()
     {
-        HighlightUI.defaultOptions.dismissAction = ShowEconomyTutorial;
-        HighlightUI.ShowForUI(buildButton);
-        StopAllCoroutines();
-        StartCoroutine(Typewriter(buildButtonString));
-    }
-    private void ShowEconomyTutorial()
-    {
-        HighlightUI.defaultOptions.dismissAction = ShowBuildButtonSecondTime;
-        HighlightUI.ShowForUI(money);
-        StopAllCoroutines();
-        StartCoroutine(Typewriter(economyString));
-    }
-    private void ShowBuildButtonSecondTime()
-    {
-        HighlightUI.defaultOptions.dismissAction = ShowSmallBuildButton;
-        HighlightUI.ShowForUI(buildButton);
-        bodyText.text = buildButtonSecondString;
-        StopAllCoroutines();
-        StartCoroutine(Typewriter(buildButtonSecondString));
-    }
-    private void ShowSmallBuildButton()
-    {
-        HighlightUI.defaultOptions.dismissAction = ShowCategories;
-        HighlightUI.ShowForUI(smallBuildButton);
-        StopAllCoroutines();
-        StartCoroutine(Typewriter(smallBuildButtonString));
-    }
-    private void ShowCategories()
-    {
-        HighlightUI.defaultOptions.dismissAction = ShowBuildings;
-        HighlightUI.ShowForUI(categories);
-        bodyText.text = categoriesString;
-        StopAllCoroutines();
-        StartCoroutine(Typewriter(categoriesString));
-    }
-    private void ShowBuildings()
-    {
-        HighlightUI.defaultOptions.dismissAction = ShowBlockedArea;
-        HighlightUI.ShowForUI(buildings);
-        bodyText.text = buildingsString;
-        StopAllCoroutines();
-        StartCoroutine(Typewriter(buildingsString));
-    }
-    private void ShowBlockedArea()
-    {
-        HighlightUI.defaultOptions.dismissAction = ShowBuildTutorial;
-        HighlightUI.ShowFor3DObject(blockedArea);
-        bodyText.text = blockedAreaString;
-        StopAllCoroutines();
-        StartCoroutine(Typewriter(blockedAreaString));
-    }
-    private void ShowBuildTutorial()
-    {
-        HighlightUI.defaultOptions.dismissAction = ShowSortingTutorial;
-        HighlightUI.ShowForUI(tutorialMenu);
-        bodyText.text = buildingSystemString;
-        StopAllCoroutines();
-        StartCoroutine(Typewriter(buildingSystemString));
-    }
-    private void ShowSortingTutorial()
-    {
-        HighlightUI.defaultOptions.dismissAction = ShowCodexButton;
-        HighlightUI.ShowForUI(tutorialMenu);
-        bodyText.text = sortingHowToString;
-        StopAllCoroutines();
-        StartCoroutine(Typewriter(sortingHowToString));
 
-        manuButtonButton.interactable = true;
-        orderButtonButton.interactable = true;
-        buildButtonButton.interactable = true;
-        logsButton.interactable = true;
-        actionButton.interactable = true;
     }
-    private void ShowCodexButton()
+    
+    // -Sorting
+    private void TutorialCrate()
     {
-        if (!hasSeenCodexButton)
-        {
-            hasSeenCodexButton = true;
-            HighlightUI.defaultOptions.dismissAction = ShowBellowArrow;
-            HighlightUI.ShowForUI(codexButton);
-            bodyText.text = codexButtonString;
-            StopAllCoroutines();
-            StartCoroutine(Typewriter(codexButtonString));
-        }
-        else
-        {
-            manuButtonButton.interactable = true;
-            orderButtonButton.interactable = true;
-            buildButtonButton.interactable = true;
-            logsButton.interactable = true;
-            actionButton.interactable = true;
+        
+    }
+    private void AssessmentCrate()
+    {
 
-            tutorialMenu.gameObject.SetActive(false);
-            HighlightUI.Dismiss();
-        }
+    }
+    private void AssessmentItem()
+    {
+
+    }
+    private void AssessmentBag()
+    {
+
     }
 
-    //Button Functions
-    //Activated by pressing a button first time
+    // -Logs
     public void LogsButtonPress()
     {
         if (!seenLogs)
@@ -457,23 +524,9 @@ public class TutorialManager : MonoBehaviour
             StopAllCoroutines();
             StartCoroutine(Typewriter(logsString));
             seenLogs = true;
+            taskComplete=true;
         }
         else return;
-
-    }
-    public void ActionButtonPress()
-    {
-        if (!seenAction)
-        {
-            HighlightUI.defaultOptions.dismissAction = Dismiss;
-            HighlightUI.ShowForUI(actionBar);
-            AssignTutorialMenu();
-            StopAllCoroutines();
-            StartCoroutine(Typewriter(actionBarString));
-            seenAction = true;
-        }
-        else return;
-
     }
 
     //Utilitty Functions

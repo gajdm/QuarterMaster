@@ -19,15 +19,7 @@ MonoBehaviour:
     m_Id: 1ffcd137-ef1f-4ebd-b2eb-45d7974bacab
     m_Processors: 
     m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: a70ee01a-c940-4f92-ae7a-5e6928f96980
-      m_Path: <Mouse>/rightButton
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Grid Mode Reset Key
-      m_Flags: 0
+    m_SingletonActionBindings: []
     m_Flags: 0
   gridHeightChangeKey:
     m_Name: Grid Height Change Key

@@ -14,4 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   header: Action Bar
   visual: {fileID: 0}
-  mainText: 
+  mainText: 'This menu holds 3 buttons: Manufacturer, Order and Build.
+
+    It can
+    be opened and closed by the arrow button.'

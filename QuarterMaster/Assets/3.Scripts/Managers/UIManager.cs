@@ -66,12 +66,17 @@ public class UIManager : MonoBehaviour
     {
         audioManager.PlaySound("UISlide");
         currentRack = rack;
+        currentRack.GetComponentInChildren<BoxCollider2D>().enabled = false;
         string[] bagNames = rack.GetBagNames(); 
         for (int i = 0; i < bagNames.Length; i++)
         {
             bagButtons[i].gameObject.GetComponentInChildren<Text>().text = bagNames[i];
             bagButtons[i].GetComponent<Image>().color = bagColor; 
         }
+    }
+    public void CloseRackUI()
+    {
+        currentRack.GetComponentInChildren<BoxCollider2D>().enabled = true;
     }
     public void ContactRack(int bagNumber)
     {
