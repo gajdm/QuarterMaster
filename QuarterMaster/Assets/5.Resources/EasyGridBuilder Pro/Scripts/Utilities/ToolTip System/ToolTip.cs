@@ -46,5 +46,13 @@ namespace SoulGames.Utilities
         {
             ToolTipSystem.HideToolTip();
         }
+        public void SetContent(string con)
+        {
+            content=con;
+        }
+        public void SetHeader(string name)
+        {
+            header=name;
+        }
     }
 }

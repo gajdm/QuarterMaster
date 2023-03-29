@@ -1,5 +1,6 @@
 using UnityEditor;
 using UnityEngine;
+using SoulGames.Utilities;
 
 namespace SoulGames.Utilities
 {
@@ -40,7 +41,7 @@ namespace SoulGames.Utilities
             serializedObject.Update();
            
             EditorGUILayout.BeginVertical("GroupBox");
-            EditorGUILayout.BeginVertical("textArea", GUILayout.Height(30));
+            EditorGUILayout.BeginVertical("textArea", GUILayout.Height(100));
             EditorGUILayout.LabelField("TOOLTIP", style, GUILayout.ExpandWidth(true));
             EditorGUILayout.EndVertical();
             EditorGUILayout.EndVertical();

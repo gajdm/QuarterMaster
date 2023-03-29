@@ -81,11 +81,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24dfd82d635c43548902301341d7dc32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioManager: {fileID: 0}
   bagNames: []
   player: {fileID: 0}
   playerBrain: {fileID: 0}
   spawn: {fileID: 6498233964951757120}
-  canBuy: 1
   isBuilt: 0
   buyerManager: {fileID: 0}
   uiManager: {fileID: 0}
@@ -212,6 +212,7 @@ GameObject:
   - component: {fileID: 6115395501658671116}
   - component: {fileID: 500374761436284777}
   - component: {fileID: 684671177517080979}
+  - component: {fileID: 8082761052989328090}
   m_Layer: 0
   m_Name: Logic
   m_TagString: Untagged
@@ -286,6 +287,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 10, y: 19.6875}
   m_EdgeRadius: 0
+--- !u!114 &8082761052989328090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4847609382658823050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 104266b705e4bab4fbd497d45882406a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  header: Rack
+  content: Input items.
+  objectNameAsHeader: 0
+  objectBuildSOToolTipAsContent: 0
 --- !u!1 &7651208564343674845
 GameObject:
   m_ObjectHideFlags: 0

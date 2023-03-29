@@ -13381,7 +13381,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -14766,6 +14766,17 @@ MonoBehaviour:
   hasSeenBellowArrow: 0
   hasPickedUpBox: 0
   hasSeenCodexButton: 0
+  typeWriterComplete: 1
+  typeWriterSkip: 0
+  taskComplete: 0
+  seenLogs: 0
+  seenCodex: 0
+  seenAction: 0
+  seenManu: 0
+  seenManuCard: 0
+  boughtManu: 0
+  seenBuildButton: 0
+  seenOrderButton: 0
   tutorialMenu: {fileID: 2739289686425997860}
   ladders: {fileID: 351291722}
   pauseRect: {fileID: 1647096857}
@@ -14804,6 +14815,9 @@ MonoBehaviour:
   exportPortal: {fileID: 0}
   actionBar: {fileID: 0}
   manuButton: {fileID: 0}
+  manuMenu: {fileID: 0}
+  manufacturerImage: {fileID: 0}
+  manuCard: {fileID: 0}
   orderButton: {fileID: 0}
   buildButton: {fileID: 0}
   money: {fileID: 0}
@@ -14812,14 +14826,27 @@ MonoBehaviour:
   buildings: {fileID: 0}
   blockedArea: {fileID: 0}
   codexButton: {fileID: 0}
+  codexMenu: {fileID: 0}
   logsAnimator: {fileID: 0}
   actionAnimator: {fileID: 0}
-  sortingSystemString: 
+  manuButtonButton: {fileID: 0}
+  orderButtonButton: {fileID: 0}
+  buildButtonButton: {fileID: 0}
+  logsButton: {fileID: 0}
+  actionButton: {fileID: 0}
+  manuCardButton: {fileID: 0}
+  introductionStr: 
   logsString: 
   importString: 
   exportString: 
   actionBarString: 
+  actionButtonPressedStr: 
   manuButtonString: 
+  manuMenuStr: 
+  manuBuyStr: 
+  manuImageStr: 
+  manuOpenStr: 
+  manuCardStr: 
   orderButtonString: 
   buildButtonString: 
   economyString: 
@@ -14875,7 +14902,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: ede77f850d4e46b4caa29ca00366f51e,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 6a64d36d7a4373f45bb96781b53c3ea5, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

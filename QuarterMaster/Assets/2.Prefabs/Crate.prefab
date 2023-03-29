@@ -356,7 +356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104266b705e4bab4fbd497d45882406a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  header: Left Mouse Click
-  content: 
+  header: Crate
+  content: "4 of unlabelled items.\n Needs to be put into labelling station."
   objectNameAsHeader: 0
   objectBuildSOToolTipAsContent: 0

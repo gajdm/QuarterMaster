@@ -21,7 +21,7 @@ namespace SoulGames.Utilities
         {
             Vector2 position  = new Vector2 (Input.mousePosition.x - 16, Input.mousePosition.y + 16);
             float pivotX = position.x / Screen.width;
-            float pivotY = position.y / Screen.height;
+            float pivotY = (position.y/ Screen.height);
 
             rectTransform.pivot = new Vector2(pivotX, pivotY);
             transform.position = position;

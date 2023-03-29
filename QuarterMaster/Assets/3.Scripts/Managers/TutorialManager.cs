@@ -46,6 +46,8 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private bool seenManu;
     [SerializeField] private bool seenManuCard;
     [SerializeField] private bool boughtManu;
+    [SerializeField] private bool seenBuildButton;
+    [SerializeField] private bool seenOrderButton;
 
     //Elements
     [Header("Living Quarters")]
@@ -147,11 +149,13 @@ public class TutorialManager : MonoBehaviour
                 HighlightUI.defaultOptions.dismissAction = ShowPauseTutorial;
                 HighlightUI.ShowForUI(tutorialMenu);
                 bodyText.text = tutorialString;
+                taskComplete = true;
                 break;
 
             case Levels.Shop:
                 playerMovement.SetCanMove(false);
                 ShowTheItem();
+                taskComplete = true;
                 break;
 
             case Levels.Bellow:
@@ -205,6 +209,7 @@ public class TutorialManager : MonoBehaviour
         bodyText.text = pauseString;
         StopAllCoroutines();
         StartCoroutine(Typewriter(pauseString));
+        taskComplete = true;
     }
     private void ShowPlayerTutorial()
     {
@@ -216,6 +221,7 @@ public class TutorialManager : MonoBehaviour
         HighlightUI.ShowFor3DObject(player);
         StopAllCoroutines();
         StartCoroutine(Typewriter(playerString));
+        taskComplete = true;
     }
     private void ShowLaddersTutorial()
     {
@@ -229,6 +235,7 @@ public class TutorialManager : MonoBehaviour
             bodyText.text = laddersString;
             StopAllCoroutines();
             StartCoroutine(Typewriter(laddersString));
+            taskComplete = true;
         }
         else
         {
@@ -238,6 +245,7 @@ public class TutorialManager : MonoBehaviour
             HighlightUI.Dismiss();
             pauseButton.interactable = true;
             Destroy(invisibleWall);
+            taskComplete = true;
         }
     }
 
@@ -248,6 +256,7 @@ public class TutorialManager : MonoBehaviour
         HighlightUI.ShowFor3DObject(box);
         StopAllCoroutines();
         StartCoroutine(Typewriter(boxString));
+        taskComplete = true;
     }
     private void ShowItemBar()
     {
@@ -258,6 +267,7 @@ public class TutorialManager : MonoBehaviour
 
             StopAllCoroutines();
             StartCoroutine(Typewriter(boxString));
+            taskComplete = true;
         }
         else
         {
@@ -269,6 +279,7 @@ public class TutorialManager : MonoBehaviour
 
             StopAllCoroutines();
             StartCoroutine(Typewriter(itemBarString));
+            taskComplete = true;
         }
     }
     private void ShowTooltip()
@@ -280,6 +291,7 @@ public class TutorialManager : MonoBehaviour
 
         StopAllCoroutines();
         StartCoroutine(Typewriter(tooltipString));
+        taskComplete = true;
     }
     private void ShowBellowArrow()
     {
@@ -294,6 +306,7 @@ public class TutorialManager : MonoBehaviour
             }
             StopAllCoroutines();
             StartCoroutine(Typewriter(bellowArrowString));
+            taskComplete = true;
         }
         else
         {
@@ -302,6 +315,7 @@ public class TutorialManager : MonoBehaviour
             tutorialMenu.gameObject.SetActive(false);
             bellowArrow.gameObject.SetActive(false);
             HighlightUI.Dismiss();
+            taskComplete = true;
         }
     }
 
@@ -424,7 +438,7 @@ public class TutorialManager : MonoBehaviour
         if (boughtManu && !seenManuCard)
         {
             seenManuCard = true;
-            manuCardButton.interactable = false;
+            manuCardButton.interactable = true;
 
             HighlightUI.defaultOptions.dismissAction =
             Dismiss;
@@ -443,14 +457,25 @@ public class TutorialManager : MonoBehaviour
     }
 
     // -Building
-    private void TutorialBuildButton()
+    public void TutorialBuildButton()
     {
-        HighlightUI.defaultOptions.dismissAction =  
+        if (!seenBuildButton)
+        {
+            seenBuildButton = true;
+
+            HighlightUI.defaultOptions.dismissAction =
             TutorialCategories;
 
-        HighlightUI.ShowForUI(buildButton);
-        StopAllCoroutines();
-        StartCoroutine(Typewriter(buildButtonString));
+            HighlightUI.ShowForUI(buildButton);
+
+            AssignTutorialMenu();
+
+            StopAllCoroutines();
+            StartCoroutine(Typewriter(buildButtonString));
+            
+            taskComplete=true;
+        }
+        else return;    
     }
     private void TutorialCategories()
     {
@@ -459,16 +484,18 @@ public class TutorialManager : MonoBehaviour
         bodyText.text = categoriesString;
         StopAllCoroutines();
         StartCoroutine(Typewriter(categoriesString));
+        taskComplete = true;
     }
     private void TutorialBuildings()
     {
         HighlightUI.defaultOptions.dismissAction = 
-            AssessmentPlaceRack;
+            Dismiss;
 
         HighlightUI.ShowForUI(buildings);
         bodyText.text = buildingsString;
         StopAllCoroutines();
         StartCoroutine(Typewriter(buildingsString));
+        taskComplete = true;
     }
     private void AssessmentPlaceRack()
     {
@@ -481,14 +508,26 @@ public class TutorialManager : MonoBehaviour
 
     //  -Orders
 
-    private void TutorialOrderButton()
+    public void TutorialOrderButton()
     {
-        //HighlightUI.defaultOptions.dismissAction = ShowBuildButton;
-        HighlightUI.defaultOptions.dismissAction = Dismiss;
-        HighlightUI.ShowForUI(orderButton);
+        if (!seenOrderButton)
+        {
+            seenOrderButton = true;
 
-        StopAllCoroutines();
-        StartCoroutine(Typewriter(orderButtonString));
+            HighlightUI.defaultOptions.dismissAction =
+            Dismiss;
+
+            
+
+            HighlightUI.ShowForUI(orderButton);
+            AssignTutorialMenu();
+            StopAllCoroutines();
+            StartCoroutine(Typewriter(orderButtonString));
+
+            taskComplete = true;
+        }
+        else return;
+        
     }
     private void TutorialOrderMenu()
     {
@@ -556,6 +595,7 @@ public class TutorialManager : MonoBehaviour
             buildButtonButton.interactable = true;
             logsButton.interactable = true;
             actionButton.interactable = true;
+            manuCardButton.interactable = true;
         }
         if (playerMovement != null) playerMovement.SetCanMove(true);
 

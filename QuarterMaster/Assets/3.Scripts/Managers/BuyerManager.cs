@@ -85,7 +85,6 @@ public class BuyerManager : MonoBehaviour
         Order order = orderGO.GetComponent<Order>();
 
         order.SetOrderList(listGO);
-        Debug.Log("hhh");
         order.SetFullInt(listGO.Count);
         order.SetOrderCode(orderNumber);
 
@@ -100,6 +99,7 @@ public class BuyerManager : MonoBehaviour
                 log.AddLog("Order number "+code+" finished. You received ??? gold");
                 audioManager.PlaySound("OrderCompleted");
                 orderList.Remove(order);
+                break;
             }
         }
     }

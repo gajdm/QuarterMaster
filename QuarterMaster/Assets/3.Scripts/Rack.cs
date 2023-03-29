@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using SoulGames.EasyGridBuilderPro;
+using SoulGames.Utilities;
 
 public class Rack : MonoBehaviour
 {
@@ -82,7 +83,6 @@ public class Rack : MonoBehaviour
                         isBuilt = true;
                         FindObjectOfType<LogsSystem>().AddLog("Added new rack !!");
                         gameManager.PayGold(buildableGridObjectTypeSO.buildConditionSO.goldAmount);
-                        Debug.Log("Added Rack to buyer manager");
                         buyerManager.RackPlaced(this);
                     }
                 }
@@ -107,6 +107,8 @@ public class Rack : MonoBehaviour
     public void GetBagNames(string[] names)
     {
         bagNames = names;
+        ToolTip tip = GetComponentInChildren<ToolTip>();
+        tip.SetContent(names[0]+"\n"+names[1] + "\n"+names[2] + "\n"+names[3]);
     }
     //ORDER
     public void CheckItem(int bagNumber)

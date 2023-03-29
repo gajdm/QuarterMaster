@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using SoulGames.Utilities;
 
 public class Crate : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class Crate : MonoBehaviour
     public void SetItems(List<GameObject> items)
     {
         listOfItems = items;
+        ToolTip tip = GetComponent<ToolTip>();
+        tip.SetContent(amount + " items.\nPut into Labelling Station");
     }
     public void SetAmount(int number)
     {

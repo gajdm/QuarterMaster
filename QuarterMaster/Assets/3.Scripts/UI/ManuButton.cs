@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using SoulGames.Utilities;
 
 public class ManuButton : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class ManuButton : MonoBehaviour
     [SerializeField] private Text nameText;
     [SerializeField] private Text levelText;
     [SerializeField] private Text priceText;
+    [SerializeField] private GameObject otherPriceText;
     [SerializeField] private Image image;
 
     [SerializeField] private Manufacturer man;
@@ -25,10 +27,14 @@ public class ManuButton : MonoBehaviour
             levelText.text = manufacturer.manuLevel.ToString();
             priceText.text = manufacturer.priceToBuy.ToString();
             image.sprite = manufacturer.manuIcon;
+            GetComponent<ToolTip>().SetHeader(nameText.text);
+            GetComponent<ToolTip>().SetContent("Needs "+priceText.text+" to buy.");
         }
         else
         {
-            priceText.text = "";
+            priceText.text = "Open";
+            levelText.text = manufacturer.manuLevel.ToString();
+
         }
     }
     public void Check()
@@ -44,5 +50,6 @@ public class ManuButton : MonoBehaviour
     }
     public void SetAvailable(bool value)
     { available = value;
+        GetComponent<ToolTip>().SetContent("Left click to open.");
     }
 }
