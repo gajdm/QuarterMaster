@@ -42,69 +42,22 @@ public class Manufacturer : ScriptableObject
     public void PickList()
     {
         helperList.Clear();
-        switch(manuLevel) // Decides which lists of icons should be used when picking the sprite. Depending on level.
-        {
-            case 1:
-                helperList.Add(listOfListsOfIcons[0]);
-                break;
-            case 2:
-                helperList.Add(listOfListsOfIcons[0]);
-                helperList.Add(listOfListsOfIcons[1]);
-                break;
-            case 3:
-                helperList.Add(listOfListsOfIcons[0]);
-                helperList.Add(listOfListsOfIcons[1]);
-                helperList.Add(listOfListsOfIcons[2]);
-                break;
-            case 4:
-                helperList.Add(listOfListsOfIcons[1]);
-                helperList.Add(listOfListsOfIcons[2]);
-                helperList.Add(listOfListsOfIcons[3]);
-                break;
-            case 5:
-                helperList.Add(listOfListsOfIcons[2]);
-                helperList.Add(listOfListsOfIcons[3]);
-                helperList.Add(listOfListsOfIcons[4]);
-                break;
-            case 6:
-                helperList.Add(listOfListsOfIcons[3]);
-                helperList.Add(listOfListsOfIcons[4]);
-                helperList.Add(listOfListsOfIcons[5]);
-                break;
-            case 7:
-                helperList.Add(listOfListsOfIcons[4]);
-                helperList.Add(listOfListsOfIcons[5]);
-                helperList.Add(listOfListsOfIcons[6]);
-                break;
-            case 8:
-                helperList.Add(listOfListsOfIcons[5]);
-                helperList.Add(listOfListsOfIcons[6]);
-                helperList.Add(listOfListsOfIcons[7]);
-                break;
-            case 9:
-                helperList.Add(listOfListsOfIcons[6]);
-                helperList.Add(listOfListsOfIcons[7]);
-                helperList.Add(listOfListsOfIcons[8]);
-                break;
-            case 10:
-                helperList.Add(listOfListsOfIcons[8]);
-                helperList.Add(listOfListsOfIcons[9]);
-                break;
-            default:
-                break;
-        }
+        helperList.Add(listOfListsOfIcons[Random.Range(0, 5)]);
     }
     public Sprite GetIcon()
     {
         PickList();
-        helperInt = Random.Range(0, helperList.Count - 1);
-        ListOfIcons listOfIcons = helperList[helperInt];  
-        Sprite icon = listOfIcons.GetRandomIcon();
+        Sprite icon = helperList[0].GetIconFromLevel(manuLevel);
         return icon;
     }
     public int GetLevel()
     {
-        return helperInt+1;
+        return manuLevel;
+    }
+    public int GetValue()
+    {
+        int price = (itemWorth * manuLevel) / 2;
+        return price;
     }
 
 }

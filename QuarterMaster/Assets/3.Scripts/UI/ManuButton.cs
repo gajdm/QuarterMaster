@@ -49,7 +49,9 @@ public class ManuButton : MonoBehaviour
         }
     }
     public void SetAvailable(bool value)
-    { available = value;
+    { 
+        man.available = value;
+        available = value;
         GetComponent<ToolTip>().SetContent("Left click to open.");
     }
 }

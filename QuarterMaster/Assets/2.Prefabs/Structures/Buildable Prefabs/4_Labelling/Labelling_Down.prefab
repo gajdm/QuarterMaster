@@ -114,6 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf145d7a66dca42418769b5c0d3f3e14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
   audioManager: {fileID: 0}
   listOfItems: []
   itemPrefab: {fileID: 7326889567257269664, guid: 9f7b3ad0c8425954e95e8cda9f5b8ab6,
@@ -123,6 +124,7 @@ MonoBehaviour:
   secondsToWait: 5
   emptySpawnLocation: 0
   spawnTransfrom: {fileID: 7586178040546182750}
+  isBuilt: 0
 --- !u!1 &2007722174180823028
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,6 +332,7 @@ GameObject:
   - component: {fileID: 4249007701905002471}
   - component: {fileID: 9097577937583949945}
   - component: {fileID: 6945075324067589033}
+  - component: {fileID: 7807644187620069940}
   m_Layer: 0
   m_Name: Interactible
   m_TagString: Untagged
@@ -363,6 +366,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf145d7a66dca42418769b5c0d3f3e14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
   audioManager: {fileID: 0}
   listOfItems: []
   itemPrefab: {fileID: 7326889567257269664, guid: 9f7b3ad0c8425954e95e8cda9f5b8ab6,
@@ -372,6 +376,7 @@ MonoBehaviour:
   secondsToWait: 5
   emptySpawnLocation: 0
   spawnTransfrom: {fileID: 7586178040546182750}
+  isBuilt: 0
 --- !u!114 &9097577937583949945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -424,6 +429,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 19.6875, y: 20}
   m_EdgeRadius: 0
+--- !u!114 &7807644187620069940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3069711460967750062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 104266b705e4bab4fbd497d45882406a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  header: Labelling Station
+  content: 
+  objectNameAsHeader: 0
+  objectBuildSOToolTipAsContent: 0
 --- !u!1 &4171929771705240207
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using SoulGames.EasyGridBuilderPro;
+using SoulGames.Utilities;
 
 public class LabelStation : MonoBehaviour
 {
@@ -117,6 +118,7 @@ public class LabelStation : MonoBehaviour
         newItem.SetIcon(listItem.GetIcon());
         newItem.SetAddress(listItem.GetAddress());
         newItem.SetCode(listItem.GetCode());
+        newItem.GetComponent<ToolTip>().SetContent("Address: " + listItem.GetAddress());
 
         listOfItems.Remove(listOfItems[0]);
 

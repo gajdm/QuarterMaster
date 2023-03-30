@@ -116,6 +116,7 @@ GameObject:
   - component: {fileID: 2920260233544603614}
   - component: {fileID: 661584835172284261}
   - component: {fileID: 4573104526732272010}
+  - component: {fileID: 11030011424782268}
   m_Layer: 0
   m_Name: Item
   m_TagString: Item
@@ -259,6 +260,22 @@ MonoBehaviour:
   itemPlacement: {fileID: 0}
   rack: {fileID: 0}
   isTutItem: 0
+--- !u!114 &11030011424782268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7326889567257269664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 104266b705e4bab4fbd497d45882406a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  header: Item
+  content: 
+  objectNameAsHeader: 0
+  objectBuildSOToolTipAsContent: 0
 --- !u!1 &8362996926361661016
 GameObject:
   m_ObjectHideFlags: 0

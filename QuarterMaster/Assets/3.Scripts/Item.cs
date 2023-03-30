@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using SoulGames.Utilities;
 
 public class Item : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class Item : MonoBehaviour
      public string itemAddress;
      public string itemCode;
      public int level;
+    public int value;
     
 
     //SETTING
@@ -18,6 +20,7 @@ public class Item : MonoBehaviour
     public void SetCode(string code)
     {
         itemCode = code;
+        
     }
     public void SetAddress(string address)
     {
@@ -26,6 +29,10 @@ public class Item : MonoBehaviour
     public void SetLevel(int number)
     {
         level = number;
+    }
+    public void SetValue(int number)
+    {
+        value = number;
     }
 
 
@@ -45,6 +52,10 @@ public class Item : MonoBehaviour
     public int GetLevel()
     {
         return level; 
+    }
+    public int GetValue()
+    {
+        return value;
     }
 
 }

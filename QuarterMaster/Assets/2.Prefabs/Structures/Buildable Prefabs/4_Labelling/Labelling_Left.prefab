@@ -434,6 +434,7 @@ GameObject:
   - component: {fileID: 8754821366390539989}
   - component: {fileID: 8612980628756957172}
   - component: {fileID: 2454875522026206879}
+  - component: {fileID: 1816167414800004690}
   m_Layer: 0
   m_Name: Logic
   m_TagString: Untagged
@@ -507,6 +508,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 19.6875, y: 20}
   m_EdgeRadius: 0
+--- !u!114 &1816167414800004690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5236775568321900445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 104266b705e4bab4fbd497d45882406a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  header: Labelling Station
+  content: 
+  objectNameAsHeader: 0
+  objectBuildSOToolTipAsContent: 0
 --- !u!1 &6753133468278162469
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,6 +7,7 @@ public class Order : MonoBehaviour
     public List<GameObject> list;
     public int full;
     public int count;
+    public int value;
     public string orderCode;
     public bool done = false;
 
@@ -33,5 +34,13 @@ public class Order : MonoBehaviour
     public bool GetDone()
     {
         return done;
+    }
+    public void SetValue(int number)
+    {
+        value = number;
+    }
+    public int GetValue()
+    {
+        return value;
     }
 }

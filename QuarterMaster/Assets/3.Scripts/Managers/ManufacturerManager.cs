@@ -21,6 +21,7 @@ public class ManufacturerManager : MonoBehaviour
         foreach (var manufacturer in manufacturerList)
         {
             manufacturer.manuLevel = 1;
+            manufacturer.available = false;
         }
     }
     public void UpdateManuAvailability(int manuNumber)
@@ -42,14 +43,17 @@ public class ManufacturerManager : MonoBehaviour
     public GameObject GenerateItem()
     {
         GameObject gameObj = new GameObject();
-        gameObj.AddComponent<Item>();
-
-        Item newItem = gameObj.GetComponent<Item>();
+        Item newItem = gameObj.AddComponent<Item>();
 
         Manufacturer manu = GetRandomManufacturer();
-        newItem.SetIcon(manu.GetIcon());
-        newItem.SetLevel(manu.GetLevel());
-        return gameObj;
+        if (manu == null) return null;
+        else
+        {
+            newItem.SetIcon(manu.GetIcon());
+            newItem.SetLevel(manu.GetLevel());
+            newItem.SetValue(manu.GetValue());
+            return gameObj;
+        }
     }
     public Manufacturer[] GetListOfManufacturers()
     {
@@ -63,8 +67,25 @@ public class ManufacturerManager : MonoBehaviour
     }
     public Manufacturer GetRandomManufacturer()
     {
-        Manufacturer manufacturer = manufacturerList[Random.Range(0,4)];
-        return manufacturer;
+        List<Manufacturer> availableMan = new List<Manufacturer>();
+        foreach (Manufacturer man in manufacturerList)
+        {
+            if (man.available)
+            {
+                availableMan.Add(man);
+            }
+        }
+
+        if(availableMan.Count == 0)
+        {
+            return null;
+        }
+        else
+        {
+
+            Manufacturer manufacturer = availableMan[Random.Range(0, availableMan.Count)];
+            return manufacturer;
+        }
     }
 
 

@@ -1,3 +1,4 @@
+using SoulGames.Utilities;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -62,9 +63,10 @@ public class BuyerManager : MonoBehaviour
         {
             if (addressBoolList[i] == false)
             {
-                CreateNewOrder();
+                Debug.Log(addressList[i]);
                 address = addressList[i];
                 addressBoolList[i] = true;
+                CreateNewOrder();
             }
         }
     }
@@ -88,6 +90,13 @@ public class BuyerManager : MonoBehaviour
         order.SetFullInt(listGO.Count);
         order.SetOrderCode(orderNumber);
 
+        int orderValue = 0;
+        foreach (GameObject go in listGO)
+        { 
+            orderValue+= go.GetComponent<Item>().GetValue();
+        }
+        order.SetValue(orderValue);
+
         orderList.Add(order);
     }
     public void FinishOrder(string code)
@@ -96,9 +105,14 @@ public class BuyerManager : MonoBehaviour
         {
             if (order.GetCode() == code)
             {
-                log.AddLog("Order number "+code+" finished. You received ??? gold");
+                log.AddLog("Order number "+code+" finished. You received "+ order.GetValue() + " gold");
                 audioManager.PlaySound("OrderCompleted");
                 orderList.Remove(order);
+                gameManager.ReceiveGold(order.GetValue());
+
+                ReloadExistingAddress(code);
+
+                Destroy(order.gameObject);
                 break;
             }
         }
@@ -126,6 +140,7 @@ public class BuyerManager : MonoBehaviour
         GameObject newBag = Instantiate(bag,location);
         Bag comBag = newBag.AddComponent<Bag>();
         comBag.SetOrder(orderName);
+        comBag.GetComponent<ToolTip>().SetContent("Code: "+orderName);
     }
 
 
@@ -170,27 +185,15 @@ public class BuyerManager : MonoBehaviour
         addressList.Add(address);
         addressBoolList.Add(false);
     }
-    public void CheckAddressList(int add, bool rack)
+    public void ReloadExistingAddress(string code)
     {
-        if (rack)
+        string address = code.Substring(0,4);
+        if(addressList.Contains(address))
         {
-            for (int i = 0; i < 4;)
-            {
-                if (!addressBoolList[i])
-                {
-                    AssignExistingAddress(addressList[i]);
-                }
-            }
+            Debug.Log(address);
+            Debug.Log(addressList.IndexOf(address));
+            addressBoolList[addressList.IndexOf(address)]=false;
         }
-        else
-        {
-
-        }
-
-    }
-    public void AssignExistingAddress(string word)
-    {
-        address = word;
     }
    
 
