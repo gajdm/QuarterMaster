@@ -10,10 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 83ffa323491a8104bbdbdbf60f6c6c95, type: 3}
-  m_Name: TestingQuest
+  m_Name: Earn1000Gold
   m_EditorClassIdentifier: 
-  tasks:
-  - Acquire Manufacturer.
-  _tooltips:
-  - Go into the manufacturer menu and purchase a manufacturer.
-  _finished: 
+  task: Earn " 200 " gold.
+  tooltip: Label crates, sort items, finish orders to finish the game.
+  questType: 7
+  racksToBuild: 0
+  labelsToBuild: 0
+  goldToEarn: 200
+  ordersToFinish: 0

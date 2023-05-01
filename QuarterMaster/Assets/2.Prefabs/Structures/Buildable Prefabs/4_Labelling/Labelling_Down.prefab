@@ -121,10 +121,12 @@ MonoBehaviour:
     type: 3}
   crateList: []
   currentCrate: {fileID: 0}
-  secondsToWait: 5
-  emptySpawnLocation: 0
+  secondsToWait: 1
   spawnTransfrom: {fileID: 7586178040546182750}
   isBuilt: 0
+  timer: 0
+  limit: 2
+  unpacking: 0
 --- !u!1 &2007722174180823028
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,6 +219,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7586178040546182750}
+  - component: {fileID: 5808961317213174263}
   m_Layer: 0
   m_Name: SpawnPoint
   m_TagString: Untagged
@@ -238,6 +241,32 @@ Transform:
   m_Father: {fileID: 142882011068768318}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &5808961317213174263
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009070035580053768}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &2445430866161033661
 GameObject:
   m_ObjectHideFlags: 0
@@ -329,7 +358,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7661028133482059720}
-  - component: {fileID: 4249007701905002471}
   - component: {fileID: 9097577937583949945}
   - component: {fileID: 6945075324067589033}
   - component: {fileID: 7807644187620069940}
@@ -354,29 +382,6 @@ Transform:
   m_Father: {fileID: 142882011068768318}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4249007701905002471
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3069711460967750062}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf145d7a66dca42418769b5c0d3f3e14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
-  audioManager: {fileID: 0}
-  listOfItems: []
-  itemPrefab: {fileID: 7326889567257269664, guid: 9f7b3ad0c8425954e95e8cda9f5b8ab6,
-    type: 3}
-  crateList: []
-  currentCrate: {fileID: 0}
-  secondsToWait: 5
-  emptySpawnLocation: 0
-  spawnTransfrom: {fileID: 7586178040546182750}
-  isBuilt: 0
 --- !u!114 &9097577937583949945
 MonoBehaviour:
   m_ObjectHideFlags: 0

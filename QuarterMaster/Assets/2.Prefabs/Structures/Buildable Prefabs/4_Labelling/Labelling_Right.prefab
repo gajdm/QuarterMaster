@@ -386,10 +386,12 @@ MonoBehaviour:
     type: 3}
   crateList: []
   currentCrate: {fileID: 0}
-  secondsToWait: 5
-  emptySpawnLocation: 0
+  secondsToWait: 1
   spawnTransfrom: {fileID: 1314497734567053703}
   isBuilt: 0
+  timer: 0
+  limit: 0
+  unpacking: 0
 --- !u!1 &2032491471029788348
 GameObject:
   m_ObjectHideFlags: 0

@@ -36,7 +36,7 @@ MonoBehaviour:
   gridImageSprite: {fileID: 0}
   gridImagePlaceableColor: {r: 0, g: 0.048674583, b: 1, a: 1}
   gridImageNotPlaceableColor: {r: 1, g: 0, b: 0, a: 1}
-  holdToPlace: 1
-  placeAndDeselect: 0
+  holdToPlace: 0
+  placeAndDeselect: 1
   enableBuildCondition: 1
   buildConditionSO: {fileID: 11400000, guid: f461b3e8f73292d41ac8cb9e012d3440, type: 2}

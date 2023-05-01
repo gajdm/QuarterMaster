@@ -133,6 +133,7 @@ public class GameManager : MonoBehaviour
 
         goldCurrent += amount;
         UpdateGoldTexts();
+        FindObjectOfType<QuestManager>().GoldEarned(amount);
     }
     public void UpdateGoldTexts()
     { 

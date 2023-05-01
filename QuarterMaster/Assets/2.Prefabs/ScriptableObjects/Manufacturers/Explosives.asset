@@ -16,7 +16,7 @@ MonoBehaviour:
   description: A rouge mage gone mad.
   manuIcon: {fileID: 21300000, guid: ad0aa7ec38f9ec4489c47b2d1159ec66, type: 3}
   priceToBuy: 1000
-  itemWorth: 100
+  itemWorth: 500
   listOfListsOfIcons:
   - {fileID: 11400000, guid: a5f01cb5838f65846b4f69541589c7f6, type: 2}
   - {fileID: 11400000, guid: 317912463fc36454b915e8c49afc5fda, type: 2}

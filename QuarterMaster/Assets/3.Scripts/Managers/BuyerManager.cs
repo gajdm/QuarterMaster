@@ -63,7 +63,6 @@ public class BuyerManager : MonoBehaviour
         {
             if (addressBoolList[i] == false)
             {
-                Debug.Log(addressList[i]);
                 address = addressList[i];
                 addressBoolList[i] = true;
                 CreateNewOrder();
@@ -113,6 +112,7 @@ public class BuyerManager : MonoBehaviour
                 ReloadExistingAddress(code);
 
                 Destroy(order.gameObject);
+                FindObjectOfType<QuestManager>().OrderFinished();
                 break;
             }
         }

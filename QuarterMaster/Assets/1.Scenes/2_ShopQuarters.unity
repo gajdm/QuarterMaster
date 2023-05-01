@@ -17030,7 +17030,7 @@ GameObject:
   - component: {fileID: 392339499}
   - component: {fileID: 392339498}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22993,7 +22993,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1969185789}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 7e96587401fcc9047afb91bb07af4dac, type: 2}
   m_CullingMode: 0
@@ -26615,6 +26615,17 @@ MonoBehaviour:
   hasSeenBellowArrow: 0
   hasPickedUpBox: 0
   hasSeenCodexButton: 0
+  typeWriterComplete: 0
+  typeWriterSkip: 0
+  taskComplete: 0
+  seenLogs: 0
+  seenCodex: 0
+  seenAction: 0
+  seenManu: 0
+  seenManuCard: 0
+  boughtManu: 0
+  seenBuildButton: 0
+  seenOrderButton: 0
   tutorialMenu: {fileID: 31053069}
   ladders: {fileID: 0}
   pauseRect: {fileID: 0}
@@ -26661,6 +26672,9 @@ MonoBehaviour:
   exportPortal: {fileID: 0}
   actionBar: {fileID: 0}
   manuButton: {fileID: 0}
+  manuMenu: {fileID: 0}
+  manufacturerImage: {fileID: 0}
+  manuCard: {fileID: 0}
   orderButton: {fileID: 0}
   buildButton: {fileID: 0}
   money: {fileID: 0}
@@ -26669,6 +26683,7 @@ MonoBehaviour:
   buildings: {fileID: 0}
   blockedArea: {fileID: 0}
   codexButton: {fileID: 0}
+  codexMenu: {fileID: 0}
   logsAnimator: {fileID: 0}
   actionAnimator: {fileID: 0}
   manuButtonButton: {fileID: 0}
@@ -26676,12 +26691,19 @@ MonoBehaviour:
   buildButtonButton: {fileID: 0}
   logsButton: {fileID: 0}
   actionButton: {fileID: 0}
-  sortingSystemString: 
+  manuCardButton: {fileID: 0}
+  introductionStr: 
   logsString: 
   importString: 
   exportString: 
   actionBarString: 
+  actionButtonPressedStr: 
   manuButtonString: 
+  manuMenuStr: 
+  manuBuyStr: 
+  manuImageStr: 
+  manuOpenStr: 
+  manuCardStr: 
   orderButtonString: 
   buildButtonString: 
   economyString: 

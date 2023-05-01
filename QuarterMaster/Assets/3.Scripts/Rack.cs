@@ -84,6 +84,7 @@ public class Rack : MonoBehaviour
                         FindObjectOfType<LogsSystem>().AddLog("Added new rack !!");
                         gameManager.PayGold(buildableGridObjectTypeSO.buildConditionSO.goldAmount);
                         buyerManager.RackPlaced(this);
+                        FindObjectOfType<QuestManager>().BuildRack();
                     }
                 }
                 //And you can leave rest of the code from here as it is
@@ -121,6 +122,7 @@ public class Rack : MonoBehaviour
                 buyerManager.ItemAdded(item, spawn);
                 player.GetComponent<ItemInteraction>().SetIsHolding(false);
                 Destroy(item.gameObject);
+                FindObjectOfType<QuestManager>().Sorted();
             }
         }
         else

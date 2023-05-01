@@ -15,10 +15,13 @@ public class LabelStation : MonoBehaviour
     [SerializeField] private Crate currentCrate;
     //UNPACKING VARIABLES
     [SerializeField] private int secondsToWait;
-    [SerializeField] private bool emptySpawnLocation;
     [SerializeField] private Transform spawnTransfrom;
     //Condition variables
     [SerializeField] private bool isBuilt;
+    //Tick
+    [SerializeField] private float timer;
+    [SerializeField] private float limit;
+    [SerializeField] private bool unpacking;
 
     
     private void OnEnable()
@@ -74,10 +77,22 @@ public class LabelStation : MonoBehaviour
                         isBuilt = true;
                         gameManager = FindObjectOfType<GameManager>();
                         gameManager.PayGold(buildableGridObjectTypeSO.buildConditionSO.goldAmount);
+                        FindObjectOfType<QuestManager>().BuildLabelling();
                     }    
                 }
                 //And you can leave rest of the code from here as it is
             }
+        }
+    }
+
+    //FUNCTIONS
+    public void FixedUpdate()
+    {
+        timer+=Time.deltaTime;
+        if(timer>=limit)
+        {
+            timer = 0;
+            Check();
         }
     }
     public void GetNewCrate(Crate crate)
@@ -86,7 +101,6 @@ public class LabelStation : MonoBehaviour
         {
             currentCrate = crate;
             listOfItems = currentCrate.GetListOfItems();
-            StartCoroutine(Unpacking());
         }
         else
         {
@@ -95,21 +109,31 @@ public class LabelStation : MonoBehaviour
     }
     public void Check()
     {
-        if (listOfItems.Count != 0)
+        if(currentCrate != null)
         {
-            StartCoroutine(Unpacking());
-        }
-        else
-        {
-            Destroy(currentCrate.gameObject);
-            currentCrate = null;
-            Debug.Log("Empty Crate");
+            if (listOfItems.Count != 0)
+            {
+                if (CheckSpawn() && !unpacking)
+                {
+                    Debug.Log("Got here");
+                    unpacking = true;
+                    StartCoroutine(Unpacking());
+                } 
+            }
+            else
+            {
+                Destroy(currentCrate.gameObject);
+                currentCrate = null;
+                Debug.Log("Empty Crate");
+            }
         }
     }
     public IEnumerator Unpacking()
     {
+        yield return new WaitForSeconds(secondsToWait);
+
         GameObject newGameObj = Instantiate(itemPrefab, spawnTransfrom);
-        //audioManager.PlaySound("Label");
+        FindObjectOfType<QuestManager>().Labelled();
 
         Item newItem = newGameObj.GetComponent<Item>();
         Item listItem = listOfItems[0].GetComponent<Item>();
@@ -119,19 +143,16 @@ public class LabelStation : MonoBehaviour
         newItem.SetAddress(listItem.GetAddress());
         newItem.SetCode(listItem.GetCode());
         newItem.GetComponent<ToolTip>().SetContent("Address: " + listItem.GetAddress());
-
         listOfItems.Remove(listOfItems[0]);
-
-        yield return new WaitForSeconds(secondsToWait);
-        Check();
+        
+        unpacking = false;
     }
     //Checking if the spawnLocation is free
-    public void OnTriggerEnter2D(Collider2D collision)
+    public bool CheckSpawn()
     {
-        emptySpawnLocation = false;
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        emptySpawnLocation = true;
+        Transform trans = spawnTransfrom.transform;
+        if(trans.childCount < 1) return true; 
+
+        else return false;
     }
 }

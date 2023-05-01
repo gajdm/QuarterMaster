@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using SoulGames.Utilities;
+using UnityEngine.SceneManagement;
 
 public class QuestManager : MonoBehaviour
 {
@@ -17,15 +18,16 @@ public class QuestManager : MonoBehaviour
     [Header("Booleans")]
     [Header("Backstage"), Space(10f)]
     
-    [SerializeField] private bool aquiredMan;
+    [SerializeField] public bool acquiredMan;
+    [SerializeField] public bool upgradedMan;
     [SerializeField] private bool label;
     [SerializeField] private bool sort;
     [SerializeField] private bool orderFinish;
     [Header("Integers")]
-    [SerializeField] private int labelBuild;
-    [SerializeField] private int racksBuild;
-    [SerializeField] private int goldEarned;
-    [SerializeField] private int ordersFinished;
+    [SerializeField] private int labelBuild = 0;
+    [SerializeField] private int racksBuild = 0;
+    [SerializeField] private int goldEarned = 0;
+    [SerializeField] private int ordersFinished = 0;
 
 
     private void Start()
@@ -48,14 +50,70 @@ public class QuestManager : MonoBehaviour
         switch(currentQuest.questType)
         {
             case Quest.QuestType.AcquireManufacturer:
-
+                if(acquiredMan)
+                {
+                    currentQuestInt++;
+                    AssignQuest(quests[currentQuestInt]);
+                }
+                break;
+            case Quest.QuestType.BuildRacks:
+                if(currentQuest.racksToBuild <= racksBuild)
+                {
+                    currentQuestInt++;
+                    AssignQuest(quests[currentQuestInt]);
+                }
+                break;
+            case Quest.QuestType.BuildLabels:
+                if(currentQuest.labelsToBuild <= labelBuild)
+                {
+                    currentQuestInt++;
+                    AssignQuest(quests[currentQuestInt]);
+                }
+                break;
+            case Quest.QuestType.Label:
+                if(label)
+                {
+                    currentQuestInt++;
+                    AssignQuest(quests[currentQuestInt]);
+                }
+                    break;
+            case Quest.QuestType.Sort:
+                if(sort)
+                {
+                    currentQuestInt++;
+                    AssignQuest(quests[currentQuestInt]);
+                }
+                break;
+            case Quest.QuestType.FinishOrders:
+                if(currentQuest.ordersToFinish<=ordersFinished)
+                {
+                    currentQuestInt++;
+                    AssignQuest(quests[currentQuestInt]);
+                }
+                break;
+            case Quest.QuestType.UpgradeManufacturers:
+                if(upgradedMan)
+                {
+                    currentQuestInt++;
+                    AssignQuest(quests[currentQuestInt]);
+                }
+                break;
+            case Quest.QuestType.EarnGold:
+                if(currentQuest.goldToEarn <= goldEarned)
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                    currentQuestInt++;
+                    AssignQuest(quests[currentQuestInt]);
+                }
+                break;
+            default:
                 break;
         } 
     }
     //Action functions referenced from outside of the manager
     public void AcquiredManufacturer()
     {
-        aquiredMan = true;
+        acquiredMan = true;
         CheckQuest();
     }
     public void BuildLabelling()
@@ -80,7 +138,7 @@ public class QuestManager : MonoBehaviour
     }
     public void OrderFinished()
     {
-        orderFinish = true;
+        ordersFinished++;
         CheckQuest();
     }
     public void GoldEarned(int number)
@@ -88,14 +146,20 @@ public class QuestManager : MonoBehaviour
         goldEarned += number;
         CheckQuest();
     }
+    public void UpgradeMan()
+    {
+        upgradedMan = true;
+        CheckQuest();
+    }
 
     //Utillity functions
     public void ResetBackend()
     {
-         aquiredMan = false;
+         acquiredMan = false;
          label = false;
          sort = false;
          orderFinish = false;
+            upgradedMan=false;
         
          labelBuild = 0;
          racksBuild = 0;

@@ -8,6 +8,8 @@ TagManager:
   - Bag
   - Item
   - Box
+  - Grid
+  - Conveyor
   layers:
   - Default
   - TransparentFX

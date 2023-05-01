@@ -16,7 +16,7 @@ MonoBehaviour:
   description: A half elf warrior that strikes from afar.
   manuIcon: {fileID: 21300000, guid: 6464681ce5b3b6e409d53b27fdc5d435, type: 3}
   priceToBuy: 0
-  itemWorth: 10
+  itemWorth: 100
   listOfListsOfIcons:
   - {fileID: 11400000, guid: 12e0597ecc19fcd469ab133182982f0a, type: 2}
   - {fileID: 11400000, guid: 0e4a7c0bc90cb924d82b75d4023a64ed, type: 2}
@@ -24,4 +24,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7618d18f5bb933a4f8ca6d2df1b94b00, type: 2}
   - {fileID: 11400000, guid: c4259e23ec2c54d4cbf57a65c5ac235f, type: 2}
   manuLevel: 1
-  available: 0
+  available: 1

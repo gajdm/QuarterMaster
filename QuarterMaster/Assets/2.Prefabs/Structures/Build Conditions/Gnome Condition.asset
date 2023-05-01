@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Gnome Condition
   m_EditorClassIdentifier: 
   tooltipContent: 500 Gold
-  goldAmount: 500
+  goldAmount: 100
   payGoldOnBuild: 1

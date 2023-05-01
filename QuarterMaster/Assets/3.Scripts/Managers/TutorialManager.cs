@@ -371,6 +371,9 @@ public class TutorialManager : MonoBehaviour
     {
         if (!seenManu)
         {
+            buildButtonButton.interactable = true;
+            orderButtonButton.interactable = true;
+
             seenManu = true;
             HighlightUI.defaultOptions.dismissAction =
                 ShowManufacturer;
@@ -431,7 +434,7 @@ public class TutorialManager : MonoBehaviour
         StopAllCoroutines();
         StartCoroutine(Typewriter(manuOpenStr));
 
-        taskComplete = false;
+        taskComplete = true;
     }
     public void ShowManufacturerCard()
     {

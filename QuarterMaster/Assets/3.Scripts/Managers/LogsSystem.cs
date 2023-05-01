@@ -10,11 +10,6 @@ public class LogsSystem : MonoBehaviour
     public void AddLog(string text)
     {
         audioManager.PlaySound("Event");
-        //texts[4].text = texts[3].text;
-        //texts[3].text = texts[2].text;
-        //texts[2].text = texts[1].text;
-        //texts[1].text = texts[0].text;
-        //texts[0].text = text;
         
         for(int i = texts.Length-1; i >= 0; i--)
         {

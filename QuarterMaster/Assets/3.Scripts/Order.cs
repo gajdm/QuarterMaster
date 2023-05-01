@@ -22,13 +22,16 @@ public class Order : MonoBehaviour
     public void AddItem()
     {
         count++;
-        if(count == full)
+        FindObjectOfType<OrderUI>().UpdateAmount(GetCode(),count,full);
+        if (count == full)
         {
             done = true;
         }
     }
     public void SetOrderCode(string code)
-    { orderCode = code; }
+    {
+        FindObjectOfType<OrderUI>().AddOrder(code,full); 
+        orderCode = code; }
     public string GetCode()
     { return orderCode; }
     public bool GetDone()

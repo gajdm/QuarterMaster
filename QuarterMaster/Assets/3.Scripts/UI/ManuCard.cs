@@ -113,12 +113,12 @@ public class ManuCard : MonoBehaviour
         if (gameManager.GetGoldCurrent() >= upgradeCost)
         {
             gameManager.PayGold(upgradeCost);
+            upgradeCost += upgradeCost; 
             manuHelper.manuLevel++;
             Open(manuHelper);
             manuUI.UpdateUI();
             levels[manuHelper.manuLevel - 1].color = canColor;
         }
-        
     }
 
 }

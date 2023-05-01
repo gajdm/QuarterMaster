@@ -21,6 +21,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Color bagColor;
     [SerializeField] private GameObject player;
 
+
     [SerializeField] private Animator upperBarAnimator;
     public void SwitchUI(string name, bool value)
     {
@@ -64,9 +65,12 @@ public class UIManager : MonoBehaviour
     }
     public void UpdateRackUI(Rack rack)
     {
-        audioManager.PlaySound("UISlide");
         currentRack = rack;
-        currentRack.GetComponentInChildren<BoxCollider2D>().enabled = false;
+        audioManager.PlaySound("UISlide");
+        foreach(Rack _r in FindObjectsOfType<Rack>())
+        {
+            _r.GetComponentInChildren<BoxCollider2D>().enabled = false;
+        }
         string[] bagNames = rack.GetBagNames(); 
         for (int i = 0; i < bagNames.Length; i++)
         {
@@ -76,7 +80,10 @@ public class UIManager : MonoBehaviour
     }
     public void CloseRackUI()
     {
-        currentRack.GetComponentInChildren<BoxCollider2D>().enabled = true;
+        foreach (Rack _r in FindObjectsOfType<Rack>())
+        {
+            _r.GetComponentInChildren<BoxCollider2D>().enabled = true;
+        }
     }
     public void ContactRack(int bagNumber)
     {
